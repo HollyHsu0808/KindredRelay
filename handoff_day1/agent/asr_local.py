@@ -54,12 +54,22 @@ def transcriber(name: str | None = None):
             out = model(name).transcribe(path, "family-timeline:recording", "clinician")
         # One line per recording on stderr, which the host shows in its log: enough to tell a silent or
         # undecodable clip from a real one. No word of what was said is logged, only counts.
+        peak = rms = None
+        try:   # a 16-bit PCM WAV is what the browser recorder sends; anything else just leaves these empty
+            import array, wave, io as _io
+            with wave.open(_io.BytesIO(data)) as w:
+                if w.getsampwidth() == 2:
+                    a = array.array("h"); a.frombytes(w.readframes(w.getnframes()))
+                    peak = max(abs(x) for x in a) if len(a) else 0
+                    rms = int((sum(x * x for x in a) / len(a)) ** 0.5) if len(a) else 0
+        except Exception:   # the loudness is a diagnostic, never a reason to lose a recording
+            pass
         segs = out["segments"]
-        print("[asr] bytes=%d suffix=%s duration_s=%s segments=%d chars=%d no_speech_prob=%s avg_logprob=%s" % (
+        print("[asr] bytes=%d suffix=%s duration_s=%s segments=%d chars=%d no_speech_prob=%s avg_logprob=%s peak=%s rms=%s (full scale 32767)" % (
             len(data), suffix or ".wav", out["quality"].get("duration_s"), len(segs),
             sum(len(s["text"]) for s in segs),
             max((s.get("no_speech_prob", 0.0) for s in segs), default=None),
-            min((s.get("avg_logprob", 0.0) for s in segs), default=None)), file=sys.stderr, flush=True)
+            min((s.get("avg_logprob", 0.0) for s in segs), default=None), peak, rms), file=sys.stderr, flush=True)
         return {"text": "\n".join(s["text"] for s in out["segments"]), "model": f"Whisper {name}",
                 "latency_s": round(time.perf_counter() - t0, 2), "needs_check": out["quality"]["needs_human_check"]}
     transcribe.model_name = name
