@@ -52,6 +52,14 @@ def transcriber(name: str | None = None):
             path = Path(d) / f"recording{suffix or '.wav'}"
             path.write_bytes(data)
             out = model(name).transcribe(path, "family-timeline:recording", "clinician")
+        # One line per recording on stderr, which the host shows in its log: enough to tell a silent or
+        # undecodable clip from a real one. No word of what was said is logged, only counts.
+        segs = out["segments"]
+        print("[asr] bytes=%d suffix=%s duration_s=%s segments=%d chars=%d no_speech_prob=%s avg_logprob=%s" % (
+            len(data), suffix or ".wav", out["quality"].get("duration_s"), len(segs),
+            sum(len(s["text"]) for s in segs),
+            max((s.get("no_speech_prob", 0.0) for s in segs), default=None),
+            min((s.get("avg_logprob", 0.0) for s in segs), default=None)), file=sys.stderr, flush=True)
         return {"text": "\n".join(s["text"] for s in out["segments"]), "model": f"Whisper {name}",
                 "latency_s": round(time.perf_counter() - t0, 2), "needs_check": out["quality"]["needs_human_check"]}
     transcribe.model_name = name
