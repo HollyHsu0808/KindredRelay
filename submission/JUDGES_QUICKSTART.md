@@ -102,7 +102,7 @@ Run from the repository root. Each command writes to a **new** folder (it refuse
 | Fact stability, run 2 | Jaccard 0.854 / 0.989; cross-model 0.688; grounding acceptance 85.0% (stable) vs 85.7% (less stable) | `release/benchmarks/agreement_20261017T232917Z/summary.md:11-12,31,39-42` |
 | Metamorphic testing | 6 relations × 200; invariance 0/200; 7 signatures closed; live polarity 2/20 | `release/benchmarks/metamorphic_20261017T233944Z/summary.md:5-12,69-78,129` |
 | Capacity / load | 2,431 tokens per family per day, 1.98 busy hours per 1,000 families per day (assumptions labelled, no price) / 16.84 updates per minute at concurrency 4 (1 of 17 attempts rate-limited); 9.49 at concurrency 8 with 20 of 36 attempts rate-limited (20 requests per minute per user) | `release/benchmarks/capacity_20261017T233811Z/summary.md:46,52`; `release/benchmarks/load_20261017T232951Z/summary.md:13-14`, `rate_limit_breakdown.md:12` |
-| PriMock57 external reference | recall 58.2% [54.0, 61.8], contradictions 6.0% [4.3, 7.8], weighted errors 0.682/note fact; kappa pending | `research/primock_gold_v1/`; final run folder `release/benchmarks/primock_gold_20261018T002738Z/` |
+| PriMock57 external reference | recall 58.2% [54.0, 61.8], contradictions 6.0% [4.3, 7.8], weighted errors 0.682/note fact; human-vs-model kappa 0.797 [0.747, 0.845] (n = 349) | `research/primock_gold_v1/`; final run folder `release/benchmarks/primock_gold_20261018T002738Z/` |
 
 The full list, with every other number used: `submission/SOURCES.md`. Architecture with file references for every box: `submission/architecture.md`.
 

@@ -16,6 +16,9 @@ LICENSE from public_repo/ at the export root, then checks the staged tree and wr
   (v)   absolute local paths (a Windows user profile, /home/<name>, /Users/<name>); scripts/redact_local_paths.py
         replaces them in evidence files and logs it in release/REDACTIONS.json         -> failure
   (vi)  sizes: total, per category, per top-level folder, the largest files                -> notice
+  (vii) line endings: public_repo/.gitattributes is copied to the export root and must turn end-of-line conversion
+        off for every file (`* -text`, no later text/eol rule); without it a checkout with core.autocrlf (or on
+        another OS) changes the bytes of files whose sha256 is recorded                     -> failure
 A manifest entry that matches no file fails unless it is marked optional (`?`). DIR must not exist; it is left in
 place when a gate fails so the hits can be inspected. Exit 0 when every failing gate is clean, 1 otherwise, 2 on
 a usage error. Never initialises git, commits or pushes.
@@ -36,6 +39,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "kindredrelay-public-export-v1"
 CATEGORIES = ("deploy", "verify", "evidence", "submission", "meta")
 GENERATED = {"README.md": "README.md", "DEPLOY.md": "DEPLOY.md", "EVIDENCE.md": "EVIDENCE.md", "LICENSE": "LICENSE"}
+# Copied from public_repo/ when present; gate (vii) fails the export when it is missing or converts line endings.
+EOL_ATTRIBUTES = ".gitattributes"
+EOL_RULE_ATTRS = ("text", "eol", "crlf")      # attributes that switch end-of-line conversion back on (or to unset)
 
 CJK = re.compile("[\u3000-\u9fff\uf900-\ufaff\uff00-\uffef]")
 # Never exported, whatever the manifest says. Matched against the repository-relative posix path.
@@ -157,7 +163,7 @@ def select(root: Path, entries: list[dict]) -> tuple[dict[str, dict], list[dict]
             reason = forbidden_reason(rel)
             if reason:
                 refused.append({"path": rel, "reason": reason, "manifest_line": entry["line"]})
-            elif rel in GENERATED:
+            elif rel in GENERATED or rel == EOL_ATTRIBUTES:
                 refused.append({"path": rel, "reason": "written from public_repo/ at the export root",
                                 "manifest_line": entry["line"]})
             else:
@@ -214,6 +220,33 @@ def link_target(md_rel: str, target: str, out: Path) -> str | None:
         elif part != ".":
             parts.append(part)
     return "/".join(parts)
+
+
+def line_endings_gate(out: Path, staged: list[str]) -> dict:
+    """(vii): the export root's .gitattributes must store every file byte for byte (`* -text` or `* binary`) and no
+    later rule may set, unset-to-default or override text/eol/crlf for any path."""
+    path = out / EOL_ATTRIBUTES
+    crlf = sorted(rel for rel in staged if b"\r\n" in (out / rel).read_bytes())
+    failing, rule_line = [], None
+    if not path.is_file():
+        failing.append({"path": EOL_ATTRIBUTES, "reason": "missing at the export root (copy public_repo/.gitattributes)"})
+    else:
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            parts = line.split()
+            if not parts or parts[0].startswith("#"):
+                continue
+            pattern, attrs = parts[0], parts[1:]
+            if pattern == "*" and ("-text" in attrs or "binary" in attrs):
+                rule_line = number
+            for attr in attrs:
+                name = attr.lstrip("-!").split("=", 1)[0]
+                if name in EOL_RULE_ATTRS and not (pattern == "*" and attr == "-text"):
+                    failing.append({"path": EOL_ATTRIBUTES, "line": number,
+                                    "reason": f"{pattern} {attr}: end-of-line conversion rule"})
+        if rule_line is None:
+            failing.append({"path": EOL_ATTRIBUTES, "reason": "no `* -text` rule: line endings would be converted"})
+    return {"failing": failing, "rule_line": rule_line, "crlf_files": len(crlf), "crlf_examples": crlf[:10],
+            "passed": not failing}
 
 
 def gates(out: Path, allow: dict[str, dict], key_file: Path | None, categories: dict[str, str]) -> dict:
@@ -288,6 +321,7 @@ def gates(out: Path, allow: dict[str, dict], key_file: Path | None, categories: 
         "links": {"dangling": dangling, "passed": not dangling, "cited_paths_not_exported": cited_missing},
         "absolute_local_paths": {"failing": abs_paths, "files": sorted({a["path"] for a in abs_paths}),
                                  "passed": not abs_paths},
+        "line_endings": line_endings_gate(out, staged),
         "sizes": {"files": len(sizes), "bytes": sum(sizes.values()),
                   "by_category": {k: {"files": v[0], "bytes": v[1]} for k, v in sorted(by_category.items())},
                   "by_top_level": {k: {"files": v[0], "bytes": v[1]} for k, v in sorted(by_top.items())},
@@ -312,10 +346,14 @@ def export(root: Path, public: Path, out: Path, key_file: Path | None) -> dict:
     for dest, src in GENERATED.items():
         shutil.copyfile(public / src, out / dest)
         categories[dest] = "meta"
+    if (public / EOL_ATTRIBUTES).is_file():
+        shutil.copyfile(public / EOL_ATTRIBUTES, out / EOL_ATTRIBUTES)
+        categories[EOL_ATTRIBUTES] = "meta"
     result = gates(out, allow, key_file, categories)
     failing_unmatched = [e for e in unmatched if not e["optional"] and not e["exclude"]]
     passed = (result["cjk"]["passed"] and result["secrets"]["passed"] and result["forbidden_paths"]["passed"]
-              and result["links"]["passed"] and result["absolute_local_paths"]["passed"] and not failing_unmatched)
+              and result["links"]["passed"] and result["absolute_local_paths"]["passed"]
+              and result["line_endings"]["passed"] and not failing_unmatched)
     report = {
         "schema": SCHEMA, "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "source_folder": root.name, "out_folder": out.name, "passed": passed,   # names only: no local paths
@@ -345,6 +383,8 @@ def summary_lines(report: dict) -> list[str]:
         f"{len(g['links']['cited_paths_not_exported'])}",
         f"(v) absolute_local_paths={len(g['absolute_local_paths']['failing'])} in "
         f"{len(g['absolute_local_paths']['files'])} files",
+        f"(vii) line_endings failing={len(g['line_endings']['failing'])} crlf_files={g['line_endings']['crlf_files']}"
+        f" ({EOL_ATTRIBUTES} `* -text` rule line {g['line_endings']['rule_line']})",
         f"manifest unmatched_required={len(report['manifest']['unmatched_required'])}",
     ]
 

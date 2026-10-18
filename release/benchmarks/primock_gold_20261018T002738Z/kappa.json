@@ -1,0 +1,72 @@
+{
+  "csv": "release\\benchmarks\\primock_gold_20261018T002738Z\\human_review_filled.csv",
+  "rows": 360,
+  "labelled": 349,
+  "unlabelled": 11,
+  "invalid_labels": [],
+  "status": "computed",
+  "overall": {
+    "n": 349,
+    "raw_agreement": 0.8481,
+    "expected_agreement": 0.2516,
+    "kappa": 0.7971,
+    "kappa_note": null,
+    "confusion": {
+      "consistent -> consistent": 100,
+      "consistent -> contradicts": 2,
+      "consistent -> not_in_note": 21,
+      "contradicts -> consistent": 1,
+      "contradicts -> contradicts": 4,
+      "contradicts -> not_in_note": 3,
+      "covered -> covered": 84,
+      "covered -> not_covered": 22,
+      "not_covered -> not_covered": 67,
+      "not_in_note -> consistent": 3,
+      "not_in_note -> contradicts": 1,
+      "not_in_note -> not_in_note": 41
+    },
+    "kappa_ci95": [
+      0.7473,
+      0.8454
+    ]
+  },
+  "note_facts": {
+    "n": 173,
+    "raw_agreement": 0.8728,
+    "expected_agreement": 0.4967,
+    "kappa": 0.7473,
+    "kappa_note": null,
+    "confusion": {
+      "covered -> covered": 84,
+      "covered -> not_covered": 22,
+      "not_covered -> not_covered": 67
+    },
+    "kappa_ci95": [
+      0.6526,
+      0.8392
+    ]
+  },
+  "extracted_facts": {
+    "n": 176,
+    "raw_agreement": 0.8239,
+    "expected_agreement": 0.5092,
+    "kappa": 0.6411,
+    "kappa_note": null,
+    "confusion": {
+      "consistent -> consistent": 100,
+      "consistent -> contradicts": 2,
+      "consistent -> not_in_note": 21,
+      "contradicts -> consistent": 1,
+      "contradicts -> contradicts": 4,
+      "contradicts -> not_in_note": 3,
+      "not_in_note -> consistent": 3,
+      "not_in_note -> contradicts": 1,
+      "not_in_note -> not_in_note": 41
+    },
+    "kappa_ci95": [
+      0.525,
+      0.7434
+    ]
+  },
+  "method": "Cohen's kappa between annotator_label and human_label per row; overall pools both label sets; bootstrap over rows (2000 resamples, seed 20261018, none below n = 5)"
+}

@@ -23,6 +23,23 @@ UI = Path(__file__).resolve().parent
 sys.path[:0] = [str(UI), str(UI.parent / "agent")]
 from timeline_storage import StoreConflict, TimelineSession, TimelineStore
 
+
+def adopt_session(new: AppTest, old: AppTest) -> AppTest:
+    """Make `new` run in `old`'s session on Streamlit 1.58 and 1.64 alike. 1.58's AppTest runs whatever object
+    AppTest.session_state holds, so assigning it hands the session over. 1.64 wraps the session it runs
+    (AppTest._session_state) in a tester view: assigning session_state alone swaps the view, and the fresh AppTest
+    then runs in an empty session of its own while the test reads the old one."""
+    new.session_state = old.session_state
+    if hasattr(old, "_session_state"):   # Streamlit >= 1.64: the state the script runner is given
+        new._session_state = old._session_state
+    return new
+
+
+def state_get(at: AppTest, key: str, default=None):
+    """at.session_state.filtered_state.get(key, default) without filtered_state, which 1.64's tester view lacks."""
+    return at.session_state[key] if key in at.session_state else default
+
+
 PAGE = UI / "pages" / "1_Family_timeline.py"
 SCENARIO = UI.parent / "care_cases" / "episode_hip_fracture.json"
 WARNING = "Your plan was saved. AI details are temporarily unavailable."
@@ -86,8 +103,7 @@ class PlanProviderFailureTests(unittest.TestCase):
         return calls
 
     def rerender(self, app):
-        fresh = AppTest.from_file(str(PAGE), default_timeout=30)
-        fresh.session_state = app.session_state
+        fresh = adopt_session(AppTest.from_file(str(PAGE), default_timeout=30), app)
         fresh.query_params.update(app.query_params)
         fresh.run()
         self.assertFalse(fresh.exception)
@@ -95,14 +111,14 @@ class PlanProviderFailureTests(unittest.TestCase):
 
     def submit(self, app, words):
         app = self.rerender(app)
-        if app.session_state.filtered_state.get("adding") != "paper":
+        if state_get(app, "adding") != "paper":
             app.button(key="add_paper").click().run()
         app.text_area(key="note_text").set_value(words).run()
         next(b for b in app.button if b.label == "Share with the family").click().run()
         self.assertFalse(app.exception)
         # A successful submit closes the form. Rebuild its AppTest tree to avoid
         # Streamlit 1.58 retaining deleted widgets. Failed forms stay in place.
-        return app if app.session_state.filtered_state.get("adding") == "paper" else self.rerender(app)
+        return app if state_get(app, "adding") == "paper" else self.rerender(app)
 
     def test_timeout_saves_one_factless_source_and_replaces_latest_plan_after_reload(self):
         app = self.fresh()
@@ -173,7 +189,7 @@ class PlanProviderFailureTests(unittest.TestCase):
             app.button(key="plan_save").click().run()
             self.assertFalse(app.exception)
             app = self.rerender(app)
-            if app.session_state.filtered_state.get("adding") != "paper":
+            if state_get(app, "adding") != "paper":
                 app.button(key="add_paper").click().run()
             app.button(key="plan_save").click().run()
         source = app.session_state["episode"].updates[-1]

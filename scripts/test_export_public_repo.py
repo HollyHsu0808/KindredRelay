@@ -10,6 +10,7 @@ import contextlib
 import io
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -40,6 +41,7 @@ def public_dir(root: Path, manifest: str, allow: str = "") -> None:
     write(root, "public_repo/CJK_ALLOWLIST.txt", allow)
     for name in ("README.md", "DEPLOY.md", "EVIDENCE.md", "LICENSE"):
         write(root, "public_repo/" + name, f"{name}\n[deploy](deploy/serve.py)\n" if name.endswith(".md") else "MIT\n")
+    write(root, "public_repo/.gitattributes", "# exact bytes\n* -text\n")
 
 
 def run(argv: list[str]) -> tuple[int, str]:
@@ -106,11 +108,47 @@ class TestExport(unittest.TestCase):
         self.assertEqual(code, 0, json.dumps(report["gates"], indent=1)[:2000])
         self.assertTrue(report["passed"])
         staged = sorted(p.relative_to(self.out).as_posix() for p in self.out.rglob("*") if p.is_file())
-        self.assertEqual(staged, ["DEPLOY.md", "Dockerfile.release", "EVIDENCE.md", "EXPORT_REPORT.json", "LICENSE",
-                                  "README.md", "deploy/serve.py", "docs/guide.md"])
+        self.assertEqual(staged, [".gitattributes", "DEPLOY.md", "Dockerfile.release", "EVIDENCE.md",
+                                  "EXPORT_REPORT.json", "LICENSE", "README.md", "deploy/serve.py", "docs/guide.md"])
         self.assertEqual((self.out / "README.md").read_text(encoding="utf-8").splitlines()[0], "README.md")
         self.assertIn("deploy/serve.py", report["files_sha256"])
-        self.assertEqual(report["gates"]["sizes"]["files"], 7)
+        self.assertIn(".gitattributes", report["files_sha256"])
+        self.assertEqual(report["gates"]["sizes"]["files"], 8)
+        self.assertTrue(report["gates"]["line_endings"]["passed"])
+        self.assertEqual(report["gates"]["line_endings"]["rule_line"], 2)
+
+    def test_missing_gitattributes_fails_the_line_endings_gate(self):
+        public_dir(self.root, self.manifest())
+        (self.root / "public_repo/.gitattributes").unlink()
+        write(self.root, "deploy/frozen.json", b'{"a": 1}\r\n')
+        code, out = run(["--root", str(self.root), "--out", str(self.out)])
+        report = json.loads((self.out / "EXPORT_REPORT.json").read_text(encoding="utf-8"))
+        self.assertEqual(code, 1)
+        self.assertFalse(report["passed"])
+        gate = report["gates"]["line_endings"]
+        self.assertFalse(gate["passed"])
+        self.assertIn("missing", gate["failing"][0]["reason"])
+        self.assertIn("deploy/frozen.json", gate["crlf_examples"])   # write_text adds CRLF on Windows too
+        self.assertIn("(vii) line_endings failing=1", out)
+
+    def test_gitattributes_that_converts_line_endings_fails(self):
+        for text in ("* text=auto\n", "*.json text eol=lf\n", "* -text\n*.py text\n", "* -text\n*.md !text\n",
+                     "* -text\n*.sh eol=lf\n"):
+            with self.subTest(text=text):
+                public_dir(self.root, self.manifest())
+                write(self.root, "public_repo/.gitattributes", text)
+                code, _ = run(["--root", str(self.root), "--out", str(self.out)])
+                report = json.loads((self.out / "EXPORT_REPORT.json").read_text(encoding="utf-8"))
+                self.assertEqual(code, 1)
+                self.assertFalse(report["gates"]["line_endings"]["passed"])
+                shutil.rmtree(self.out)
+
+    def test_a_repository_gitattributes_is_refused_in_favour_of_public_repo(self):
+        write(self.root, ".gitattributes", "* text=auto\n")
+        code, report = self.export(self.manifest("meta | .gitattributes | dev attributes"))
+        self.assertEqual(code, 0)
+        self.assertIn(".gitattributes", {r["path"] for r in report["manifest"]["refused"]})
+        self.assertEqual((self.out / ".gitattributes").read_text(encoding="utf-8"), "# exact bytes\n* -text\n")
 
     def test_out_must_not_exist_and_must_be_outside_the_repository(self):
         public_dir(self.root, self.manifest())

@@ -1,0 +1,5 @@
+# Store and check out every file byte for byte: no end-of-line conversion, whatever core.autocrlf says.
+# Recorded sha256 values (handoff_day1/ui/pages/shell/data/*.json, release/benchmarks/**, submission/SOURCES.md)
+# hash the exact bytes of the files they cite, some of which end lines with CRLF; a converted line ending breaks
+# them (scripts/verify_claims.py and handoff_day1/ui/test_app_shell.py fail). Do not add text, text=auto or eol rules.
+* -text

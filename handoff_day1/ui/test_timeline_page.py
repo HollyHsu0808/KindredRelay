@@ -50,6 +50,22 @@ def setUpModule() -> None:
     unittest.addModuleCleanup(environment.stop)
 
 
+def adopt_session(new: AppTest, old: AppTest) -> AppTest:
+    """Make `new` run in `old`'s session on Streamlit 1.58 and 1.64 alike. 1.58's AppTest runs whatever object
+    AppTest.session_state holds, so assigning it hands the session over. 1.64 wraps the session it runs
+    (AppTest._session_state) in a tester view: assigning session_state alone swaps the view, and the fresh AppTest
+    then runs in an empty session of its own while the test reads the old one."""
+    new.session_state = old.session_state
+    if hasattr(old, "_session_state"):   # Streamlit >= 1.64: the state the script runner is given
+        new._session_state = old._session_state
+    return new
+
+
+def state_get(at: AppTest, key: str, default=None):
+    """at.session_state.filtered_state.get(key, default) without filtered_state, which 1.64's tester view lacks."""
+    return at.session_state[key] if key in at.session_state else default
+
+
 def fresh() -> AppTest:
     for k in ("CARERELAY_LLM_BASE_URL", "CARERELAY_LLM_MODEL"):   # no live model: replay only
         os.environ.pop(k, None)
@@ -67,8 +83,7 @@ def reload_view(at: AppTest) -> AppTest:
     This does not validate that framework's in-place transition rendering.
     """
     episode = at.session_state["episode"]
-    new = AppTest.from_file(PAGE, default_timeout=30)
-    new.session_state = at.session_state
+    new = adopt_session(AppTest.from_file(PAGE, default_timeout=30), at)
     new.query_params.update(at.query_params)
     new.run()
     assert not new.exception, new.exception
@@ -1725,7 +1740,7 @@ class TestFamilyHospitalRecordings(unittest.TestCase):
             with self.subTest(choice=choice):
                 at.text_area(key="rec_text").set_value(words).run()
                 self.assertEqual(at.text_area(key="rec_text").value, words)
-                before = at.session_state.filtered_state.get("rec_n", 0)
+                before = state_get(at, "rec_n", 0)
                 at.radio(key="rec_speaker_type").set_value(choice).run()
                 self.assertFalse(at.exception)
                 self.assertEqual(at.radio(key="rec_speaker_type").value, choice)
@@ -1849,7 +1864,7 @@ class TestFamilyHospitalRecordings(unittest.TestCase):
         at.session_state["episode"].members["david"]["name"] = "Anna"
         at.run()
         at.text_area(key="rec_text").set_value("She is awake in hospital.").run()
-        before = at.session_state.filtered_state.get("rec_n", 0)
+        before = state_get(at, "rec_n", 0)
         at.selectbox(key="rec_family_member").set_value("david").run()
         self.assertFalse(at.exception)
         self.assertEqual(at.session_state["rec_n"], before + 1)

@@ -29,6 +29,12 @@ SCENARIO = UI.parent / "care_cases" / "episode_hip_fracture.json"
 PAGE = UI / "pages" / "1_Family_timeline.py"
 
 
+def state_get(at, key: str, default=None):
+    """at.session_state.filtered_state.get(key, default) without filtered_state, which Streamlit 1.64's AppTest
+    session view lacks (membership there follows the same filtered view)."""
+    return at.session_state[key] if key in at.session_state else default
+
+
 def episode():
     return Episode(load_scenario(SCENARIO))
 
@@ -364,7 +370,7 @@ class PagePersistenceTests(unittest.TestCase):
         sources = Episode.from_snapshot(saved.snapshot).updates
         self.assertEqual([u["text"] for u in sources].count(words), 1)
         self.assertEqual(len(sources), 2)
-        self.assertIsNone(app.session_state.filtered_state.get("adding"), "The durable add must close the submit panel despite read-marker conflict")
+        self.assertIsNone(state_get(app, "adding"), "The durable add must close the submit panel despite read-marker conflict")
         self.assertTrue(any("Your update was saved" in warning.value for warning in app.warning))
         self.assertFalse(any("nothing was added" in toast.value.lower() for toast in app.toast))
         reloaded = self.fresh({"private": token})
@@ -400,7 +406,7 @@ class PagePersistenceTests(unittest.TestCase):
         sources = Episode.from_snapshot(saved.snapshot).updates
         self.assertEqual(len([u for u in sources if u["kind"] == "photo"]), 1)
         self.assertEqual(set(saved.photos), {"c01"})
-        self.assertIsNone(app.session_state.filtered_state.get("adding"), "The saved photo must not remain as a failed submission")
+        self.assertIsNone(state_get(app, "adding"), "The saved photo must not remain as a failed submission")
         self.assertNotIn("photo", app.session_state)
         self.assertTrue(any("Your update was saved" in warning.value for warning in app.warning))
         self.assertFalse(any("nothing was added" in toast.value.lower() for toast in app.toast))

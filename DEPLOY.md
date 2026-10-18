@@ -115,6 +115,11 @@ The verdict is the last line, `RESULT: PASS` or `RESULT: FAIL`, and the exit cod
 cases in 41 test processes, sources unchanged during the run; its local folder under `release/validation_abd/` is
 not published, the frozen summary is ([`validation.json`](handoff_day1/ui/pages/shell/data/validation.json)).
 
+Line endings: [`.gitattributes`](.gitattributes) (`* -text`) makes git store and check out every file byte for byte,
+whatever `core.autocrlf` says, because recorded sha256 values hash the exact bytes of the files they cite (some end
+lines with CRLF). Keep it, and do not add `text`, `text=auto` or `eol` rules: a converted checkout fails
+`scripts/verify_claims.py` and `handoff_day1/ui/test_app_shell.py`.
+
 ## Acceptance checks on the deployed site
 
 Run these on the public HTTPS address with new fictional inputs (not only the built-in demo):
