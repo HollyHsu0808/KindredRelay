@@ -1,0 +1,534 @@
+{
+  "case_id": "case-demo-001",
+  "fixture": true,
+  "fixture_notice": "Fictional engineering fixture. Not clinical advice, not training data, not clinical validation.",
+  "resident": "Resident R (fictional composite)",
+  "caregivers": [
+    "cg-outgoing",
+    "cg-incoming"
+  ],
+  "vocabulary": {
+    "item_review_status": [
+      "draft",
+      "pending_review",
+      "approved",
+      "stale",
+      "superseded"
+    ],
+    "item_review_status_notes": {
+      "stale": "marked by impact analysis: needs regeneration (transient)",
+      "superseded": "replaced by a newer version; keeps superseded_by"
+    },
+    "source_review_status": [
+      "unverified",
+      "transcript_verified_by_caregiver",
+      "approved"
+    ],
+    "source_type": [
+      "clinician_instruction_text",
+      "clinician_recording",
+      "transcript",
+      "family_statement"
+    ],
+    "pending_item_type": [
+      "needs_clinical_confirmation",
+      "needs_transcript_check",
+      "conflict"
+    ]
+  },
+  "text_matching": {
+    "flags": "case-insensitive",
+    "normalise": [
+      "curly apostrophes and quotes -> straight",
+      "collapse whitespace"
+    ],
+    "quote_stripping": "for forbidden-phrase and question-count checks, remove text inside double quotes first (quoted sources / quoted caregiver speech do not count)"
+  },
+  "scenario_id": "scenario_correction",
+  "title": "Transcript corrected 10:00 -> 11:00",
+  "sources": [
+    {
+      "source_id": "src-A-001",
+      "revision": "r1",
+      "source_type": "clinician_instruction_text",
+      "segments": [
+        {
+          "segment_id": "s1",
+          "text": "Please ask the caregiver for assistance before getting out of bed."
+        }
+      ],
+      "provenance": "fictional engineering fixture",
+      "review_status": "approved"
+    },
+    {
+      "source_id": "src-B-001",
+      "revision": "r1",
+      "source_type": "clinician_recording",
+      "authoritative": true,
+      "audio": "fictional composite recording (fixture; no audio file shipped)",
+      "segments_spoken": [
+        {
+          "segment_id": "seg-02",
+          "audio_says": "Your follow-up appointment is at 11:00 a.m. on Thursday.",
+          "audio_span": "00:41.2-00:44.0"
+        },
+        {
+          "segment_id": "seg-03",
+          "audio_says": "Please bring your current medication list.",
+          "audio_span": "00:44.3-00:46.5"
+        }
+      ]
+    },
+    {
+      "source_id": "src-B-001-tx",
+      "revision": "r1",
+      "source_type": "transcript",
+      "transcribes": "src-B-001",
+      "segments": [
+        {
+          "segment_id": "seg-02",
+          "text": "Your follow-up appointment is at 10:00 a.m. on Thursday."
+        },
+        {
+          "segment_id": "seg-03",
+          "text": "Please bring your current medication list."
+        }
+      ],
+      "review_status": "approved"
+    }
+  ],
+  "instructions": [
+    {
+      "instruction_id": "ins-A-001",
+      "action": "get out of bed",
+      "condition": "only with caregiver assistance, requested before getting up",
+      "time": null,
+      "cites": [
+        {
+          "source_id": "src-A-001",
+          "revision": "r1",
+          "segment_id": "s1"
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "instruction_id": "ins-B-001",
+      "action": "attend follow-up appointment",
+      "condition": null,
+      "time": "Thursday 10:00 a.m.",
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-02"
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "instruction_id": "ins-B-002",
+      "action": "bring current medication list",
+      "condition": "to the follow-up appointment",
+      "time": null,
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-03"
+        }
+      ],
+      "status": "active"
+    }
+  ],
+  "items_before": [
+    {
+      "item_id": "task-B-01",
+      "kind": "task",
+      "version": 1,
+      "review_status": "approved",
+      "content": "Follow-up appointment Thursday 10:00 a.m.",
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-02"
+        }
+      ]
+    },
+    {
+      "item_id": "task-B-02",
+      "kind": "task",
+      "version": 1,
+      "review_status": "approved",
+      "content": "Bring current medication list to the appointment",
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-03"
+        }
+      ]
+    },
+    {
+      "item_id": "ho-B-upcoming",
+      "kind": "handover_item",
+      "version": 1,
+      "review_status": "approved",
+      "content": "Upcoming: follow-up Thursday 10:00 a.m.; bring medication list.",
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-02"
+        },
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-03"
+        }
+      ]
+    },
+    {
+      "item_id": "ed-B-appointment",
+      "kind": "sheet_section",
+      "version": 1,
+      "review_status": "approved",
+      "content": "Your follow-up appointment is on Thursday at 10:00 a.m. Bring your current medication list.",
+      "cites": [
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-02"
+        },
+        {
+          "source_id": "src-B-001-tx",
+          "revision": "r1",
+          "segment_id": "seg-03"
+        }
+      ]
+    },
+    {
+      "item_id": "ed-B-general",
+      "kind": "sheet_section",
+      "version": 1,
+      "review_status": "draft",
+      "content": "PENDING_SOURCE",
+      "cites": []
+    },
+    {
+      "item_id": "task-A-01",
+      "kind": "task",
+      "version": 1,
+      "review_status": "approved",
+      "content": "Help Resident R before she gets out of bed.",
+      "cites": [
+        {
+          "source_id": "src-A-001",
+          "revision": "r1",
+          "segment_id": "s1"
+        }
+      ]
+    },
+    {
+      "item_id": "ho-A-mobility",
+      "kind": "handover_item",
+      "version": 2,
+      "review_status": "approved",
+      "content": "Mobility: help her before she gets out of bed (assistance required).",
+      "cites": [
+        {
+          "source_id": "src-A-001",
+          "revision": "r1",
+          "segment_id": "s1"
+        }
+      ],
+      "note": "state after Case A was resolved and its handover fix approved (Case B starts from this state)"
+    },
+    {
+      "item_id": "pdf-v1",
+      "kind": "exported_pdf",
+      "case_version": 1,
+      "generated_at": "fixture: T0"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "actor": "cg-outgoing",
+      "action": "submit_transcript_correction",
+      "correction": {
+        "correction_type": "transcript_correction",
+        "source_id": "src-B-001-tx",
+        "base_revision": "r1",
+        "segment_id": "seg-02",
+        "from": "10:00 a.m.",
+        "to": "11:00 a.m.",
+        "verified_against": "src-B-001 audio 00:41.2-00:44.0",
+        "verified_by": "cg-outgoing",
+        "creates_new_instruction": false
+      }
+    },
+    {
+      "step": 2,
+      "actor": "cg-incoming",
+      "utterance": "Did the doctor change the appointment to 11?"
+    },
+    {
+      "step": 3,
+      "actor": "reviewer (role to be decided)",
+      "action": "approve",
+      "items": [
+        "task-B-01",
+        "ho-B-upcoming",
+        "ed-B-appointment",
+        "ins-B-001"
+      ]
+    }
+  ],
+  "expected": {
+    "step_1": {
+      "new_source_revision": {
+        "source_id": "src-B-001-tx",
+        "revision": "r2",
+        "source_type": "transcript",
+        "transcribes": "src-B-001",
+        "segments": [
+          {
+            "segment_id": "seg-02",
+            "text": "Your follow-up appointment is at 11:00 a.m. on Thursday."
+          },
+          {
+            "segment_id": "seg-03",
+            "text": "Please bring your current medication list."
+          }
+        ],
+        "review_status": "transcript_verified_by_caregiver"
+      },
+      "impact_set": [
+        "task-B-01",
+        "ho-B-upcoming",
+        "ed-B-appointment"
+      ],
+      "lifecycle": "each v1 in impact_set: approved -> stale (impact analysis) -> superseded (when v2 exists, with superseded_by)",
+      "new_versions": [
+        {
+          "item_id": "task-B-01",
+          "version": 2,
+          "review_status": "pending_review",
+          "must_contain": [
+            "11:00 a.m."
+          ],
+          "must_not_contain": [
+            "10:00"
+          ]
+        },
+        {
+          "item_id": "ho-B-upcoming",
+          "version": 2,
+          "review_status": "pending_review",
+          "must_contain": [
+            "11:00 a.m.",
+            "medication list"
+          ],
+          "must_not_contain": [
+            "10:00"
+          ]
+        },
+        {
+          "item_id": "ed-B-appointment",
+          "version": 2,
+          "review_status": "pending_review",
+          "must_contain": [
+            "11:00 a.m.",
+            "medication list"
+          ],
+          "must_not_contain": [
+            "10:00"
+          ]
+        }
+      ],
+      "instruction_updates": [
+        {
+          "instruction_id": "ins-B-001",
+          "time": "Thursday 11:00 a.m.",
+          "cites": [
+            {
+              "source_id": "src-B-001-tx",
+              "revision": "r2",
+              "segment_id": "seg-02"
+            }
+          ],
+          "derivation_status": "pending_review",
+          "instruction_id_unchanged": true
+        }
+      ],
+      "unchanged": [
+        "task-B-02",
+        "task-A-01",
+        "ho-A-mobility",
+        "ed-B-general",
+        "src-A-001",
+        "ins-A-001",
+        "ins-B-002",
+        "pdf-v1"
+      ],
+      "allowed_citation_repoint": [
+        {
+          "item_id": "task-B-02",
+          "from": "r1",
+          "to": "r2",
+          "note": "segment text unchanged"
+        },
+        {
+          "instruction_id": "ins-B-002",
+          "from": "r1",
+          "to": "r2",
+          "note": "segment text unchanged"
+        }
+      ],
+      "case_version_after_step_1": 2,
+      "incoming_caregiver_notice": "Follow-up time corrected from 10:00 a.m. to 11:00 a.m. (transcript correction, checked against the recording). Items awaiting review: 4.",
+      "notice_count_note": "4 = task-B-01, ho-B-upcoming, ed-B-appointment and instruction ins-B-001"
+    },
+    "step_2": {
+      "reference_reply": "No. The recording has always said 11:00 a.m. The first transcript wrongly said 10:00 a.m.; it was corrected after the recording was checked (src-B-001, transcript revision r2). That is a transcript correction, not a new instruction from the clinic. The updated appointment items are waiting for review.",
+      "reply_must": [
+        "say the recording says 11:00 a.m.",
+        "say the transcript was wrong and corrected after checking the recording",
+        "say this is not a new clinical instruction",
+        "cite src-B-001 / transcript r2"
+      ],
+      "reply_must_not_match": [
+        "\\bthe (doctor|clinic|clinician|care team) (has )?(changed|rescheduled|moved)\\b",
+        "\\bhas been rescheduled\\b",
+        "\\bnew (appointment )?time (was|has been) (set|given)\\b",
+        "^\\W*yes\\b",
+        "\\b(was|been|got) (changed|rescheduled|moved|updated)\\b",
+        "\\b(doctor|clinic|clinician|care team)\\b[^.?!]*\\b(changed|rescheduled|moved|updated)\\b"
+      ],
+      "must_fail_examples": [
+        "Yes, it was rescheduled to 11:00 per the recording and transcript.",
+        "Yes. Your doctor changed it to 11:00, see the recording and transcript.",
+        "Yes, the clinic has now moved it to 11:00 (recording, transcript r2).",
+        "Yes, the doctor updated the appointment to 11:00; the transcript and recording now match."
+      ]
+    },
+    "step_3": {
+      "approved": [
+        "task-B-01",
+        "ho-B-upcoming",
+        "ed-B-appointment",
+        "ins-B-001"
+      ],
+      "pdf": {
+        "pdf-v1": "retained with original timestamp",
+        "pdf-v2": "generated now; shows case_version 2; contains 11:00 a.m.; no 10:00"
+      }
+    }
+  },
+  "negative_subcase": {
+    "id": "B-neg",
+    "starts_from": "state after step 3 (correction approved, case_version 2)",
+    "input": {
+      "actor": "cg-outgoing",
+      "source_type": "family_statement",
+      "utterance": "The clinic phoned me, it's now 2 p.m."
+    },
+    "expected": {
+      "transcript_revision": null,
+      "item_changes": [],
+      "new_pending_items": [
+        {
+          "type": "conflict",
+          "detail": "family_statement says 2 p.m.; src-B-001 recording says 11:00 a.m.",
+          "status": "open"
+        }
+      ],
+      "display": "both claims shown with their source labels"
+    },
+    "fail_if": [
+      "any appointment time changes",
+      "'2 p.m.' labelled as clinician instruction"
+    ]
+  },
+  "checks": [
+    {
+      "id": "B-P1",
+      "blocking": true,
+      "kind": "auto",
+      "step": 1,
+      "rule": "impact_set (items marked stale by the correction) == {task-B-01, ho-B-upcoming, ed-B-appointment}"
+    },
+    {
+      "id": "B-P2",
+      "blocking": false,
+      "kind": "auto",
+      "step": 1,
+      "rule": "every new version satisfies its must_contain and must_not_contain lists"
+    },
+    {
+      "id": "B-P3",
+      "blocking": false,
+      "kind": "auto",
+      "step": 1,
+      "rule": "every new version review_status == 'pending_review' until step 3"
+    },
+    {
+      "id": "B-P4",
+      "blocking": true,
+      "kind": "auto",
+      "step": 1,
+      "rule": "every id in expected.step_1.unchanged keeps its content hash and review_status (citation re-points listed in allowed_citation_repoint are allowed)"
+    },
+    {
+      "id": "B-P5",
+      "blocking": false,
+      "kind": "auto",
+      "step": 1,
+      "rule": "old versions exist with superseded_by; pdf-v1 exists with original timestamp"
+    },
+    {
+      "id": "B-P6",
+      "blocking": true,
+      "kind": "auto",
+      "step": 1,
+      "rule": "correction_type=='transcript_correction', creates_new_instruction==false, and no new instruction_id is created"
+    },
+    {
+      "id": "B-P7",
+      "blocking": false,
+      "kind": "auto+human",
+      "step": 1,
+      "rule": "incoming caregiver view shows the notice with old time, new time and review status"
+    },
+    {
+      "id": "B-P8",
+      "blocking": false,
+      "kind": "auto",
+      "step": 3,
+      "rule": "after approval, pdf-v2 exists, shows case_version 2 (same as UI), contains '11:00 a.m.' and no '10:00'"
+    },
+    {
+      "id": "B-P9",
+      "blocking": false,
+      "kind": "auto",
+      "step": "B-neg",
+      "rule": "family statement creates one conflict pending item and changes nothing else"
+    },
+    {
+      "id": "B-P10",
+      "blocking": true,
+      "kind": "auto+human",
+      "step": 2,
+      "rule": "after quote stripping, reply mentions '11:00', 'transcript' and 'recording', and matches none of reply_must_not_match (case-insensitive); every must_fail_example must fail"
+    },
+    {
+      "id": "B-P11",
+      "blocking": false,
+      "kind": "auto",
+      "step": 1,
+      "rule": "ins-B-001.time == 'Thursday 11:00 a.m.', cites transcript r2, same instruction_id, derivation_status == 'pending_review'"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+# Third-party execution of KindredRelay's offline checks: no secrets, no network calls to any model, no API key.
+#
+# STATUS: NOT YET RUN ON GITHUB. The repository had no remote when this file was written (2026-10-18); the same
+# commands were run locally (see submission/VERIFY_INDEPENDENTLY.md for what was and was not simulated).
+#
+# Dependencies: deploy/requirements-release.lock (the release image's pins) minus the speech and torch stack, which
+# no offline test imports (asr_local/llm_client/kr_runtime import torch and whisper lazily; test_asr_local uses
+# stand-ins): torch, triton, openai-whisper and their own dependencies numba, llvmlite, tiktoken, more-itertools,
+# sympy, mpmath, networkx. scripts/verify_claims.py and scripts/check_hazard_log.py need the standard library only.
+# Note: Dockerfile.release builds on python:3.12-slim; this job runs Python 3.13, the interpreter the recorded
+# validation runs used (handoff_day1/ui/pages/shell/data/validation.json -> doc.python).
+name: validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      KINDRED_VERIFIER_MODE: "off"
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # the whole history: scripts/scan_history_secrets.py scans every blob of every ref
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install offline test dependencies (release lock minus the speech and torch stack)
+        run: |
+          mkdir -p "$RUNNER_TEMP/kindredrelay-ci"
+          grep -vE '^(torch|triton|openai-whisper|numba|llvmlite|tiktoken|more-itertools|sympy|mpmath|networkx)==' \
+            deploy/requirements-release.lock > "$RUNNER_TEMP/kindredrelay-ci/ci-requirements.txt"
+          python -m pip install --upgrade pip
+          python -m pip install -r "$RUNNER_TEMP/kindredrelay-ci/ci-requirements.txt"
+          python -m pip check
+          python -m pip freeze > "$RUNNER_TEMP/kindredrelay-ci/pip-freeze.txt"
+
+      - name: deploy/validate_abd.py (authoritative offline suite)
+        run: python deploy/validate_abd.py --out "release/validation_abd/ci-${{ github.run_id }}"
+
+      - name: Red team (deterministic guardrails, no model)
+        if: ${{ !cancelled() }}
+        run: python scripts/redteam_safety.py --out "$RUNNER_TEMP/kindredrelay-ci/redteam"
+
+      - name: Token Factory benchmark harness, dry run (scripted fake endpoint, no network)
+        if: ${{ !cancelled() }}
+        run: python scripts/bench_tf_handover.py --dry-run --models A,B --cases 3 --repeats 2 --out "$RUNNER_TEMP/kindredrelay-ci/tf_bench_dry"
+
+      - name: Recompute published numbers from raw records; check submission/SOURCES.md
+        if: ${{ !cancelled() }}
+        run: python scripts/verify_claims.py --out "$RUNNER_TEMP/kindredrelay-ci/verify_claims.json"
+
+      - name: Hazard log citations
+        if: ${{ !cancelled() }}
+        run: python scripts/check_hazard_log.py --out "$RUNNER_TEMP/kindredrelay-ci/check_hazard_log.json"
+
+      - name: Engineering-depth coverage of the public documents (README.md, EVIDENCE.md, submission/)
+        if: ${{ !cancelled() }}
+        run: python scripts/check_depth_coverage.py --root . --json "$RUNNER_TEMP/kindredrelay-ci/check_depth_coverage.json"
+
+      - name: Secret scan of every blob of every ref (patterns only; no key file in CI)
+        if: ${{ !cancelled() }}
+        run: python scripts/scan_history_secrets.py . | tee "$RUNNER_TEMP/kindredrelay-ci/secret_scan.txt"
+
+      - name: Tests not run by deploy/validate_abd.py
+        if: ${{ !cancelled() }}
+        run: |
+          python scripts/test_verify_claims.py
+          python scripts/test_check_hazard_log.py
+          python scripts/test_redteam_safety.py
+          python scripts/test_check_depth_coverage.py
+          python scripts/test_scan_history_secrets.py
+          python scripts/test_export_public_repo.py
+
+      - name: Upload outputs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-validation-${{ github.run_id }}
+          path: |
+            release/validation_abd/ci-${{ github.run_id }}/
+            ${{ runner.temp }}/kindredrelay-ci/
+          if-no-files-found: warn

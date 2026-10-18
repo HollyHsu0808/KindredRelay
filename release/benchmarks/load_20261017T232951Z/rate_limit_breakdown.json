@@ -1,0 +1,260 @@
+{
+  "schema_version": "kindredrelay-load-rate-limit-breakdown-v1",
+  "derived_utc": "2026-10-17T23:41:06.663+00:00",
+  "derived_after_run": true,
+  "note": "derived after the run from records.jsonl alone (the HTTP records' redacted 429 bodies, at most 300 characters each); no model or endpoint was called and results.json / summary.md were not changed",
+  "source": {
+    "records_jsonl": "release/benchmarks/load_20261017T232951Z/records.jsonl",
+    "sha256": "77347998890e86f2f730a78486a857d8065eb3c0ce06480703659d6099022a8c",
+    "lines_skipped": []
+  },
+  "run": {
+    "model": "DeepSeek-V4-Flash",
+    "dry_run": false,
+    "run_start_utc": "2026-10-17T23:29:52.312+00:00",
+    "host": "developer.amd.com.cn"
+  },
+  "totals": {
+    "attempts": 85,
+    "status_429": 21,
+    "by_code": {
+      "rate_limit_exceeded": 17,
+      "token_rate_limit_exceeded": 3,
+      "process_concurrency_rate_limit_exceeded": 1
+    }
+  },
+  "levels": [
+    {
+      "concurrency": 1,
+      "level_start_utc": "2026-10-17T23:29:52.433+00:00",
+      "level_end_utc": "2026-10-17T23:32:25.919+00:00",
+      "attempts": 16,
+      "status_429": 0,
+      "by_code": {},
+      "events": []
+    },
+    {
+      "concurrency": 2,
+      "level_start_utc": "2026-10-17T23:32:35.941+00:00",
+      "level_end_utc": "2026-10-17T23:33:56.278+00:00",
+      "attempts": 16,
+      "status_429": 0,
+      "by_code": {},
+      "events": []
+    },
+    {
+      "concurrency": 4,
+      "level_start_utc": "2026-10-17T23:34:06.300+00:00",
+      "level_end_utc": "2026-10-17T23:35:03.309+00:00",
+      "attempts": 17,
+      "status_429": 1,
+      "by_code": {
+        "process_concurrency_rate_limit_exceeded": {
+          "count": 1,
+          "messages": {
+            "Model API rate limit exceeded; please retry later": 1
+          },
+          "first_ts": "2026-10-17T23:34:46.589+00:00",
+          "last_ts": "2026-10-17T23:34:46.589+00:00"
+        }
+      },
+      "events": [
+        {
+          "ts": "2026-10-17T23:34:46.589+00:00",
+          "request_index": 12,
+          "attempt": 1,
+          "code": "process_concurrency_rate_limit_exceeded",
+          "retry_after": "1",
+          "wait_s": 1.0
+        }
+      ]
+    },
+    {
+      "concurrency": 8,
+      "level_start_utc": "2026-10-17T23:35:13.328+00:00",
+      "level_end_utc": "2026-10-17T23:36:54.474+00:00",
+      "attempts": 36,
+      "status_429": 20,
+      "by_code": {
+        "rate_limit_exceeded": {
+          "count": 17,
+          "messages": {
+            "Rate limit exceeded: maximum 20 requests per minute for this OneClick user. Please try again later.": 17
+          },
+          "first_ts": "2026-10-17T23:35:18.175+00:00",
+          "last_ts": "2026-10-17T23:35:38.162+00:00"
+        },
+        "token_rate_limit_exceeded": {
+          "count": 3,
+          "messages": {
+            "Model API rate limit exceeded; please retry later": 3
+          },
+          "first_ts": "2026-10-17T23:35:42.044+00:00",
+          "last_ts": "2026-10-17T23:35:42.153+00:00"
+        }
+      },
+      "events": [
+        {
+          "ts": "2026-10-17T23:35:18.175+00:00",
+          "request_index": 9,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "6",
+          "wait_s": 6.0
+        },
+        {
+          "ts": "2026-10-17T23:35:20.111+00:00",
+          "request_index": 10,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "4",
+          "wait_s": 4.0
+        },
+        {
+          "ts": "2026-10-17T23:35:22.070+00:00",
+          "request_index": 11,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "2",
+          "wait_s": 2.0
+        },
+        {
+          "ts": "2026-10-17T23:35:22.101+00:00",
+          "request_index": 12,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "2",
+          "wait_s": 2.0
+        },
+        {
+          "ts": "2026-10-17T23:35:23.213+00:00",
+          "request_index": 13,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "1",
+          "wait_s": 1.0
+        },
+        {
+          "ts": "2026-10-17T23:35:23.694+00:00",
+          "request_index": 14,
+          "attempt": 1,
+          "code": "rate_limit_exceeded",
+          "retry_after": "1",
+          "wait_s": 1.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.011+00:00",
+          "request_index": 12,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "12",
+          "wait_s": 12.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.085+00:00",
+          "request_index": 11,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "12",
+          "wait_s": 12.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.150+00:00",
+          "request_index": 10,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "12",
+          "wait_s": 12.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.151+00:00",
+          "request_index": 13,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "12",
+          "wait_s": 12.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.177+00:00",
+          "request_index": 9,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "12",
+          "wait_s": 12.0
+        },
+        {
+          "ts": "2026-10-17T23:35:25.615+00:00",
+          "request_index": 14,
+          "attempt": 2,
+          "code": "rate_limit_exceeded",
+          "retry_after": "11",
+          "wait_s": 11.0
+        },
+        {
+          "ts": "2026-10-17T23:35:37.882+00:00",
+          "request_index": 12,
+          "attempt": 3,
+          "code": "rate_limit_exceeded",
+          "retry_after": "3",
+          "wait_s": 3.0
+        },
+        {
+          "ts": "2026-10-17T23:35:38.037+00:00",
+          "request_index": 10,
+          "attempt": 3,
+          "code": "rate_limit_exceeded",
+          "retry_after": "3",
+          "wait_s": 3.0
+        },
+        {
+          "ts": "2026-10-17T23:35:38.073+00:00",
+          "request_index": 11,
+          "attempt": 3,
+          "code": "rate_limit_exceeded",
+          "retry_after": "3",
+          "wait_s": 3.0
+        },
+        {
+          "ts": "2026-10-17T23:35:38.134+00:00",
+          "request_index": 9,
+          "attempt": 3,
+          "code": "rate_limit_exceeded",
+          "retry_after": "3",
+          "wait_s": 3.0
+        },
+        {
+          "ts": "2026-10-17T23:35:38.162+00:00",
+          "request_index": 13,
+          "attempt": 3,
+          "code": "rate_limit_exceeded",
+          "retry_after": "2",
+          "wait_s": 2.0
+        },
+        {
+          "ts": "2026-10-17T23:35:42.044+00:00",
+          "request_index": 10,
+          "attempt": 4,
+          "code": "token_rate_limit_exceeded",
+          "retry_after": "60",
+          "wait_s": 60.0
+        },
+        {
+          "ts": "2026-10-17T23:35:42.142+00:00",
+          "request_index": 9,
+          "attempt": 4,
+          "code": "token_rate_limit_exceeded",
+          "retry_after": "60",
+          "wait_s": 60.0
+        },
+        {
+          "ts": "2026-10-17T23:35:42.153+00:00",
+          "request_index": 11,
+          "attempt": 4,
+          "code": "token_rate_limit_exceeded",
+          "retry_after": "60",
+          "wait_s": 60.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+ "schema": "kindredrelay-redactions-v1",
+ "rule": "absolute paths under the user profile folder, in any spelling (drive letter in either case, \\ or / separators, JSON-escaped \\\\, Git Bash /<drive>/...): inside the repository root -> <repo>/ + the path below the root with / separators; elsewhere under the profile -> <local>/…/ + the last path component (<local> for the profile folder itself). Nothing else changes.",
+ "note": "The results in these files were produced before redaction. Only path strings changed; every number and other non-string value is unchanged, verified by values_sha256 (the same digest before and after) and recomputed by scripts/verify_claims.py.",
+ "tool": "scripts/redact_local_paths.py",
+ "files": [
+  {
+   "path": "release/benchmarks/redteam_20261017T140024Z/results.json",
+   "original_sha256": "e434304a3b3dda997e7323ccb42a4bb8639ee35e99a33a53c57d692a08d2d716",
+   "redacted_sha256": "929c1f86ff07139a47ae5dabd4e7d1852de3bc8207ccb3dbf838e17a0d4a61e7",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "54eddc738da308b8b75610eaaa7f6e1435814e2cc15813828f13ff79b3f66480",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "release/benchmarks/redteam_before_20261017T122640Z/results.json",
+   "original_sha256": "3d92ee55466bbc1b7ebb669bd5190369afa8b6aa2158e9c489980fa6f9489692",
+   "redacted_sha256": "fad1b5202d3c34d4a5e11afda5db6a677e82a6da04b1998e55f176784b276ffc",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "37ec38df4d4459765e4ccc205fd116a07ec885275b9ff35763f87482162b2b1b",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "release/benchmarks/redteam_final_20261018T015005Z/results.json",
+   "original_sha256": "957b08798bc72a0382c737a9b6dcf17baeda01c1dc4f45b48d3953e86ed30acf",
+   "redacted_sha256": "eb9ff56f9ce70485ea0f1989f2bc66953b392fa039515482ffa4c6a99f9d6a9b",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "b45493a822aed0e58e5a16cf4803f256905b41edccd5bc27964e5532afdc4285",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "release/benchmarks/redteam_final_20261018T024113Z/results.json",
+   "original_sha256": "ea987f58b341cbd7fe19d8818ebe544d0803443658c2b3e61804a5368963ba0e",
+   "redacted_sha256": "70c491bdf74c1591fb9297fd5a4bbf87345bb6271a8b940fa19ae23d4df68def",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "b45493a822aed0e58e5a16cf4803f256905b41edccd5bc27964e5532afdc4285",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "release/benchmarks/tf_bench_20261017T124039Z/records.jsonl",
+   "original_sha256": "ddf655b02a6bb3b9225accb4d6faa12a5850a80df5e3e312c085942a3d61894c",
+   "redacted_sha256": "70183c0e67f7089435a33dad226ce7c2b060611a57a017c666c92e65d5980795",
+   "format": "jsonl",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "8af0a4338576d32841bd67ff3d0277e515b54beb922ce6fcfa20780026968e27",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "release/benchmarks/tf_bench_20261017T124039Z/results.json",
+   "original_sha256": "97df164240abdf9727cdd526c77faa4dfb0b96135aa5701f8f07e554fc5e9b0f",
+   "redacted_sha256": "a8cfaf64d88c80f6d28e9c021a4d3d12e7aa397544b3ccfbdefad00d7f1da7a3",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "012f24cc13ff06f2d29cf496eb2da35d024f0b046a04ee7e902f54b13f58a64d",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  },
+  {
+   "path": "research/temporal_benchmark/results/round1_dev_20261017.json",
+   "original_sha256": "d1a4a70ba18490e3608d137974ddbb184da6cb488a607b24167574bef989a93b",
+   "redacted_sha256": "a3347c3959ed70d3ed1d0e8893a32b64165485c3b96005b307067c04eadbac24",
+   "format": "json",
+   "replacements": 1,
+   "method": "in_place",
+   "values_sha256": "aaaaf66fcafada3473da7a89ced034cc161c542926fde4c7dbb678155f689ddb",
+   "redacted_utc": "2026-10-18T03:06:39+00:00"
+  }
+ ]
+}

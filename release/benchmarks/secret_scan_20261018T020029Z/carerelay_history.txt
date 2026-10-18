@@ -1,0 +1,3 @@
+objects with a path: 1390; blobs scanned: 862; exact-key check: on
+suspicious file names: ['deploy/release.env.example']
+pattern hits: none

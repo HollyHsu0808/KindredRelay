@@ -1,0 +1,428 @@
+{
+  "schema_version": "kindredrelay-primock-gold-v1",
+  "created_utc": "2026-10-18T02:25:51.908+00:00",
+  "dry_run": false,
+  "argv": [
+    "run",
+    "--raw",
+    "data/raw/primock57",
+    "--consultations",
+    "day1_consultation04",
+    "--api-key-file",
+    "<redacted path>",
+    "--max-calls",
+    "20"
+  ],
+  "endpoint": {
+    "host": "developer.amd.com.cn",
+    "is_token_factory_default": true
+  },
+  "git": {
+    "bench_script_tracked": true,
+    "dirty": true,
+    "head": "0874ecde81ab4acf3a48c9967a8c932522cb6b91",
+    "untracked_files": 31
+  },
+  "stopped_reason": null,
+  "preregistration": {
+    "path": "research/primock_gold_v1/preregistration.json",
+    "created_utc": "2026-10-17T23:36:28.552+00:00",
+    "sha256": "fa9375a56665c3a270f37598c273a6a0f78ad5e366daea1f3c014db6359608b6",
+    "first_live_call_utc": "2026-10-17T23:36:38.427+00:00",
+    "written_before_first_live_call": true,
+    "script_sha256_at_prereg": "1a2d7bca05ee703e06294f4dd5f5d55ac53132c3a79220b6fcd50a52f244ee71",
+    "amendment": null,
+    "amendment_written_before_first_live_call": null,
+    "script_sha256_at_run": [
+      "1a2d7bca05ee703e06294f4dd5f5d55ac53132c3a79220b6fcd50a52f244ee71"
+    ]
+  },
+  "data": {
+    "raw": "data/raw/primock57",
+    "consultations_planned": 1,
+    "consultations_done": 1,
+    "skipped": [],
+    "order": [
+      "day1_consultation04"
+    ],
+    "order_seed": 20261018
+  },
+  "system_under_test": {
+    "generator": {
+      "model": "DeepSeek-V4-Flash",
+      "max_tokens": 2000,
+      "guided_json": false,
+      "extra_body": {},
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 120.0,
+      "timeout_retries": 0,
+      "evidence_verifier": "off (KINDRED_VERIFIER_MODE=off, deploy/release.env.example)"
+    },
+    "entry_point": "Episode.add_update(update, extractor=episode.llm_extractor(client), evidence_checker=None) per transcript part",
+    "parts": "speaker-labelled turns, at most 3000 characters per part"
+  },
+  "annotator": {
+    "model": "Qwen3.8-Flash-Next",
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tokens": 4096,
+    "guided_json": false,
+    "temperature": 0.0,
+    "seed": 0,
+    "timeout_s": 240.0,
+    "timeout_retries": 1,
+    "fixed_prompt_sha256": "163e8a2858e074cf8fe1cec3339ed53f7d95d8ce8c1b0fefbeb47dbe4c1f627f",
+    "calls_ok": 2,
+    "calls": 2,
+    "problems": {
+      "unknown_ids": 0,
+      "invalid": 0,
+      "duplicates": 0,
+      "missing": 0,
+      "coerced": 0
+    }
+  },
+  "http_calls": {
+    "total": 7,
+    "retries": 0,
+    "statuses": {
+      "200": 7
+    },
+    "by_purpose": {
+      "models": {
+        "calls": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "extract": {
+        "calls": 4,
+        "prompt_tokens": 6475,
+        "completion_tokens": 2129
+      },
+      "annotate_A": {
+        "calls": 1,
+        "prompt_tokens": 3787,
+        "completion_tokens": 2303
+      },
+      "annotate_B": {
+        "calls": 1,
+        "prompt_tokens": 3925,
+        "completion_tokens": 3331
+      }
+    },
+    "by_invocation": {
+      "1": 7
+    }
+  },
+  "aggregate": {
+    "n_consultations": 1,
+    "n_annotated_A": 1,
+    "n_annotated_B": 1,
+    "n_both": 1,
+    "note_fact_recall": {
+      "n_consultations": 1,
+      "num": 32,
+      "den": 38,
+      "pooled": 0.8421,
+      "ci95": null,
+      "macro": 0.8421,
+      "macro_ci95": null
+    },
+    "contradiction_rate": {
+      "n_consultations": 1,
+      "num": 0,
+      "den": 52,
+      "pooled": 0.0,
+      "ci95": null,
+      "macro": 0.0,
+      "macro_ci95": null
+    },
+    "not_in_note_rate": {
+      "n_consultations": 1,
+      "num": 14,
+      "den": 52,
+      "pooled": 0.2692,
+      "ci95": null,
+      "macro": 0.2692,
+      "macro_ci95": null
+    },
+    "consistent_rate": {
+      "n_consultations": 1,
+      "num": 38,
+      "den": 52,
+      "pooled": 0.7308,
+      "ci95": null,
+      "macro": 0.7308,
+      "macro_ci95": null
+    },
+    "weighted_error_per_note_fact": {
+      "n_consultations": 1,
+      "num": 6,
+      "den": 38,
+      "pooled": 0.1579,
+      "ci95": null,
+      "macro": 0.1579,
+      "macro_ci95": null
+    },
+    "grounding_pass_rate": {
+      "n_consultations": 1,
+      "num": 52,
+      "den": 60,
+      "pooled": 0.8667,
+      "ci95": null,
+      "macro": 0.8667,
+      "macro_ci95": null
+    },
+    "safety_net_recall": {
+      "n_consultations": 1,
+      "num": 2,
+      "den": 2,
+      "pooled": 1.0,
+      "ci95": null,
+      "macro": 1.0,
+      "macro_ci95": null
+    },
+    "recall_by_section": {
+      "allergies": {
+        "n_consultations": 1,
+        "num": 0,
+        "den": 1,
+        "pooled": 0.0,
+        "ci95": null,
+        "macro": 0.0,
+        "macro_ci95": null
+      },
+      "family_history": {
+        "n_consultations": 1,
+        "num": 1,
+        "den": 1,
+        "pooled": 1.0,
+        "ci95": null,
+        "macro": 1.0,
+        "macro_ci95": null
+      },
+      "history": {
+        "n_consultations": 1,
+        "num": 19,
+        "den": 22,
+        "pooled": 0.8636,
+        "ci95": null,
+        "macro": 0.8636,
+        "macro_ci95": null
+      },
+      "impression": {
+        "n_consultations": 1,
+        "num": 1,
+        "den": 1,
+        "pooled": 1.0,
+        "ci95": null,
+        "macro": 1.0,
+        "macro_ci95": null
+      },
+      "medications": {
+        "n_consultations": 1,
+        "num": 1,
+        "den": 1,
+        "pooled": 1.0,
+        "ci95": null,
+        "macro": 1.0,
+        "macro_ci95": null
+      },
+      "plan": {
+        "n_consultations": 1,
+        "num": 5,
+        "den": 6,
+        "pooled": 0.8333,
+        "ci95": null,
+        "macro": 0.8333,
+        "macro_ci95": null
+      },
+      "pmh": {
+        "n_consultations": 1,
+        "num": 1,
+        "den": 1,
+        "pooled": 1.0,
+        "ci95": null,
+        "macro": 1.0,
+        "macro_ci95": null
+      },
+      "social_history": {
+        "n_consultations": 1,
+        "num": 4,
+        "den": 5,
+        "pooled": 0.8,
+        "ci95": null,
+        "macro": 0.8,
+        "macro_ci95": null
+      }
+    },
+    "error_counts": {
+      "negation_polarity": 0,
+      "dose_number": 0,
+      "attribution_speaker": 0,
+      "temporal": 0,
+      "other_contradiction": 0,
+      "omission_safety_net": 0,
+      "omission_other": 6
+    },
+    "error_counts_by_severity": {
+      "critical": 0,
+      "major": 0,
+      "minor": 6
+    },
+    "weighted_error_total": 6,
+    "facts": {
+      "note_facts": 38,
+      "proposed": 60,
+      "accepted": 52
+    },
+    "extraction_parts": {
+      "total": 4,
+      "failed": 0,
+      "failure_classes": {}
+    }
+  },
+  "per_consultation": [
+    {
+      "consultation": "day1_consultation04",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 98,
+      "note_facts": 38,
+      "note_facts_labelled": 38,
+      "covered": 32,
+      "recall": 0.8421,
+      "candidates": 52,
+      "candidates_labelled": 52,
+      "consistent": 38,
+      "contradicts": 0,
+      "not_in_note": 14,
+      "contradiction_rate": 0.0,
+      "errors": {
+        "negation_polarity": 0,
+        "dose_number": 0,
+        "attribution_speaker": 0,
+        "temporal": 0,
+        "other_contradiction": 0,
+        "omission_safety_net": 0,
+        "omission_other": 6
+      },
+      "weighted_error": 6,
+      "weighted_error_per_note_fact": 0.1579,
+      "safety_net_note_facts": 2,
+      "safety_net_covered": 2,
+      "proposed": 60,
+      "accepted": 52,
+      "grounding_pass_rate": 0.8667
+    }
+  ],
+  "analysis": {
+    "severity": {
+      "critical": 5,
+      "major": 3,
+      "minor": 1
+    },
+    "error_classes": {
+      "negation_polarity": "critical",
+      "dose_number": "critical",
+      "attribution_speaker": "major",
+      "temporal": "major",
+      "other_contradiction": "major",
+      "omission_safety_net": "major",
+      "omission_other": "minor"
+    },
+    "labels": {
+      "A": [
+        "covered",
+        "not_covered"
+      ],
+      "B": [
+        "consistent",
+        "contradicts",
+        "not_in_note"
+      ]
+    },
+    "error_types": [
+      "none",
+      "negation_polarity",
+      "dose_number",
+      "attribution_speaker",
+      "temporal",
+      "other_contradiction"
+    ],
+    "bootstrap": {
+      "seed": 20261018,
+      "resamples": 2000,
+      "min_n": 5,
+      "unit": "consultation",
+      "interval": "percentile 2.5 / 97.5"
+    },
+    "human_sample": {
+      "fraction": 0.2,
+      "seed": 20261018
+    },
+    "order_seed": 20261018,
+    "shuffle_seed": 20261018,
+    "chunk_chars": 3000,
+    "note_splitter": "primock-note-split-v1",
+    "anchor_at": "2026-01-05T09:00:00+00:00",
+    "generator": {
+      "model": "DeepSeek-V4-Flash",
+      "max_tokens": 2000,
+      "guided_json": false,
+      "extra_body": {},
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 120.0,
+      "timeout_retries": 0,
+      "evidence_verifier": "off (KINDRED_VERIFIER_MODE=off, deploy/release.env.example)"
+    },
+    "annotators": [
+      [
+        "Qwen3.8-Flash-Next",
+        {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      ],
+      [
+        "MiMo-V2.6-Flash",
+        {}
+      ]
+    ],
+    "annotator": {
+      "max_tokens": 4096,
+      "guided_json": false,
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 240.0,
+      "timeout_retries": 1
+    }
+  },
+  "deviations_from_preregistration": [
+    "2026-10-17T23:42Z, after the pilot: added run --deadline-utc (start no consultation that would likely end after it; stopped_reason 'deadline'). Harness only. Reason: the pilot took about 4.5 minutes per consultation with sequential calls, so a full run of 57 may not finish before the results deadline; the seeded processing order keeps a stopped run a random subset, as the protocol states.",
+    "2026-10-17T23:44Z, before the full run: a consultation whose note yields no note fact or whose transcripts yield no turn (unreadable data) is skipped and listed in results.data.skipped instead of being scored as all omissions. Harness only (a data guard); it does not change any consultation that has a note and a readable transcript.",
+    "2026-10-17T23:54Z, before the full run: code fix to match the preregistered PROTOCOL.md: recall and the task B rates now count the labelled items of an incomplete annotation (the code had left such consultations out); the weighted score still uses consultations with both tasks complete. No effect on the pilot (both tasks complete).",
+    "2026-10-17T23:55Z, before the full run: a reply cut off at max_tokens (or not one whole JSON object) is no longer dropped whole: its complete label items are recovered (salvage_items) and count, as PROTOCOL.md says the labelled items of an incomplete annotation do; the task stays incomplete. Reason: the pilot's task B reply used 3331 of the 4096 output tokens for 52 facts, so a longer consultation would be cut off.",
+    "2026-10-18T00:28Z, before any live call of the full run: the full data arrived at 00:25Z; 57 consultations at about 4 minutes each, sequential, would not finish before the 03:30Z results deadline, so a seeded random subset of 30 (the first 30 of the preregistered processing order) was fixed in preregistration_amendment_1.json (`amend`, then `run --amendment`), with a deadline stop at 03:10Z.",
+    "2026-10-18T02:30Z, after the full run, offline: the reader of annotator replies missed replies PROTOCOL.md says count: one that is invalid JSON only because of a raw line break inside a string (llm_client then returned one inner item, and every id counted as missing). read_reply now salvages any reply that is not one object with a labels list (strict=False decoding, else item by item); the task stays incomplete. `report --reparse` applies it to the stored replies (no call) and writes results_reparsed.json and summary_reparsed.md beside the as-run results.json and summary.md. Items whose id key is garbled (a token glitch) are not reinterpreted: they stay unknown ids, as preregistered."
+  ],
+  "reparse": {
+    "what": "offline re-analysis: every stored annotator reply read again with read_reply (no model call); see deviations",
+    "changed": []
+  },
+  "human_review": {
+    "path": "human_review.csv",
+    "written": false,
+    "rows": 18,
+    "decisions_total": 90,
+    "human_labels_filled": 0,
+    "reason": "exists; not overwritten"
+  }
+}

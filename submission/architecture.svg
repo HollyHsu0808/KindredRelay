@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="t d" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">
+<title id="t">KindredRelay architecture</title>
+<desc id="d">How a caregiver update becomes a sourced family timeline: speech to text on CPU, photo reading and fact extraction on AMD Token Factory, a deterministic grounding check, an evidence verifier gate that is off in the release, and the family timeline; a question path that only chooses sentences; and, outside the app path, the fall detection module and evaluation harnesses.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3D4650"/></marker></defs>
+<rect width="1920" height="1080" fill="#FBFAF7"/>
+<text x="30" y="54" font-size="38" font-weight="700" fill="#1F2328">KindredRelay: how one update becomes a sourced family timeline</text>
+<text x="30" y="88" font-size="20" fill="#3D4650">Release build (Dockerfile.release). The model proposes; deterministic code decides; a person confirms.</text>
+<rect x="1302" y="22" width="34" height="24" rx="6" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/><text x="1346" y="40" font-size="17" fill="#1F2328">Runs on AMD Token Factory</text>
+<rect x="1602" y="22" width="34" height="24" rx="6" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/><text x="1646" y="40" font-size="17" fill="#1F2328">Deterministic check (code)</text>
+<rect x="1302" y="58" width="34" height="24" rx="6" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/><text x="1346" y="76" font-size="17" fill="#1F2328">A person checks</text>
+<rect x="1602" y="58" width="34" height="24" rx="6" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/><text x="1646" y="76" font-size="17" fill="#1F2328">In the repo, not in the app path</text>
+<rect x="30" y="112" width="280" height="488" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="46" y="146" font-size="23" font-weight="700" fill="#1F2328">Caregiver &amp; family</text>
+<text x="46" y="174" font-size="18.5" font-weight="700" fill="#59636E">in the browser: phone or</text>
+<text x="46" y="198.5" font-size="18.5" font-weight="700" fill="#59636E">laptop</text>
+<circle cx="50" cy="219.5" r="3" fill="#59636E"/>
+<text x="60" y="225.0" font-size="17.5" fill="#2D333A">record what the nurse said</text>
+<text x="60" y="248.5" font-size="17.5" fill="#2D333A">(after the speaker agrees)</text>
+<circle cx="50" cy="266.5" r="3" fill="#59636E"/>
+<text x="60" y="272.0" font-size="17.5" fill="#2D333A">photograph a paper</text>
+<circle cx="50" cy="290.0" r="3" fill="#59636E"/>
+<text x="60" y="295.5" font-size="17.5" fill="#2D333A">type an update or a plan</text>
+<circle cx="50" cy="313.5" r="3" fill="#59636E"/>
+<text x="60" y="319.0" font-size="17.5" fill="#2D333A">ask a question</text>
+<circle cx="50" cy="337.0" r="3" fill="#59636E"/>
+<text x="60" y="342.5" font-size="17.5" fill="#2D333A">each relative sees the</text>
+<text x="60" y="366.0" font-size="17.5" fill="#2D333A">timeline in their own time</text>
+<text x="60" y="389.5" font-size="17.5" fill="#2D333A">zone; the caregiver invites</text>
+<text x="60" y="413.0" font-size="17.5" fill="#2D333A">them with a link</text>
+<rect x="348" y="152" width="280" height="158" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="364" y="186" font-size="23" font-weight="700" fill="#1F2328">Speech to text</text>
+<text x="364" y="214" font-size="18" font-weight="700" fill="#59636E">Whisper base.en</text>
+<circle cx="368" cy="234.5" r="3" fill="#59636E"/>
+<text x="378" y="240" font-size="17" fill="#2D333A">app server CPU, not AMD</text>
+<circle cx="368" cy="257.5" r="3" fill="#59636E"/>
+<text x="378" y="263" font-size="17" fill="#2D333A">flags numbers, times,</text>
+<text x="378" y="286" font-size="17" fill="#2D333A">negations, conditions</text>
+<rect x="666" y="112" width="280" height="198" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="122" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="139" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="168" font-size="23" font-weight="700" fill="#1F2328">Photo reading</text>
+<text x="682" y="196" font-size="18" font-weight="700" fill="#D9480F">Gemma-4-31B-IT</text>
+<circle cx="686" cy="216.5" r="3" fill="#59636E"/>
+<text x="696" y="222" font-size="17" fill="#2D333A">copies the printed words of a</text>
+<text x="696" y="245" font-size="17" fill="#2D333A">medication list or letter</text>
+<circle cx="686" cy="262.5" r="3" fill="#59636E"/>
+<text x="696" y="268" font-size="17" fill="#2D333A">the result is a draft</text>
+<rect x="984" y="112" width="598" height="198" rx="14" fill="#FFF8F2" stroke="#E8A87C" stroke-width="2.5"/>
+<text x="1000" y="146" font-size="22" font-weight="700" fill="#1F2328">AMD Token Factory endpoint (developer.amd.com.cn)</text>
+<text x="1000" y="175" font-size="17" fill="#2D333A">Inference via the AMD Token Factory endpoint provided for the AMD</text>
+<text x="1000" y="198" font-size="17" fill="#2D333A">Developer Hackathon. OpenAI-compatible HTTPS; JSON asked for in the</text>
+<text x="1000" y="221" font-size="17" fill="#2D333A">prompt; the API key stays in an environment variable.</text>
+<text x="1000" y="244" font-size="17" fill="#2D333A">The hardware behind the endpoint is not visible to the client, so no GPU is</text>
+<text x="1000" y="267" font-size="17" fill="#2D333A">claimed.</text>
+<rect x="1620" y="112" width="280" height="198" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="146" font-size="23" font-weight="700" fill="#1F2328">Read-only pages</text>
+<circle cx="1640" cy="170.5" r="3" fill="#59636E"/>
+<text x="1650" y="176" font-size="16.5" fill="#2D333A">AMD Runtime: each call&#x27;s</text>
+<text x="1650" y="198.5" font-size="16.5" fill="#2D333A">model, endpoint host, latency,</text>
+<text x="1650" y="221.0" font-size="16.5" fill="#2D333A">tokens, what the checks did</text>
+<circle cx="1640" cy="238.0" r="3" fill="#59636E"/>
+<text x="1650" y="243.5" font-size="16.5" fill="#2D333A">Scorecard: each number with</text>
+<text x="1650" y="266.0" font-size="16.5" fill="#2D333A">its source file</text>
+<path d="M 1582 208 L 1616 208" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<text x="1601" y="196" font-size="14" font-style="italic" fill="#3D4650" text-anchor="middle">every call</text>
+<rect x="348" y="334" width="280" height="266" rx="14" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/>
+<text x="364" y="368" font-size="23" font-weight="700" fill="#1F2328">A person checks the</text>
+<text x="364" y="396" font-size="23" font-weight="700" fill="#1F2328">draft</text>
+<circle cx="368" cy="420.5" r="3" fill="#59636E"/>
+<text x="378" y="426" font-size="17.5" fill="#2D333A">corrects misheard or misread</text>
+<text x="378" y="449.5" font-size="17.5" fill="#2D333A">words</text>
+<circle cx="368" cy="467.5" r="3" fill="#59636E"/>
+<text x="378" y="473.0" font-size="17.5" fill="#2D333A">ticks every line with a</text>
+<text x="378" y="496.5" font-size="17.5" fill="#2D333A">number, a time, stop or</text>
+<text x="378" y="520.0" font-size="17.5" fill="#2D333A">continue</text>
+<circle cx="368" cy="538.0" r="3" fill="#59636E"/>
+<text x="378" y="543.5" font-size="17.5" fill="#2D333A">a line she edits counts as a</text>
+<text x="378" y="567.0" font-size="17.5" fill="#2D333A">family report</text>
+<rect x="666" y="334" width="280" height="266" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="344" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="361" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="390" font-size="23" font-weight="700" fill="#1F2328">Fact extraction</text>
+<text x="682" y="418" font-size="18.5" font-weight="700" fill="#D9480F">DeepSeek-V4-Flash</text>
+<circle cx="686" cy="439.0" r="3" fill="#59636E"/>
+<text x="696" y="444.5" font-size="17.5" fill="#2D333A">turns the checked text into</text>
+<text x="696" y="468.0" font-size="17.5" fill="#2D333A">facts (JSON)</text>
+<circle cx="686" cy="486.0" r="3" fill="#59636E"/>
+<text x="696" y="491.5" font-size="17.5" fill="#2D333A">each fact must quote the</text>
+<text x="696" y="515.0" font-size="17.5" fill="#2D333A">update, at least 3 words</text>
+<circle cx="686" cy="533.0" r="3" fill="#59636E"/>
+<text x="696" y="538.5" font-size="17.5" fill="#2D333A">a reply that cannot be read</text>
+<text x="696" y="562.0" font-size="17.5" fill="#2D333A">gives no facts</text>
+<rect x="984" y="334" width="280" height="266" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1000" y="368" font-size="23" font-weight="700" fill="#1F2328">Grounding check</text>
+<text x="1000" y="396" font-size="18.5" font-weight="700" fill="#2B7A4B">no model involved</text>
+<circle cx="1004" cy="417.0" r="3" fill="#59636E"/>
+<text x="1014" y="422.5" font-size="17.5" fill="#2D333A">quote in the update word for</text>
+<text x="1014" y="446.0" font-size="17.5" fill="#2D333A">word, not after a negation</text>
+<circle cx="1004" cy="464.0" r="3" fill="#59636E"/>
+<text x="1014" y="469.5" font-size="17.5" fill="#2D333A">numbers and field words</text>
+<text x="1014" y="493.0" font-size="17.5" fill="#2D333A">come from the quote</text>
+<circle cx="1004" cy="511.0" r="3" fill="#59636E"/>
+<text x="1014" y="516.5" font-size="17.5" fill="#2D333A">dates agree with the words</text>
+<circle cx="1004" cy="534.5" r="3" fill="#59636E"/>
+<text x="1014" y="540.0" font-size="17.5" fill="#2D333A">else: rejected</text>
+<rect x="1302" y="334" width="280" height="266" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<rect x="1523.0" y="344" width="49.0" height="24" rx="12" fill="#59636E"/><text x="1547.5" y="361" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">OFF</text>
+<text x="1318" y="368" font-size="23" font-weight="700" fill="#1F2328">Evidence verifier</text>
+<text x="1318" y="396" font-size="17" font-weight="700" fill="#2B7A4B">off in the release</text>
+<text x="1318" y="421" font-size="16" fill="#2D333A">KINDRED_VERIFIER_MODE=off</text>
+<circle cx="1322" cy="437.5" r="3" fill="#59636E"/>
+<text x="1332" y="443" font-size="16" fill="#2D333A">gate mode only with a validated</text>
+<text x="1332" y="465" font-size="16" fill="#2D333A">operating point</text>
+<circle cx="1322" cy="481.5" r="3" fill="#59636E"/>
+<text x="1332" y="487" font-size="16" fill="#2D333A">v2 found none: stays off</text>
+<text x="1332" y="509" font-size="16" fill="#2D333A">(fail-closed)</text>
+<circle cx="1322" cy="525.5" r="3" fill="#59636E"/>
+<text x="1332" y="531" font-size="16" fill="#2D333A">gate mode holds unverified facts</text>
+<rect x="1620" y="334" width="280" height="266" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="368" font-size="23" font-weight="700" fill="#1F2328">Family timeline &amp;</text>
+<text x="1636" y="396" font-size="23" font-weight="700" fill="#1F2328">handover</text>
+<circle cx="1640" cy="420.5" r="3" fill="#59636E"/>
+<text x="1650" y="426" font-size="17.5" fill="#2D333A">&#x27;Right now&#x27; card, newest-first</text>
+<text x="1650" y="449.5" font-size="17.5" fill="#2D333A">timeline</text>
+<circle cx="1640" cy="467.5" r="3" fill="#59636E"/>
+<text x="1650" y="473.0" font-size="17.5" fill="#2D333A">headlines from fixed</text>
+<text x="1650" y="496.5" font-size="17.5" fill="#2D333A">templates</text>
+<circle cx="1640" cy="514.5" r="3" fill="#59636E"/>
+<text x="1650" y="520.0" font-size="17.5" fill="#2D333A">a family note never overrides</text>
+<text x="1650" y="543.5" font-size="17.5" fill="#2D333A">the care team</text>
+<circle cx="1640" cy="561.5" r="3" fill="#59636E"/>
+<text x="1650" y="567.0" font-size="17.5" fill="#2D333A">no diagnosis, no advice</text>
+<path d="M 310 130 L 662 130" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<text x="488.0" y="122" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">photo</text>
+<path d="M 310 224 L 344 224" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<text x="329" y="216" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">voice</text>
+<path d="M 310 459 L 344 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<text x="329" y="449" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">typed</text>
+<path d="M 488.0 310 L 488.0 330" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 706 310 L 598 330" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 628 459 L 662 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 946 459 L 980 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 1264 459 L 1298 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 1582 459 L 1616 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<rect x="348" y="628" width="280" height="176" rx="14" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/>
+<text x="364" y="662" font-size="23" font-weight="700" fill="#1F2328">Family member asks</text>
+<circle cx="368" cy="686.5" r="3" fill="#59636E"/>
+<text x="378" y="692" font-size="17" fill="#2D333A">typed, or said and written out</text>
+<text x="378" y="715" font-size="17" fill="#2D333A">by Whisper</text>
+<circle cx="368" cy="732.5" r="3" fill="#59636E"/>
+<text x="378" y="738" font-size="17" fill="#2D333A">checks the words before</text>
+<text x="378" y="761" font-size="17" fill="#2D333A">sending</text>
+<rect x="666" y="628" width="280" height="176" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="638" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="655" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="684" font-size="23" font-weight="700" fill="#1F2328">Sentence choice</text>
+<text x="682" y="712" font-size="18" font-weight="700" fill="#D9480F">DeepSeek-V4-Flash</text>
+<circle cx="686" cy="732.5" r="3" fill="#59636E"/>
+<text x="696" y="738" font-size="17" fill="#2D333A">picks sentence ids from the</text>
+<text x="696" y="761" font-size="17" fill="#2D333A">updates; writes no answer text</text>
+<rect x="984" y="628" width="280" height="176" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1000" y="662" font-size="23" font-weight="700" fill="#1F2328">Answer check</text>
+<circle cx="1004" cy="686.5" r="3" fill="#59636E"/>
+<text x="1014" y="692" font-size="17" fill="#2D333A">cited ids must be real</text>
+<text x="1014" y="715" font-size="17" fill="#2D333A">sentences on the question&#x27;s</text>
+<text x="1014" y="738" font-size="17" fill="#2D333A">topic</text>
+<circle cx="1004" cy="755.5" r="3" fill="#59636E"/>
+<text x="1014" y="761" font-size="17" fill="#2D333A">else one retry, then the</text>
+<text x="1014" y="784" font-size="17" fill="#2D333A">updates&#x27; own sentences</text>
+<rect x="1302" y="628" width="280" height="176" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1318" y="662" font-size="23" font-weight="700" fill="#1F2328">Fixed first line</text>
+<circle cx="1322" cy="686.5" r="3" fill="#59636E"/>
+<text x="1332" y="692" font-size="17" fill="#2D333A">chosen by code, not the model</text>
+<circle cx="1322" cy="709.5" r="3" fill="#59636E"/>
+<text x="1332" y="715" font-size="17" fill="#2D333A">&#x27;can she...?&#x27; gets &#x27;Only the</text>
+<text x="1332" y="738" font-size="17" fill="#2D333A">care team can decide...&#x27;</text>
+<rect x="1620" y="628" width="280" height="176" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="662" font-size="23" font-weight="700" fill="#1F2328">Answer shown</text>
+<circle cx="1640" cy="686.5" r="3" fill="#59636E"/>
+<text x="1650" y="692" font-size="17" fill="#2D333A">the sentences word for word,</text>
+<text x="1650" y="715" font-size="17" fill="#2D333A">with who said them and when</text>
+<circle cx="1640" cy="732.5" r="3" fill="#59636E"/>
+<text x="1650" y="738" font-size="17" fill="#2D333A">not answered: &#x27;Questions for</text>
+<text x="1650" y="761" font-size="17" fill="#2D333A">the doctor&#x27;</text>
+<path d="M 230 600 L 230 716 L 344 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<text x="280" y="706" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">asks</text>
+<path d="M 628 716 L 662 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 946 716 L 980 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 1264 716 L 1298 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<path d="M 1582 716 L 1616 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arrow)"/>
+<rect x="18" y="838" width="1884" height="230" rx="18" fill="none" stroke="#9AA0A8" stroke-width="2" stroke-dasharray="4 6"/>
+<text x="96" y="868" font-size="19" font-weight="700" fill="#59636E">In the repository, outside the deployed app path (not packaged in Dockerfile.release, or run only for evaluation)</text>
+<text x="1886" y="868" font-size="16" fill="#59636E" text-anchor="end">Sources for every box: submission/architecture.md</text>
+<rect x="40" y="884" width="588" height="170" rx="14" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/>
+<text x="56" y="918" font-size="21" font-weight="700" fill="#1F2328">Fall detection module (handoff_day1/model/)</text>
+<circle cx="60" cy="940.5" r="3" fill="#59636E"/>
+<text x="70" y="946" font-size="17" fill="#2D333A">video -&gt; MediaPipe Pose (CPU) -&gt; 12 pose features -&gt; GRU (4,449</text>
+<text x="70" y="969" font-size="17" fill="#2D333A">parameters)</text>
+<circle cx="60" cy="986.5" r="3" fill="#59636E"/>
+<text x="70" y="992" font-size="17" fill="#2D333A">&#x27;POSSIBLE FALL - please check&#x27;: a prompt the caregiver confirms or</text>
+<text x="70" y="1015" font-size="17" fill="#2D333A">dismisses</text>
+<circle cx="60" cy="1032.5" r="3" fill="#59636E"/>
+<text x="70" y="1038" font-size="17" fill="#2D333A">never an alarm or a diagnosis; no automatic link to the timeline</text>
+<rect x="666" y="884" width="598" height="170" rx="14" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/>
+<text x="682" y="918" font-size="21" font-weight="700" fill="#1F2328">Evaluation harnesses</text>
+<circle cx="686" cy="940.5" r="3" fill="#59636E"/>
+<text x="696" y="946" font-size="17" fill="#2D333A">bench_tf_handover.py: imports the real extraction -&gt; grounding -&gt; gate</text>
+<text x="696" y="969" font-size="17" fill="#2D333A">path; calls the endpoint</text>
+<circle cx="686" cy="986.5" r="3" fill="#59636E"/>
+<text x="696" y="992" font-size="17" fill="#2D333A">redteam_safety.py: fixed adversarial and benign cases, offline</text>
+<circle cx="686" cy="1009.5" r="3" fill="#59636E"/>
+<text x="696" y="1015" font-size="17" fill="#2D333A">validate_abd.py: deterministic unit suites, offline</text>
+<rect x="1302" y="884" width="588" height="170" rx="14" fill="#FFF7F0" stroke="#D9480F" stroke-width="2.5" stroke-dasharray="9 6"/>
+<rect x="1725.015625" y="894" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="1802.5078125" y="911" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="1318" y="918" font-size="21" font-weight="700" fill="#1F2328">Cross-model semantic check</text>
+<text x="1318" y="944" font-size="18" font-weight="700" fill="#D9480F">Gemma-4-31B-IT as judge (evaluation, shadow)</text>
+<circle cx="1322" cy="964.5" r="3" fill="#59636E"/>
+<text x="1332" y="970" font-size="17" fill="#2D333A">crosscheck_judge.py: does &#x27;rules OR judge&#x27; stop more paraphrased</text>
+<text x="1332" y="993" font-size="17" fill="#2D333A">attacks than rules alone?</text>
+<circle cx="1322" cy="1010.5" r="3" fill="#59636E"/>
+<text x="1332" y="1016" font-size="17" fill="#2D333A">rule fixed before the first judge call; not in the product</text>
+<circle cx="1322" cy="1033.5" r="3" fill="#59636E"/>
+<text x="1332" y="1039" font-size="17" fill="#2D333A">result: failed its rule in both rounds, stays shadow</text>
+<path d="M 82 884 L 82 604" fill="none" stroke="#3D4650" stroke-width="2.6" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="96" y="668" font-size="15" font-style="italic" fill="#3D4650">a person</text><text x="96" y="688" font-size="15" font-style="italic" fill="#3D4650">confirms a</text><text x="96" y="708" font-size="15" font-style="italic" fill="#3D4650">fall prompt</text>
+</svg>

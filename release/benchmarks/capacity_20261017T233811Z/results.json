@@ -1,0 +1,259 @@
+{
+  "schema_version": "kindredrelay-capacity-model-v1",
+  "created_utc": "2026-10-17T23:38:11+00:00",
+  "argv": [],
+  "model": "DeepSeek-V4-Flash",
+  "bench_root": "release/benchmarks",
+  "wording": "Inference via the AMD Token Factory endpoint provided for the AMD Developer Hackathon (host developer.amd.com.cn); the hardware behind the endpoint is not visible to this client, so no GPU is claimed.",
+  "measured": {
+    "tf_bench": {
+      "path": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+      "sha256": "05af8036a9ef51e809e76609d3d596f71bc642c3383e2f16bb1d0aa730d77255",
+      "created_utc": "2026-10-17T23:28:41.272+00:00",
+      "host": "developer.amd.com.cn",
+      "model": "DeepSeek-V4-Flash",
+      "items": {
+        "tokens_per_handover": {
+          "label": "tokens per handover, mean (prompt + completion, endpoint usage)",
+          "value": 1215.5,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.tokens_per_handover.mean"
+        },
+        "prompt_tokens_per_handover": {
+          "label": "prompt tokens per handover, mean",
+          "value": 1049.3,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.tokens_per_handover.prompt_mean"
+        },
+        "completion_tokens_per_handover": {
+          "label": "completion tokens per handover, mean",
+          "value": 166.2,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.tokens_per_handover.completion_mean"
+        },
+        "handovers_with_usage": {
+          "label": "handovers whose usage the endpoint reported",
+          "value": 35,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.tokens_per_handover.n_with_usage"
+        },
+        "e2e_latency_mean_s": {
+          "label": "end-to-end latency per handover, mean (s)",
+          "value": 8.3511,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.e2e_latency_s.mean"
+        },
+        "e2e_latency_p50_s": {
+          "label": "end-to-end latency, p50 (s)",
+          "value": 6.6325,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.e2e_latency_s.p50"
+        },
+        "e2e_latency_p95_s": {
+          "label": "end-to-end latency, p95 (s)",
+          "value": 16.5276,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.e2e_latency_s.p95"
+        },
+        "handovers_completed": {
+          "label": "handovers completed",
+          "value": 36,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.n_completed"
+        },
+        "handovers_successful": {
+          "label": "handovers successful",
+          "value": 35,
+          "source": "release/benchmarks/tf_bench_20261017T230311Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.success.count"
+        }
+      },
+      "skipped": []
+    },
+    "load_test": {
+      "used": true,
+      "path": "release/benchmarks/load_20261017T232951Z/results.json",
+      "sha256": "9139a5aacf06b0568a013a63fc854ec7f085cb7ba50ec542111493af8b52e891",
+      "created_utc": "2026-10-17T23:36:54.661+00:00",
+      "host": "developer.amd.com.cn",
+      "skipped": [],
+      "items": {
+        "throughput_handovers_per_s": {
+          "label": "completed handovers per second, all streams",
+          "value": 0.28067,
+          "source": "release/benchmarks/load_20261017T232951Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.throughput_handovers_per_s"
+        },
+        "concurrency": {
+          "label": "concurrent streams",
+          "value": 4,
+          "source": "release/benchmarks/load_20261017T232951Z/results.json",
+          "key": "per_model.DeepSeek-V4-Flash.concurrency"
+        }
+      }
+    },
+    "crosscheck": {
+      "used": true,
+      "path": "release/benchmarks/crosscheck_20261017T221103Z/results.json",
+      "sha256": "60c762dcea8e168c14ee70279603021b184a4bc461d2a49a740dc7622377e1b6",
+      "created_utc": "2026-10-17T23:02:44.328+00:00",
+      "host": "developer.amd.com.cn",
+      "judge_model": "Gemma-4-31B-IT",
+      "skipped": [],
+      "items": {
+        "judge_tokens_per_check": {
+          "label": "judge tokens per check, mean (endpoint usage)",
+          "value": 1051.3,
+          "source": "release/benchmarks/crosscheck_20261017T221103Z/results.json",
+          "key": "tokens_per_check.mean"
+        },
+        "judge_latency_p50_s": {
+          "label": "judge call latency, p50 (s; the file has no mean)",
+          "value": 7.704,
+          "source": "release/benchmarks/crosscheck_20261017T221103Z/results.json",
+          "key": "latency_s.p50"
+        }
+      }
+    }
+  },
+  "assumptions": {
+    "updates_per_family_per_day": {
+      "value": 2.0,
+      "basis": "illustrative pace of caregiver updates during an active care episode (not measured)",
+      "default": 2.0
+    },
+    "families_per_care_coordinator": {
+      "value": 30.0,
+      "basis": "illustrative caseload of one care coordinator (no source in this repository)",
+      "default": 30.0
+    },
+    "crosscheck_every_update": {
+      "value": false,
+      "basis": "the cross-model check runs in shadow only and is not on the product path; yes adds one judge call per update",
+      "default": false
+    },
+    "price_per_million_tokens": {
+      "value": null,
+      "basis": "no price is assumed: null reports tokens only; a supplied price is blended over prompt and completion tokens, in the currency it is given in",
+      "default": null
+    }
+  },
+  "conventions": {
+    "days_per_month": 30,
+    "families_scale": 1000,
+    "sensitivity": "±50%"
+  },
+  "reference_story_pace": {
+    "path": "handoff_day1/care_cases/episode_hip_fracture.json",
+    "updates": 12,
+    "calendar_days": 6,
+    "per_day": 2.0
+  },
+  "outputs": {
+    "tokens_per_update": 1215.5,
+    "extraction_tokens_per_family_per_day": 2431.0,
+    "tokens_per_family_per_day": 2431.0,
+    "tokens_per_family_per_month": 72930.0,
+    "tokens_per_1000_families_per_day": 2431000.0,
+    "seconds_per_update_sequential": 8.3511,
+    "handovers_per_stream_hour_sequential": 431.0809354456299,
+    "handovers_per_endpoint_hour_at_load_concurrency": 1010.4119999999999,
+    "load_concurrency": 4.0,
+    "capacity_basis": "load test",
+    "hours_per_1000_families_per_day": 1.9793905852266205,
+    "updates_per_coordinator_per_day": 60.0,
+    "tokens_per_coordinator_per_day": 72930.0,
+    "hours_per_coordinator_per_day": 0.059381717556798615,
+    "cost_per_family_per_month": null,
+    "cost_per_1000_families_per_day": null
+  },
+  "sensitivity": [
+    {
+      "assumption": "updates_per_family_per_day",
+      "setting": "-50%",
+      "value": 1.0,
+      "tokens_per_family_per_day": 1215.5,
+      "tokens_per_family_per_month": 36465.0,
+      "hours_per_1000_families_per_day": 0.9896952926133102,
+      "tokens_per_coordinator_per_day": 36465.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "updates_per_family_per_day",
+      "setting": "base",
+      "value": 2.0,
+      "tokens_per_family_per_day": 2431.0,
+      "tokens_per_family_per_month": 72930.0,
+      "hours_per_1000_families_per_day": 1.9793905852266205,
+      "tokens_per_coordinator_per_day": 72930.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "updates_per_family_per_day",
+      "setting": "+50%",
+      "value": 3.0,
+      "tokens_per_family_per_day": 3646.5,
+      "tokens_per_family_per_month": 109395.0,
+      "hours_per_1000_families_per_day": 2.9690858778399307,
+      "tokens_per_coordinator_per_day": 109395.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "families_per_care_coordinator",
+      "setting": "-50%",
+      "value": 15.0,
+      "tokens_per_family_per_day": 2431.0,
+      "tokens_per_family_per_month": 72930.0,
+      "hours_per_1000_families_per_day": 1.9793905852266205,
+      "tokens_per_coordinator_per_day": 36465.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "families_per_care_coordinator",
+      "setting": "base",
+      "value": 30.0,
+      "tokens_per_family_per_day": 2431.0,
+      "tokens_per_family_per_month": 72930.0,
+      "hours_per_1000_families_per_day": 1.9793905852266205,
+      "tokens_per_coordinator_per_day": 72930.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "families_per_care_coordinator",
+      "setting": "+50%",
+      "value": 45.0,
+      "tokens_per_family_per_day": 2431.0,
+      "tokens_per_family_per_month": 72930.0,
+      "hours_per_1000_families_per_day": 1.9793905852266205,
+      "tokens_per_coordinator_per_day": 109395.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "crosscheck_every_update",
+      "setting": "base",
+      "value": false,
+      "tokens_per_family_per_day": 2431.0,
+      "tokens_per_family_per_month": 72930.0,
+      "hours_per_1000_families_per_day": 1.9793905852266205,
+      "tokens_per_coordinator_per_day": 72930.0,
+      "cost_per_family_per_month": null
+    },
+    {
+      "assumption": "crosscheck_every_update",
+      "setting": "flipped",
+      "value": true,
+      "tokens_per_family_per_day": 4533.6,
+      "tokens_per_family_per_month": 136008.0,
+      "hours_per_1000_families_per_day": 8.9195,
+      "tokens_per_coordinator_per_day": 136008.0,
+      "cost_per_family_per_month": null
+    }
+  ],
+  "notes": [],
+  "not_modelled": [
+    "question answers and photo reads (not in the handover benchmark)",
+    "peaks within a day and queueing: hours are busy time, not wall-clock hours",
+    "the endpoint's rate limits and other clients' load",
+    "the network path apart from the endpoint (the measured latency includes the path from the benchmark machine)"
+  ]
+}

@@ -1,0 +1,16 @@
+# Applies specifically to Dockerfile.release, with the repository root as context.
+.git
+**/__pycache__
+**/*.pyc
+**/.venv
+**/.env
+**/.env.*
+**/secrets.toml
+**/*.pem
+**/*.key
+validation
+handoff_day1/data
+handoff_day1/runs
+handoff_day1/model/weights
+handoff_day1/integration_samples
+research

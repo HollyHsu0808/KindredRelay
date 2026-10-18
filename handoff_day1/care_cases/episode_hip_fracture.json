@@ -1,0 +1,379 @@
+{
+  "episode_id": "ep-demo-001",
+  "title": "Elena's fall and hip fracture",
+  "notice": "Fictional composite for the demo. Not real people, not clinical advice.",
+  "patient": {
+    "name": "Elena Novak",
+    "age": 82,
+    "home": "at home",
+    "timezone": "Europe/London"
+  },
+  "members": [
+    {
+      "member_id": "anna",
+      "name": "Anna",
+      "relation": "daughter, primary caregiver",
+      "city": "London",
+      "timezone": "Europe/London",
+      "primary": true
+    },
+    {
+      "member_id": "david",
+      "name": "David",
+      "relation": "son",
+      "city": "Toronto",
+      "timezone": "America/Toronto"
+    },
+    {
+      "member_id": "mia",
+      "name": "Mia",
+      "relation": "granddaughter",
+      "city": "Melbourne",
+      "timezone": "Australia/Melbourne"
+    },
+    {
+      "member_id": "joy",
+      "name": "Joy",
+      "relation": "paid carer (mornings)",
+      "city": "London",
+      "timezone": "Europe/London"
+    }
+  ],
+  "updates": [
+    {
+      "update_id": "u01",
+      "at": "2026-10-19T08:40:00+01:00",
+      "kind": "note",
+      "author": "anna",
+      "text": "Mum fell in the kitchen this morning and can't stand up. The ambulance is taking her to St Mary's Hospital A&E. I'm going with her.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "Fell at home and could not stand up",
+          "quote": "Mum fell in the kitchen this morning and can't stand up"
+        },
+        {
+          "type": "location",
+          "hospital": "St Mary's Hospital",
+          "unit": "A&E",
+          "bed": "",
+          "quote": "taking her to St Mary's Hospital A&E"
+        }
+      ]
+    },
+    {
+      "update_id": "u02",
+      "at": "2026-10-19T11:15:00+01:00",
+      "kind": "recording",
+      "author": "anna",
+      "speaker": "Emergency doctor",
+      "text": "The X-ray shows a fracture of the left hip, at the top of the thigh bone. We are admitting her to the orthopaedic ward, Ward 5B, bed 12. The plan is surgery tomorrow morning, she is first on the list at about 9 a.m. She must not eat anything after midnight. Mr Okafor is the consultant in charge of her care.",
+      "recorded_extraction": [
+        {
+          "type": "diagnosis_stated",
+          "what": "Fracture of the left hip",
+          "quote": "The X-ray shows a fracture of the left hip"
+        },
+        {
+          "type": "admitted",
+          "when": "2026-10-19T11:15:00+01:00",
+          "quote": "We are admitting her to the orthopaedic ward"
+        },
+        {
+          "type": "location",
+          "unit": "Orthopaedic ward 5B",
+          "bed": "12",
+          "quote": "admitting her to the orthopaedic ward, Ward 5B, bed 12"
+        },
+        {
+          "type": "procedure_planned",
+          "what": "Hip surgery",
+          "when": "2026-10-20T09:00:00+01:00",
+          "when_text": "tomorrow morning, at about 9 a.m.",
+          "quote": "The plan is surgery tomorrow morning, she is first on the list at about 9 a.m."
+        },
+        {
+          "type": "instruction",
+          "what": "Nothing to eat after midnight before surgery",
+          "quote": "She must not eat anything after midnight"
+        },
+        {
+          "type": "attending",
+          "who": "Mr Okafor (consultant)",
+          "quote": "Mr Okafor is the consultant in charge of her care"
+        }
+      ]
+    },
+    {
+      "update_id": "u03",
+      "at": "2026-10-19T13:05:00+01:00",
+      "kind": "photo",
+      "author": "anna",
+      "photo_of": "Ward notice board",
+      "text": "WARD 5B ORTHOPAEDICS. Visiting hours: 11:00 - 13:00 and 17:00 - 20:00. Maximum 2 visitors per bed. Consultant ward round: weekdays 8:30. Ward phone: 020 7946 0123",
+      "recorded_extraction": [
+        {
+          "type": "visiting",
+          "hours": "11:00 - 13:00 and 17:00 - 20:00",
+          "rule": "Maximum 2 visitors per bed",
+          "quote": "Visiting hours: 11:00 - 13:00 and 17:00 - 20:00. Maximum 2 visitors per bed"
+        },
+        {
+          "type": "rounds",
+          "when_text": "weekdays 8:30",
+          "quote": "Consultant ward round: weekdays 8:30"
+        },
+        {
+          "type": "contact",
+          "what": "Ward phone",
+          "value": "020 7946 0123",
+          "quote": "Ward phone: 020 7946 0123"
+        }
+      ]
+    },
+    {
+      "update_id": "u04",
+      "at": "2026-10-19T20:30:00+01:00",
+      "kind": "note",
+      "topic": "plan",
+      "author": "david",
+      "text": "Booked a flight from Toronto, landing at Heathrow on Wednesday morning. I can do the evening visits from Wednesday.",
+      "recorded_extraction": [
+        {
+          "type": "family",
+          "who": "David",
+          "what": "Flying in from Toronto, landing Wednesday morning; will do evening visits from Wednesday",
+          "quote": "Booked a flight from Toronto, landing at Heathrow on Wednesday morning"
+        }
+      ]
+    },
+    {
+      "update_id": "u05",
+      "at": "2026-10-20T13:40:00+01:00",
+      "kind": "recording",
+      "author": "anna",
+      "speaker": "Orthopaedic surgeon",
+      "text": "The operation went well. We replaced the top of the hip joint, a half hip replacement. She will start physiotherapy tomorrow and get up with a walking frame. If she is walking safely with the frame, she could go home on Friday.",
+      "recorded_extraction": [
+        {
+          "type": "procedure_done",
+          "what": "Half hip replacement",
+          "when": "2026-10-20T13:40:00+01:00",
+          "quote": "We replaced the top of the hip joint, a half hip replacement"
+        },
+        {
+          "type": "next_step",
+          "what": "Physiotherapy starts tomorrow, getting up with a walking frame",
+          "quote": "She will start physiotherapy tomorrow and get up with a walking frame"
+        },
+        {
+          "type": "expected_discharge",
+          "when_text": "Friday",
+          "when": "2026-10-23",
+          "condition": "If she is walking safely with the frame",
+          "quote": "If she is walking safely with the frame, she could go home on Friday"
+        }
+      ]
+    },
+    {
+      "update_id": "u06",
+      "at": "2026-10-21T09:10:00+01:00",
+      "kind": "note",
+      "author": "anna",
+      "text": "Physio got her standing with the frame this morning. She's tired but smiling.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "Stood up with the walking frame at physiotherapy",
+          "quote": "Physio got her standing with the frame this morning"
+        }
+      ]
+    },
+    {
+      "update_id": "u07",
+      "at": "2026-10-22T16:20:00+01:00",
+      "kind": "recording",
+      "author": "david",
+      "speaker": "Ward nurse",
+      "text": "She is a little dizzy when she stands up, so the team wants to keep her one more day to be safe. Going home is now planned for Saturday morning.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "A little dizzy when standing; the team keeps her one more day",
+          "quote": "She is a little dizzy when she stands up, so the team wants to keep her one more day"
+        },
+        {
+          "type": "expected_discharge",
+          "when_text": "Saturday morning",
+          "when": "2026-10-24",
+          "condition": "",
+          "quote": "Going home is now planned for Saturday morning"
+        }
+      ]
+    },
+    {
+      "update_id": "u07b",
+      "at": "2026-10-23T08:50:00+01:00",
+      "kind": "recording",
+      "author": "anna",
+      "speaker": "Mr Okafor, consultant",
+      "text": "Good morning, Elena. The wound looks clean and you walked well with the physiotherapist yesterday. You can go home today, once the pharmacy has your medicines ready.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "Wound looks clean; walked well with the physiotherapist",
+          "quote": "The wound looks clean and you walked well with the physiotherapist yesterday"
+        },
+        {
+          "type": "expected_discharge",
+          "when_text": "today",
+          "when": "2026-10-23",
+          "condition": "once the pharmacy has your medicines ready",
+          "quote": "You can go home today, once the pharmacy has your medicines ready"
+        }
+      ]
+    },
+    {
+      "update_id": "u07c",
+      "at": "2026-10-23T14:30:00+01:00",
+      "kind": "recording",
+      "author": "anna",
+      "speaker": "Ward nurse",
+      "text": "I checked with Mr Okafor's team. She was dizzy again after lunch, so she stays with us tonight and goes home tomorrow morning, Saturday.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "Dizzy again after lunch; stays in hospital tonight",
+          "quote": "She was dizzy again after lunch, so she stays with us tonight"
+        },
+        {
+          "type": "expected_discharge",
+          "when_text": "tomorrow morning, Saturday",
+          "when": "2026-10-24",
+          "condition": "",
+          "quote": "goes home tomorrow morning, Saturday"
+        }
+      ]
+    },
+    {
+      "update_id": "u08",
+      "at": "2026-10-24T10:30:00+01:00",
+      "kind": "photo",
+      "author": "anna",
+      "photo_of": "Discharge medication list",
+      "text": "DISCHARGE MEDICATIONS\nPatient: Elena Novak (fictional)   Ward 5B   24/10/2026\nParacetamol 1 g four times a day as needed for pain.\nEnoxaparin 40 mg injection once a day for 28 days (to prevent blood clots).\nLansoprazole 15 mg once a day.\nContinue: Amlodipine 5 mg once a day.\nSTOP taking Ibuprofen.\nFICTIONAL DEMO DOCUMENT - NOT A REAL PRESCRIPTION",
+      "image": "photos/discharge_medication_list.jpg",
+      "reading": {
+        "method": "recorded",
+        "note": "the text printed on the sample photo (care_cases/photos/make_sample_photos.py), recorded for the demo; live, a vision model reads it and the caregiver checks it"
+      },
+      "recorded_extraction": [
+        {
+          "type": "medication",
+          "name": "Paracetamol",
+          "dose": "1 g",
+          "frequency": "four times a day as needed for pain",
+          "status": "new",
+          "quote": "Paracetamol 1 g four times a day as needed for pain"
+        },
+        {
+          "type": "medication",
+          "name": "Enoxaparin",
+          "dose": "40 mg injection",
+          "frequency": "once a day for 28 days",
+          "status": "new",
+          "quote": "Enoxaparin 40 mg injection once a day for 28 days"
+        },
+        {
+          "type": "medication",
+          "name": "Lansoprazole",
+          "dose": "15 mg",
+          "frequency": "once a day",
+          "status": "new",
+          "quote": "Lansoprazole 15 mg once a day"
+        },
+        {
+          "type": "medication",
+          "name": "Amlodipine",
+          "dose": "5 mg",
+          "frequency": "once a day",
+          "status": "continue",
+          "quote": "Continue: Amlodipine 5 mg once a day"
+        },
+        {
+          "type": "medication",
+          "name": "Ibuprofen",
+          "dose": "",
+          "frequency": "",
+          "status": "stop",
+          "quote": "STOP taking Ibuprofen"
+        }
+      ]
+    },
+    {
+      "update_id": "u09",
+      "at": "2026-10-24T11:15:00+01:00",
+      "kind": "recording",
+      "author": "anna",
+      "speaker": "Discharge nurse",
+      "text": "She has been discharged and is free to leave the ward. The district nurse will visit her at home to check the wound on Tuesday. The staples come out at the GP practice in 12 days. The follow-up appointment at the fracture clinic is on Monday 30 November at 10:30 a.m. Come back straight away if the leg becomes hot, red or swollen, or if she is short of breath.",
+      "recorded_extraction": [
+        {
+          "type": "discharged",
+          "when": "2026-10-24T11:15:00+01:00",
+          "quote": "She has been discharged"
+        },
+        {
+          "type": "follow_up",
+          "what": "District nurse wound check",
+          "when_text": "Tuesday",
+          "when": "2026-10-27",
+          "where": "at home",
+          "quote": "The district nurse will visit her at home to check the wound on Tuesday"
+        },
+        {
+          "type": "follow_up",
+          "what": "Staples removed at the GP practice",
+          "when_text": "in 12 days",
+          "when": "2026-11-05",
+          "where": "GP practice",
+          "quote": "The staples come out at the GP practice in 12 days"
+        },
+        {
+          "type": "follow_up",
+          "what": "Fracture clinic appointment",
+          "when_text": "Monday 30 November at 10:30 a.m.",
+          "when": "2026-11-30T10:30:00+00:00",
+          "where": "Fracture clinic",
+          "quote": "The follow-up appointment at the fracture clinic is on Monday 30 November at 10:30 a.m."
+        },
+        {
+          "type": "warning_signs",
+          "what": "Come back straight away if the leg becomes hot, red or swollen, or if she is short of breath",
+          "quote": "Come back straight away if the leg becomes hot, red or swollen, or if she is short of breath"
+        }
+      ]
+    },
+    {
+      "update_id": "u10",
+      "at": "2026-10-24T18:00:00+01:00",
+      "kind": "note",
+      "topic": "plan",
+      "author": "anna",
+      "text": "Mum is home and settled. Joy will do the morning visits from tomorrow, I'll do evenings, David is staying until Thursday.",
+      "recorded_extraction": [
+        {
+          "type": "event",
+          "what": "Home and settled",
+          "quote": "Mum is home and settled"
+        },
+        {
+          "type": "family",
+          "who": "Joy, Anna, David",
+          "what": "Joy does mornings from tomorrow, Anna evenings, David stays until Thursday",
+          "quote": "Joy will do the morning visits from tomorrow, I'll do evenings, David is staying until Thursday"
+        }
+      ]
+    }
+  ]
+}

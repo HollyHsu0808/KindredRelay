@@ -1,0 +1,646 @@
+{
+  "per_model": {
+    "DeepSeek-V4-Flash": {
+      "throughput_handovers_per_s": 0.28067,
+      "concurrency": 4,
+      "selected_by": "the level with the most successful handovers per second of level wall time (ties: the lower concurrency); throughput counts successful handovers over all concurrent streams",
+      "rate_limited_at_selected_level": true,
+      "levels": [
+        {
+          "concurrency": 1,
+          "requests": 16,
+          "completed": 16,
+          "ok": 16,
+          "failed": 0,
+          "aborted": 0,
+          "not_run": 0,
+          "wall_s": 153.4766,
+          "max_in_flight": 1,
+          "throughput": {
+            "handovers_per_min": 6.255,
+            "completion_tokens_per_s": 19.17,
+            "completion_tokens": 2942,
+            "ok_without_usage": 0,
+            "speedup_vs_first_level": 1.0
+          },
+          "latency_s": {
+            "n": 16,
+            "p50": 7.2346,
+            "p95": 16.3439,
+            "mean": 9.5813,
+            "min": 4.8472,
+            "max": 18.581,
+            "p50_ci95": [
+              5.9618,
+              14.1992
+            ],
+            "p95_ci95": [
+              14.1992,
+              18.581
+            ],
+            "p50_excluding_retry_waits": 7.2346
+          },
+          "call_latency_s": {
+            "n": 16,
+            "p50": 7.2218,
+            "p95": 16.3309
+          },
+          "tokens_per_handover": {
+            "prompt_mean": 1049.2,
+            "completion_mean": 183.9
+          },
+          "errors": {
+            "count": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.1936
+            ],
+            "failures": {}
+          },
+          "http": {
+            "attempts": 16,
+            "retries": 0,
+            "statuses": {
+              "200": 16
+            },
+            "status_429": 0,
+            "rate_429": 0.0,
+            "wilson95_429": [
+              0.0,
+              0.1936
+            ],
+            "retry_wait_s": 0.0
+          }
+        },
+        {
+          "concurrency": 2,
+          "requests": 16,
+          "completed": 16,
+          "ok": 16,
+          "failed": 0,
+          "aborted": 0,
+          "not_run": 0,
+          "wall_s": 80.3268,
+          "max_in_flight": 2,
+          "throughput": {
+            "handovers_per_min": 11.951,
+            "completion_tokens_per_s": 34.68,
+            "completion_tokens": 2786,
+            "ok_without_usage": 0,
+            "speedup_vs_first_level": 1.911
+          },
+          "latency_s": {
+            "n": 16,
+            "p50": 6.5357,
+            "p95": 18.0502,
+            "mean": 9.1197,
+            "min": 4.6562,
+            "max": 33.7327,
+            "p50_ci95": [
+              5.8391,
+              9.7693
+            ],
+            "p95_ci95": [
+              10.1033,
+              33.7327
+            ],
+            "p50_excluding_retry_waits": 6.5357
+          },
+          "call_latency_s": {
+            "n": 16,
+            "p50": 6.5175,
+            "p95": 18.0312
+          },
+          "tokens_per_handover": {
+            "prompt_mean": 1049.2,
+            "completion_mean": 174.1
+          },
+          "errors": {
+            "count": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.1936
+            ],
+            "failures": {}
+          },
+          "http": {
+            "attempts": 16,
+            "retries": 0,
+            "statuses": {
+              "200": 16
+            },
+            "status_429": 0,
+            "rate_429": 0.0,
+            "wilson95_429": [
+              0.0,
+              0.1936
+            ],
+            "retry_wait_s": 0.0
+          }
+        },
+        {
+          "concurrency": 4,
+          "requests": 16,
+          "completed": 16,
+          "ok": 16,
+          "failed": 0,
+          "aborted": 0,
+          "not_run": 0,
+          "wall_s": 57.0075,
+          "max_in_flight": 4,
+          "throughput": {
+            "handovers_per_min": 16.84,
+            "completion_tokens_per_s": 50.57,
+            "completion_tokens": 2883,
+            "ok_without_usage": 0,
+            "speedup_vs_first_level": 2.692
+          },
+          "latency_s": {
+            "n": 16,
+            "p50": 9.6291,
+            "p95": 34.9269,
+            "mean": 13.5864,
+            "min": 4.6675,
+            "max": 37.8947,
+            "p50_ci95": [
+              6.2816,
+              14.6267
+            ],
+            "p95_ci95": [
+              16.6577,
+              37.8947
+            ],
+            "p50_excluding_retry_waits": 9.6291
+          },
+          "call_latency_s": {
+            "n": 16,
+            "p50": 9.6063,
+            "p95": 34.9172
+          },
+          "tokens_per_handover": {
+            "prompt_mean": 1049.2,
+            "completion_mean": 180.2
+          },
+          "errors": {
+            "count": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.1936
+            ],
+            "failures": {}
+          },
+          "http": {
+            "attempts": 17,
+            "retries": 1,
+            "statuses": {
+              "200": 16,
+              "429": 1
+            },
+            "status_429": 1,
+            "rate_429": 0.0588,
+            "wilson95_429": [
+              0.0105,
+              0.2698
+            ],
+            "retry_wait_s": 1.0
+          }
+        },
+        {
+          "concurrency": 8,
+          "requests": 16,
+          "completed": 16,
+          "ok": 16,
+          "failed": 0,
+          "aborted": 0,
+          "not_run": 0,
+          "wall_s": 101.1433,
+          "max_in_flight": 8,
+          "throughput": {
+            "handovers_per_min": 9.491,
+            "completion_tokens_per_s": 27.02,
+            "completion_tokens": 2733,
+            "ok_without_usage": 0,
+            "speedup_vs_first_level": 1.517
+          },
+          "latency_s": {
+            "n": 16,
+            "p50": 10.1016,
+            "p95": 92.8586,
+            "mean": 26.8022,
+            "min": 4.7784,
+            "max": 96.289,
+            "p50_ci95": [
+              6.7693,
+              26.2176
+            ],
+            "p95_ci95": [
+              29.2648,
+              96.289
+            ],
+            "p50_excluding_retry_waits": 9.0589
+          },
+          "call_latency_s": {
+            "n": 16,
+            "p50": 8.4504,
+            "p95": 11.3581
+          },
+          "tokens_per_handover": {
+            "prompt_mean": 1049.2,
+            "completion_mean": 170.8
+          },
+          "errors": {
+            "count": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.1936
+            ],
+            "failures": {}
+          },
+          "http": {
+            "attempts": 36,
+            "retries": 20,
+            "statuses": {
+              "200": 16,
+              "429": 20
+            },
+            "status_429": 20,
+            "rate_429": 0.5556,
+            "wilson95_429": [
+              0.3958,
+              0.7046
+            ],
+            "retry_wait_s": 281.0
+          }
+        }
+      ]
+    }
+  },
+  "schema_version": "kindredrelay-load-token-factory-v1",
+  "created_utc": "2026-10-17T23:36:54.661+00:00",
+  "git": {
+    "bench_script_tracked": true,
+    "dirty": true,
+    "head": "0874ecde81ab4acf3a48c9967a8c932522cb6b91",
+    "untracked_files": 23
+  },
+  "argv": [
+    "--api-key-file",
+    "<redacted path>",
+    "--marker",
+    "release/benchmarks/.load_test_running",
+    "--out",
+    "release/benchmarks/load_20261017T232951Z"
+  ],
+  "dry_run": false,
+  "model": "DeepSeek-V4-Flash",
+  "endpoint": {
+    "host": "developer.amd.com.cn",
+    "transport": "urllib",
+    "is_token_factory_default": true
+  },
+  "pipeline": {
+    "request_unit": "one handover as scripts/bench_tf_handover.py runs a case: one story update added after the earlier updates were replayed from their recorded extraction; episode.llm_extractor over llm_client.OpenAIChat.chat with the bench's instrumented HTTP layer",
+    "story": "handoff_day1/care_cases/episode_hip_fracture.json",
+    "story_sha256": "b2532dd3164b80859265544ff0da081f726e7ef09ac884c7398b2feccf9088f7",
+    "update_cycle": [
+      "episode_hip_fracture/u01",
+      "episode_hip_fracture/u02",
+      "episode_hip_fracture/u03",
+      "episode_hip_fracture/u04"
+    ],
+    "max_tokens": 2000,
+    "guided_json": false,
+    "timeout_s": 120.0,
+    "max_tries": 6,
+    "max_wait_s": 60.0,
+    "timeout_retries": 0,
+    "backoff_base_s": 2.0,
+    "extra_body": {},
+    "verifier": "off",
+    "connection": "one HTTPS connection per attempt (urllib), as the bench's transport"
+  },
+  "design": {
+    "levels": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "requests_per_level": 16,
+    "pause_s": 10.0,
+    "max_calls": 120,
+    "marker": "release/benchmarks/.load_test_running",
+    "marker_window_utc": [
+      "2026-10-17T23:29:52.417+00:00",
+      "2026-10-17T23:36:54.484+00:00"
+    ],
+    "level_wall": "from the submission of the level's first request to the end of its last",
+    "throughput": "successful handovers / level wall time; completion tokens (usage, successful requests) / level wall time, null when a successful request has no usage"
+  },
+  "stopped_reason": null,
+  "http_calls": {
+    "total": 85,
+    "retries": 21,
+    "status_429": 21
+  },
+  "levels": [
+    {
+      "concurrency": 1,
+      "requests": 16,
+      "completed": 16,
+      "ok": 16,
+      "failed": 0,
+      "aborted": 0,
+      "not_run": 0,
+      "wall_s": 153.4766,
+      "max_in_flight": 1,
+      "throughput": {
+        "handovers_per_min": 6.255,
+        "completion_tokens_per_s": 19.17,
+        "completion_tokens": 2942,
+        "ok_without_usage": 0,
+        "speedup_vs_first_level": 1.0
+      },
+      "latency_s": {
+        "n": 16,
+        "p50": 7.2346,
+        "p95": 16.3439,
+        "mean": 9.5813,
+        "min": 4.8472,
+        "max": 18.581,
+        "p50_ci95": [
+          5.9618,
+          14.1992
+        ],
+        "p95_ci95": [
+          14.1992,
+          18.581
+        ],
+        "p50_excluding_retry_waits": 7.2346
+      },
+      "call_latency_s": {
+        "n": 16,
+        "p50": 7.2218,
+        "p95": 16.3309
+      },
+      "tokens_per_handover": {
+        "prompt_mean": 1049.2,
+        "completion_mean": 183.9
+      },
+      "errors": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ],
+        "failures": {}
+      },
+      "http": {
+        "attempts": 16,
+        "retries": 0,
+        "statuses": {
+          "200": 16
+        },
+        "status_429": 0,
+        "rate_429": 0.0,
+        "wilson95_429": [
+          0.0,
+          0.1936
+        ],
+        "retry_wait_s": 0.0
+      }
+    },
+    {
+      "concurrency": 2,
+      "requests": 16,
+      "completed": 16,
+      "ok": 16,
+      "failed": 0,
+      "aborted": 0,
+      "not_run": 0,
+      "wall_s": 80.3268,
+      "max_in_flight": 2,
+      "throughput": {
+        "handovers_per_min": 11.951,
+        "completion_tokens_per_s": 34.68,
+        "completion_tokens": 2786,
+        "ok_without_usage": 0,
+        "speedup_vs_first_level": 1.911
+      },
+      "latency_s": {
+        "n": 16,
+        "p50": 6.5357,
+        "p95": 18.0502,
+        "mean": 9.1197,
+        "min": 4.6562,
+        "max": 33.7327,
+        "p50_ci95": [
+          5.8391,
+          9.7693
+        ],
+        "p95_ci95": [
+          10.1033,
+          33.7327
+        ],
+        "p50_excluding_retry_waits": 6.5357
+      },
+      "call_latency_s": {
+        "n": 16,
+        "p50": 6.5175,
+        "p95": 18.0312
+      },
+      "tokens_per_handover": {
+        "prompt_mean": 1049.2,
+        "completion_mean": 174.1
+      },
+      "errors": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ],
+        "failures": {}
+      },
+      "http": {
+        "attempts": 16,
+        "retries": 0,
+        "statuses": {
+          "200": 16
+        },
+        "status_429": 0,
+        "rate_429": 0.0,
+        "wilson95_429": [
+          0.0,
+          0.1936
+        ],
+        "retry_wait_s": 0.0
+      }
+    },
+    {
+      "concurrency": 4,
+      "requests": 16,
+      "completed": 16,
+      "ok": 16,
+      "failed": 0,
+      "aborted": 0,
+      "not_run": 0,
+      "wall_s": 57.0075,
+      "max_in_flight": 4,
+      "throughput": {
+        "handovers_per_min": 16.84,
+        "completion_tokens_per_s": 50.57,
+        "completion_tokens": 2883,
+        "ok_without_usage": 0,
+        "speedup_vs_first_level": 2.692
+      },
+      "latency_s": {
+        "n": 16,
+        "p50": 9.6291,
+        "p95": 34.9269,
+        "mean": 13.5864,
+        "min": 4.6675,
+        "max": 37.8947,
+        "p50_ci95": [
+          6.2816,
+          14.6267
+        ],
+        "p95_ci95": [
+          16.6577,
+          37.8947
+        ],
+        "p50_excluding_retry_waits": 9.6291
+      },
+      "call_latency_s": {
+        "n": 16,
+        "p50": 9.6063,
+        "p95": 34.9172
+      },
+      "tokens_per_handover": {
+        "prompt_mean": 1049.2,
+        "completion_mean": 180.2
+      },
+      "errors": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ],
+        "failures": {}
+      },
+      "http": {
+        "attempts": 17,
+        "retries": 1,
+        "statuses": {
+          "200": 16,
+          "429": 1
+        },
+        "status_429": 1,
+        "rate_429": 0.0588,
+        "wilson95_429": [
+          0.0105,
+          0.2698
+        ],
+        "retry_wait_s": 1.0
+      }
+    },
+    {
+      "concurrency": 8,
+      "requests": 16,
+      "completed": 16,
+      "ok": 16,
+      "failed": 0,
+      "aborted": 0,
+      "not_run": 0,
+      "wall_s": 101.1433,
+      "max_in_flight": 8,
+      "throughput": {
+        "handovers_per_min": 9.491,
+        "completion_tokens_per_s": 27.02,
+        "completion_tokens": 2733,
+        "ok_without_usage": 0,
+        "speedup_vs_first_level": 1.517
+      },
+      "latency_s": {
+        "n": 16,
+        "p50": 10.1016,
+        "p95": 92.8586,
+        "mean": 26.8022,
+        "min": 4.7784,
+        "max": 96.289,
+        "p50_ci95": [
+          6.7693,
+          26.2176
+        ],
+        "p95_ci95": [
+          29.2648,
+          96.289
+        ],
+        "p50_excluding_retry_waits": 9.0589
+      },
+      "call_latency_s": {
+        "n": 16,
+        "p50": 8.4504,
+        "p95": 11.3581
+      },
+      "tokens_per_handover": {
+        "prompt_mean": 1049.2,
+        "completion_mean": 170.8
+      },
+      "errors": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ],
+        "failures": {}
+      },
+      "http": {
+        "attempts": 36,
+        "retries": 20,
+        "statuses": {
+          "200": 16,
+          "429": 20
+        },
+        "status_429": 20,
+        "rate_429": 0.5556,
+        "wilson95_429": [
+          0.3958,
+          0.7046
+        ],
+        "retry_wait_s": 281.0
+      }
+    }
+  ],
+  "capacity_note": "Successful handovers per minute went from 6.25 at concurrency 1 to 9.49 at concurrency 8 (1.52x for 8x the concurrent requests). The endpoint answered HTTP 429 (rate limited) at concurrency 4, 8: throughput there is bounded by the rate limit applied to this API key and by the client's backoff (2, 4, 8, ... s or Retry-After), not by the speed of the serving hardware, which this client cannot see. Throughput stopped rising (less than +10% over the previous level) at concurrency 8; it coincides with HTTP 429 responses, so it is read as rate limiting.",
+  "source_sha256": {
+    "handoff_day1/agent/episode.py": "3d3181701ed7a6e686bf19fb8a0ef6c7a3876b7aebdaf7575e524792b6c07e66",
+    "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+    "handoff_day1/agent/evidence_gate.py": "627d92f66a30bc9947f06304eb12f0a24626fcee010e5c2c65f5dfb1ae3935a6",
+    "handoff_day1/agent/llm_client.py": "ed825126b721043424e0eceea121186c49521b2b0e62f82d2a0f16dc54f2b6ff",
+    "handoff_day1/ui/pages/1_Family_timeline.py": "ca10a54f1bbaaf8192cc433bedebe796bd34f10e56ad596e33f72f2ccac986b0",
+    "scripts/bench_tf_handover.py": "4b3fa96eef984c15c1737f4d798aed69c6f7c8265e5cb497ae323cb98bbc8d64",
+    "scripts/load_tf_endpoint.py": "2461060ee0e9c09241a45500598ceeeb0018d7a8bedf1f7d07c4c77b974533ec"
+  },
+  "statistics": {
+    "percentile": "linear interpolation between closest ranks",
+    "bootstrap": {
+      "resamples": 2000,
+      "seed": 20261017,
+      "min_n": 5,
+      "interval": "percentile 2.5 / 97.5",
+      "unit": "successful request of the level"
+    },
+    "wilson": "z = 1.959964; error rate over completed requests, 429 rate over HTTP attempts",
+    "latency_population": "successful requests; e2e includes retries and backoff waits",
+    "tokens": "as returned in usage; null when absent, never estimated"
+  },
+  "records_skipped_lines": []
+}

@@ -1,0 +1,297 @@
+{
+  "note": "GMDCSA-24 Subject 4 (sealed test split). The first run is the clean test result.",
+  "runs": [
+    {
+      "run": 1,
+      "opened_utc": "2026-10-14T08:34:17+00:00",
+      "clean_test": true,
+      "reopen_reason": null,
+      "per_clip_csv": "handoff_day1/logs/test_split_per_clip_run1_2026-10-14T083417Z.csv",
+      "model_dir": "handoff_day1/model/weights/carerelay_fall_v0_2",
+      "model_version": "0.2.0",
+      "best_pt_sha256": "2e55e35a906cf01b3ca90b369a755bd3e1e5148e00694c3c5f9910581f6ca608",
+      "threshold": 0.9784408807754517,
+      "trained_on": {
+        "train_sets": {
+          "gmdcsa24": [
+            1,
+            2
+          ],
+          "caucafall": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "le2i": [
+            1
+          ]
+        },
+        "validation_sets": {
+          "gmdcsa24": [
+            3
+          ],
+          "caucafall": [
+            6,
+            7
+          ],
+          "le2i": [
+            3
+          ]
+        },
+        "train": {
+          "sets": [
+            "gmdcsa24:1,2",
+            "caucafall:1,2,3,4,5",
+            "le2i:1"
+          ],
+          "clips": 199
+        },
+        "validation": {
+          "sets": [
+            "gmdcsa24:3",
+            "caucafall:6,7",
+            "le2i:3"
+          ],
+          "clips": 89
+        },
+        "test": {
+          "sets": [
+            "caucafall:8,9,10",
+            "le2i:2,4"
+          ]
+        },
+        "missing_pose_cache": {},
+        "sets_loaded": {
+          "train:gmdcsa24": {
+            "subjects_requested": [
+              1,
+              2
+            ],
+            "subjects_loaded": [
+              1,
+              2
+            ],
+            "clips": 80
+          },
+          "train:caucafall": {
+            "subjects_requested": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "subjects_loaded": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "clips": 49
+          },
+          "train:le2i": {
+            "subjects_requested": [
+              1
+            ],
+            "subjects_loaded": [
+              1
+            ],
+            "clips": 70
+          },
+          "val:gmdcsa24": {
+            "subjects_requested": [
+              3
+            ],
+            "subjects_loaded": [
+              3
+            ],
+            "clips": 43
+          },
+          "val:caucafall": {
+            "subjects_requested": [
+              6,
+              7
+            ],
+            "subjects_loaded": [
+              6,
+              7
+            ],
+            "clips": 19
+          },
+          "val:le2i": {
+            "subjects_requested": [
+              3
+            ],
+            "subjects_loaded": [
+              3
+            ],
+            "clips": 27
+          },
+          "test:caucafall": {
+            "subjects_requested": [
+              8,
+              9,
+              10
+            ],
+            "subjects_loaded": [
+              8,
+              9,
+              10
+            ],
+            "clips": 30
+          },
+          "test:le2i": {
+            "subjects_requested": [
+              2,
+              4
+            ],
+            "subjects_loaded": [
+              2,
+              4
+            ],
+            "clips": 90
+          }
+        },
+        "sample_weights": "CAUCAFall: 2 s before the first class-1 frame ignored; fall clips without an interval ignored (0 in training)",
+        "ignored_samples": 230,
+        "sealed": "GMDCSA-24 Subject 4 never loaded",
+        "licences": {
+          "caucafall": "CC BY 4.0",
+          "gmdcsa24": "MIT",
+          "le2i": "CC BY-NC-SA 3.0"
+        },
+        "attribution": [
+          "GMDCSA-24 (MIT), the authors' GitHub release",
+          "CAUCAFall: Eraso Guerrero et al., Data in Brief 45 (2022) 108610, Mendeley Data DOI 10.17632/7w7fccy7ky (CC BY 4.0)",
+          "Le2i / ImViA Fall Detection Dataset: Charfi et al., J. Electronic Imaging 22(4) 041106 (2013); dat@UBFC DOI 10.25666/DATAUBFC-2024-04-09 (CC BY-NC-SA 3.0)"
+        ],
+        "weighted_samples": 10876,
+        "positive_samples": 2801
+      },
+      "test": {
+        "dataset": "GMDCSA-24",
+        "subject": 4,
+        "clips": 37,
+        "fall_clips": 17,
+        "adl_clips": 20,
+        "auc": 0.85,
+        "at_model_threshold": {
+          "threshold": 0.9784408807754517,
+          "recall": 0.7059,
+          "specificity": 0.75,
+          "balanced_acc": 0.7279,
+          "tp": 12,
+          "fn": 5,
+          "tn": 15,
+          "fp": 5
+        },
+        "at_best_threshold_for_this_set": {
+          "threshold": 0.9861958026885986,
+          "recall": 0.7059,
+          "specificity": 0.85,
+          "balanced_acc": 0.7779,
+          "tp": 12,
+          "fn": 5,
+          "tn": 17,
+          "fp": 3,
+          "note": "oracle: chosen on these same clips; shows how far the threshold moved"
+        },
+        "auc_95ci": [
+          0.7206,
+          0.9588
+        ],
+        "balanced_acc_95ci": [
+          0.5941,
+          0.8662
+        ],
+        "fall_clips_peak_inside_falling_interval_pm1s": {
+          "n": 15,
+          "fraction": 1.0
+        },
+        "sample_auc": 0.7643,
+        "mean_person_fraction": 0.9437
+      }
+    },
+    {
+      "run": 2,
+      "opened_utc": "2026-10-14T08:34:38+00:00",
+      "clean_test": false,
+      "reopen_reason": "reference only: the previous model v0.1 on the same split, run after v0.2.0 was frozen and tested; no selection is made from it",
+      "per_clip_csv": "handoff_day1/logs/test_split_per_clip_run2_2026-10-14T083438Z.csv",
+      "model_dir": "handoff_day1/model/weights/carerelay_fall",
+      "model_version": "0.1.0",
+      "best_pt_sha256": "676aac8302db042affdf09431a1783341d9ed3451da1ed71d71e88671258d400",
+      "threshold": 0.963930070400238,
+      "trained_on": {
+        "dataset": "GMDCSA-24",
+        "train": {
+          "split": "train",
+          "subjects": [
+            1,
+            2
+          ],
+          "clips": 80
+        },
+        "validation": {
+          "split": "validation",
+          "subjects": [
+            3
+          ],
+          "clips": 43
+        },
+        "test": "Subject 4 never loaded",
+        "sample_labels": "positive = inside an author 'Falling' interval",
+        "samples": 5041,
+        "positive_samples": 1244,
+        "pose_cache": "data/derived/gmdcsa24/pose_mediapipe",
+        "pose_cache_model_as_expected": true
+      },
+      "test": {
+        "dataset": "GMDCSA-24",
+        "subject": 4,
+        "clips": 37,
+        "fall_clips": 17,
+        "adl_clips": 20,
+        "auc": 0.95,
+        "at_model_threshold": {
+          "threshold": 0.963930070400238,
+          "recall": 0.3529,
+          "specificity": 1.0,
+          "balanced_acc": 0.6765,
+          "tp": 6,
+          "fn": 11,
+          "tn": 20,
+          "fp": 0
+        },
+        "at_best_threshold_for_this_set": {
+          "threshold": 0.9092466831207275,
+          "recall": 0.8824,
+          "specificity": 0.9,
+          "balanced_acc": 0.8912,
+          "tp": 15,
+          "fn": 2,
+          "tn": 18,
+          "fp": 2,
+          "note": "oracle: chosen on these same clips; shows how far the threshold moved"
+        },
+        "auc_95ci": [
+          0.8735,
+          0.9942
+        ],
+        "balanced_acc_95ci": [
+          0.5588,
+          0.7941
+        ],
+        "fall_clips_peak_inside_falling_interval_pm1s": {
+          "n": 15,
+          "fraction": 1.0
+        },
+        "sample_auc": 0.887,
+        "mean_person_fraction": 0.9437
+      }
+    }
+  ]
+}

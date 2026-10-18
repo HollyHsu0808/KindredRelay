@@ -1,0 +1,811 @@
+{
+ "frozen": {
+  "schema": "kindredrelay-scorecard-snapshot-v1",
+  "kind": "validation",
+  "source_dir": "release/validation_abd/final2-20261018T024113Z",
+  "source_file": "summary.json",
+  "source_sha256": "ec00bbeb5dafe8f710ecbed9d62c1bf751187dd606fada3ee1698651b04ba7c5",
+  "frozen_by": "scripts/freeze_scorecard_results.py",
+  "git_head": null,
+  "tests_run": [
+   "deploy/test_run_local.py",
+   "deploy/test_serve.py",
+   "deploy/test_validate_abd.py",
+   "handoff_day1/agent/test_asr_local.py",
+   "handoff_day1/agent/test_cancel_vocabulary.py",
+   "handoff_day1/agent/test_change_engine.py",
+   "handoff_day1/agent/test_display_cancel_toast.py",
+   "handoff_day1/agent/test_episode.py",
+   "handoff_day1/agent/test_episode_qa.py",
+   "handoff_day1/agent/test_episode_revisions.py",
+   "handoff_day1/agent/test_episode_safety_gaps.py",
+   "handoff_day1/agent/test_event_selection_round2.py",
+   "handoff_day1/agent/test_event_selection_round4.py",
+   "handoff_day1/agent/test_fallback_failclosed.py",
+   "handoff_day1/agent/test_family_intent_dedup.py",
+   "handoff_day1/agent/test_guardrails.py",
+   "handoff_day1/agent/test_llm_client_recorder.py",
+   "handoff_day1/agent/test_plan_negation.py",
+   "handoff_day1/agent/test_procedure_negation_display.py",
+   "handoff_day1/agent/test_readmission_projection.py",
+   "handoff_day1/agent/test_review_blockers_display.py",
+   "handoff_day1/agent/test_review_fixes_s1.py",
+   "handoff_day1/agent/test_review_regressions_episode.py",
+   "handoff_day1/agent/test_state_conflicts_round2.py",
+   "handoff_day1/agent/test_temporal_context_guards.py",
+   "handoff_day1/agent/test_temporal_explicit_zone.py",
+   "handoff_day1/agent/test_temporal_family_round3.py",
+   "handoff_day1/agent/test_temporal_hospital_zone.py",
+   "handoff_day1/agent/test_temporal_program_repair.py",
+   "handoff_day1/agent/test_temporal_round2.py",
+   "handoff_day1/agent/test_temporal_round3.py",
+   "handoff_day1/agent/test_timeline_html.py",
+   "handoff_day1/agent/test_timeline_precision.py",
+   "handoff_day1/agent/test_timeline_precision_guards.py",
+   "handoff_day1/ui/test_app_shell.py",
+   "handoff_day1/ui/test_plan_provider_failure.py",
+   "handoff_day1/ui/test_timeline_page.py",
+   "handoff_day1/ui/test_timeline_storage.py",
+   "handoff_day1/ui/test_timeline_storage_residue.py",
+   "handoff_day1/ui/test_toast_headline.py",
+   "scripts/eval_handoff_replay.py"
+  ],
+  "not_covered": [
+   "handoff_day1/integration_samples/mock_services/test_mock_server_changes.py",
+   "handoff_day1/ui/test_app.py",
+   "research/controlled_temporal_v1/test_reference_oracle.py",
+   "research/explicit_zone_regression_v1/test_generate_cases.py",
+   "research/explicit_zone_regression_v1/test_run_regression.py",
+   "scripts/test_analyze_bench_agreement.py",
+   "scripts/test_asr_utf8_producer.py",
+   "scripts/test_bench_tf_handover.py",
+   "scripts/test_capacity_model.py",
+   "scripts/test_check_depth_coverage.py",
+   "scripts/test_check_hazard_log.py",
+   "scripts/test_controlled_temporal.py",
+   "scripts/test_crosscheck_judge.py",
+   "scripts/test_export_public_repo.py",
+   "scripts/test_freeze_scorecard_results.py",
+   "scripts/test_load_tf_endpoint.py",
+   "scripts/test_metamorphic.py",
+   "scripts/test_primock_gold_eval.py",
+   "scripts/test_primock_transcript_segments.py",
+   "scripts/test_primock_utf8_consumers.py",
+   "scripts/test_redact_local_paths.py",
+   "scripts/test_redteam_safety.py",
+   "scripts/test_replay_temporal_dev_proposals.py",
+   "scripts/test_scan_history_secrets.py",
+   "scripts/test_stage3_bounded.py",
+   "scripts/test_temporal_benchmark.py",
+   "scripts/test_temporal_mechanisms.py",
+   "scripts/test_temporal_plan_sources.py",
+   "scripts/test_verify_claims.py",
+   "training/verifier_v2/test_offline.py"
+  ],
+  "not_covered_inventory": "test_*.py under deploy, handoff_day1, research, scripts, training (git ls-files -co --exclude-standard) at freeze time, minus the run's results[].command",
+  "frozen_utc": "2026-10-18T03:09:29+00:00",
+  "redacted_entries": 0,
+  "local_paths_redacted": 85,
+  "local_path_rule": "scripts/redact_local_paths.py: absolute paths under the user profile folder, in any spelling (drive letter in either case, \\ or / separators, JSON-escaped \\\\, Git Bash /<drive>/...): inside the repository root -> <repo>/ + the path below the root with / separators; elsewhere under the profile -> <local>/…/ + the last path component (<local> for the profile folder itself). Nothing else changes."
+ },
+ "doc": {
+  "completed_utc": "2026-10-18T02:46:26.564074+00:00",
+  "python": "3.13.6 (tags/v3.13.6:4e66535, Aug  6 2025, 14:36:00) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "<repo>/.venv/Scripts/python.exe",
+  "packages": {
+   "streamlit": "1.58.0",
+   "pandas": "2.3.1",
+   "numpy": "2.2.6",
+   "requests": "2.32.3",
+   "tzdata": "2025.2",
+   "torch": "2.12.0",
+   "transformers": "4.57.1",
+   "sentencepiece": "0.2.1",
+   "protobuf": "5.29.6"
+  },
+  "root": "<repo>",
+  "scope": "Deterministic engine/UI tests. Doubles do not validate trained-model accuracy or deployment.",
+  "source_sha256": {
+   "deploy/requirements-release.lock": "cffc83bf695d1e297139fbea02cfcf35609189e5fdec5dfbfe24d895c7b7c9a0",
+   "deploy/requirements-speech.txt": "3d60b9eeba2fccb5b68e8db1a8f595ba18008ec001a902cbd364c044a98081e5",
+   "deploy/requirements-verifier.txt": "0518ca2c9df2d2403e1c107a450dad7d9e8c6df352fb9b43d9721f1ec37c569c",
+   "deploy/run_local.py": "b003f9061f6b69b660ce6c9469cf4261bb7470cce5a0eaca404dfc751238feb5",
+   "deploy/serve.py": "417235035680a0ade92e48dffdf7dca72503227e881c237d1e4e451cb25d223b",
+   "deploy/test_run_local.py": "9ee63e9e0fc47ebcf1220973370b84985bc85e600cf2745e10b05e7c6e03c797",
+   "deploy/test_serve.py": "cbca54a750f59eaaae9f296ccef15f44c825a81539bf4b2bb7b3c9a480fa3264",
+   "deploy/test_validate_abd.py": "78460100411178f112fa1f8de22a5c03bc2da291b31d623c9c995657ea9c9f78",
+   "deploy/validate_abd.py": "1699bbc716949964d32c166ba3c8b83a7b01f6a7f5b1d22b71cdbb21bc77a7ee",
+   "deploy/verify_package.py": "2c0770f5f4fa13e7fba2582430e6d103782b96e9ca26ed9429c557365aa01dcc",
+   "Dockerfile.release": "bb23b48c87576cb23f0c5943bde34ddece234943dd2bb80401a8b878d75a6e1a",
+   "handoff_day1/agent/asr_local.py": "882b5c89e4b7af87ca62900db539afbcc048c22696012b61e4ca5dd3777cbdb6",
+   "handoff_day1/agent/case_agent.py": "8ed3ac44b6df869af9a10dca7c39c38c938137b9a7c0438318593116a67b5d6f",
+   "handoff_day1/agent/case_store.py": "141d36a7ebf78471946c0406a4769d44f969e8dd9d2e0fde6af2c6bbbf58ad25",
+   "handoff_day1/agent/change_engine.py": "c0514be7c34949bca6b2142c3a112a9c946fe25e41a49f76e6ef988bfffc4765",
+   "handoff_day1/agent/demo_propagation.py": "2c8efe337d15cef077547a254f7527475a1b6c8e63b0d07539a861bcc8f8deab",
+   "handoff_day1/agent/episode.py": "ae80a0463a8d79d166e462d097301464c6a0d9b61ce80c0a5bc741b46eb47a28",
+   "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+   "handoff_day1/agent/episode_qa.py": "8ef36b6a0d8487885e1ae5435372cbffdde187910509306386ee217db2244097",
+   "handoff_day1/agent/eval_care_cases.py": "a70f612fe136414b46953e39e63e01dbe1ee95353f26c45bc7c5cb8ecaaddfe6",
+   "handoff_day1/agent/evidence_gate.py": "627d92f66a30bc9947f06304eb12f0a24626fcee010e5c2c65f5dfb1ae3935a6",
+   "handoff_day1/agent/extract_instructions.py": "5aaf020813df060d1981804b13dce7b7c9468bd892155e21b8065fb422ea9404",
+   "handoff_day1/agent/fake_llm_server.py": "4e33b38bb59dd31127696ac1bf862587b619c08d4a1e752414f5cae0a1d9c304",
+   "handoff_day1/agent/guardrails.py": "336fb408ca01856d3f110827942e84a95d3f3ae72c502e5f71941f100d9b5489",
+   "handoff_day1/agent/kr_runtime.py": "59f38a460b72358ee5d47454e0ede8c89fc915aad8e8a536fbffaa32feff6376",
+   "handoff_day1/agent/llm_client.py": "ed825126b721043424e0eceea121186c49521b2b0e62f82d2a0f16dc54f2b6ff",
+   "handoff_day1/agent/test_asr_local.py": "29c0699b6eb17feb52bb897121a584b0619161b49df95f6ba52a6a068f2a4c4b",
+   "handoff_day1/agent/test_cancel_vocabulary.py": "ce9fe088655f0bf7a5bfc4b95af029a0b78682c1bc71b8e0f53a02f95b361c37",
+   "handoff_day1/agent/test_change_engine.py": "7ece7bc5ff79cb631770318c4b06a30446b3ecd931c753d707082827cad0697b",
+   "handoff_day1/agent/test_display_cancel_toast.py": "767d302c0a09b5fb237cda71e138ece3c60de0023def34f373a09a4a3d746d2c",
+   "handoff_day1/agent/test_episode.py": "757cc796afa1b3ea138f4573709d21a940cf21152cd9f8e847eb6e1f209e24d7",
+   "handoff_day1/agent/test_episode_qa.py": "2f0466596dc5cd9895c9f23faac72d6f364af4de68feb6d9830e1229f2e25103",
+   "handoff_day1/agent/test_episode_revisions.py": "512dc4dff401fdd50c50602ff7b3482cc388236caaa9c2e88ecc3b9ad78fbccf",
+   "handoff_day1/agent/test_episode_safety_gaps.py": "8c166b2aa2de9636ea92092002e027274e0d7b2a64def2b1efc4965b6c9a9c93",
+   "handoff_day1/agent/test_event_selection_round2.py": "cb5213137fcb6c3cf7afbfacacaa72d5d89465622f2606b0fc82679641427ad2",
+   "handoff_day1/agent/test_event_selection_round4.py": "409a34a5ae2d8efc3d0118663ad1c6202277b075658fa3902c0ed91d4f1cfce3",
+   "handoff_day1/agent/test_fallback_failclosed.py": "153d163281a8879d2be1f7e65b9187dcb4bb76b4b97856fc7976a9af370f7316",
+   "handoff_day1/agent/test_family_intent_dedup.py": "7b1b9c462d9d458852885b6dedee5a1c688076a9b0ff081b6ef1cc654442b6fe",
+   "handoff_day1/agent/test_guardrails.py": "b1027f5a2a749a49918a8f6e3eaaebda6dc60c5bbbe94194047c5b89b102b121",
+   "handoff_day1/agent/test_llm_client_recorder.py": "b1a9bab2ba41a85918796e1d211d7ea78c51efc0c48a13edbbeecc5e8a67af98",
+   "handoff_day1/agent/test_plan_negation.py": "f54fcbd0906a3430382c04b86fdbe2d175633b893a32bdc6b5f78cf8f73c0dec",
+   "handoff_day1/agent/test_procedure_negation_display.py": "e3c3852697d5c0d124a959367e5dbf05eaf697989a3b94b16a0415712f38a93d",
+   "handoff_day1/agent/test_readmission_projection.py": "92680f9ec365e218f7061277fbe22db942b0c1b9b33686ba2a7a08fbf85995d4",
+   "handoff_day1/agent/test_review_blockers_display.py": "3e3d3ae8320dc4d4613d6b7fe6829968b94b3e505052bd31b80f6bf65948e36b",
+   "handoff_day1/agent/test_review_fixes_s1.py": "0065d9a20fd03c3052a560b2795ffe119c1a83a16ce3b19b142611f37ee62ea1",
+   "handoff_day1/agent/test_review_regressions_episode.py": "40169905a44374d9ef679f1674a238d3774caf84a58c7f43aaff265a3283bac2",
+   "handoff_day1/agent/test_state_conflicts_round2.py": "e28e7965180286a0d85f46df2ea234f5ac48929a3d2f934cb72bc746bf48392f",
+   "handoff_day1/agent/test_temporal_context_guards.py": "9a243a88cfede849ff6848d1e90cdc648cb75ac8949aa7c602cd6888c232405e",
+   "handoff_day1/agent/test_temporal_explicit_zone.py": "462833879312ed66f7bec4780e1a6e6c321747004d3bc9c3471c432acefcc6ca",
+   "handoff_day1/agent/test_temporal_family_round3.py": "ecd7e9fbada955da621ee3ca19c2d8f91c6a32cc06ecf28ff128f9c42033139b",
+   "handoff_day1/agent/test_temporal_hospital_zone.py": "a2d40ac9fb6fdb4b5c543bce8f465dc3510d880c5b4b0bfdebeba78b98ac7e8f",
+   "handoff_day1/agent/test_temporal_program_repair.py": "dcf034c73d04b1d3a977c04ce4762e3a165977fbdba9bc5dd184dc7cd669c6f4",
+   "handoff_day1/agent/test_temporal_round2.py": "7380acc63ddaa82eccdd885a1c427deecb9e0f17540da88cbd203b4e5fd6fcce",
+   "handoff_day1/agent/test_temporal_round3.py": "b8ece8741e4d0f775a690538eabb6c09d5feb3bf2bd580581c4a808508062ad7",
+   "handoff_day1/agent/test_timeline_html.py": "259b29fd8c4ef0c4f87500532fac23b6271e56ef43df011d89bf541789289289",
+   "handoff_day1/agent/test_timeline_precision.py": "384207fcffa9e4fed0bdfdbcb5ea6bc48e32153f0c5aa076fa1d08ad5fcb5dc6",
+   "handoff_day1/agent/test_timeline_precision_guards.py": "3e09e0c93565f6b122dee75fbd9f92b2248bd902031a6cc07e66b73c560f7b80",
+   "handoff_day1/agent/timeline_html.py": "597d9a87ddd5ebd563f1b6795e50b163fd068e81933a6866d4d92b3e36c749df",
+   "handoff_day1/care_cases/check_care_cases.py": "f484cdcef6407634a3f324ad702d86f5d7391af37ab73e12532aefc12681759f",
+   "handoff_day1/care_cases/episode_hip_fracture.json": "b2532dd3164b80859265544ff0da081f726e7ef09ac884c7398b2feccf9088f7",
+   "handoff_day1/care_cases/leaflets.json": "331c4c926ec8e0065a1642142ebc057b6055a926a67419045fb4923960208572",
+   "handoff_day1/care_cases/photos/discharge_medication_list.jpg": "4e154048341a4084a663c08e62707fe94ace9fc12ff893ef6ee059ef33c6f499",
+   "handoff_day1/care_cases/photos/discharge_medication_list_scan.png": "f955ce2dc46014bb2c2cab409861a0887ea65cdfeebc9c23e6b21d758ef81365",
+   "handoff_day1/care_cases/photos/make_sample_photos.py": "bcafe3b2459010a19cffc83227d80f8c584071243c8af40d22b1418195caa9ab",
+   "handoff_day1/care_cases/scenario_correction.json": "4cb95849aeed6febe95771d6183adb785ced8d7450f47dcb5d257d8172dec446",
+   "handoff_day1/care_cases/scenario_normal.json": "b029ef3c45ad21b23d7103bf7951095c283c64f85500dfca20e16a37ff5891f0",
+   "handoff_day1/care_cases/scenario_propagation.json": "97d7a9d8decb6625e4cdc4b150ea8950e0ff456b601ac7e42a616b31ff5e778e",
+   "handoff_day1/integration_samples/primock57/day1_consultation01_seg087_doctor.wav": "d6145ec49e88fc8ed22383e37a0db9401a4d1ce3d3f96a4988f922a45241a733",
+   "handoff_day1/RELEASE_VERSION.txt": "612250737947482a4161c8bfccc65552126431c758d0324971aefb6068ac2eb4",
+   "handoff_day1/scripts/amd_llm_metrics.py": "2a3cfd633e0832ffd5a2a1cb33ceaa9367bbeeef8380a52431708b762d4f0a80",
+   "handoff_day1/scripts/asr_whisper.py": "3bd847f6ebbc460fd80f10b481f2626a68ab0d2d447ae7ee44c253f294882285",
+   "handoff_day1/scripts/build_external_manifest.py": "7a865cbba6c34a7a56f058492b4189a3023af79e2ab391484af70738e3d159ca",
+   "handoff_day1/scripts/build_gmdcsa24_manifest.py": "3df7e940977ec24ecd69fa1eb8c976f193740898415358fc7d75a9f6b01ebb7e",
+   "handoff_day1/scripts/check_demo_models.py": "6d953c93e59c3c4e37c5833fdb1a4be92dc5c5175f1a479d4e7bd6ba391224b8",
+   "handoff_day1/scripts/check_whisper.py": "3cf09b2aa729046729cb8fefc5ee2be0242c8d1191cacbc3897f61ce86414b89",
+   "handoff_day1/scripts/compare_pose_frontends.py": "1c660908f54fe1ed7b9987b81a1899aa9ba918894fad3d6e6d71c52ad2dc110f",
+   "handoff_day1/scripts/download_external_fall.py": "8d8dfe326d200b19e20689204db5bc01c9090c2b6ef33327abd0c8ae70ef7d5c",
+   "handoff_day1/scripts/download_gmdcsa24.py": "d1ce462b0f3a0325c556399d22bcd229da918637bdaa50991f03cc6f3f533bd0",
+   "handoff_day1/scripts/download_primock57.py": "276767eb4d32bced5e7e9b844e08b2e5680e40d52606354779fe5525b2f1ee39",
+   "handoff_day1/scripts/eval_cross_dataset.py": "f59c82aa81f7de4d8675634b3b1d344cb6262975b634c1da83f5d536ed30aafd",
+   "handoff_day1/scripts/eval_g2g4_gmdcsa.py": "e8aeac4070c5b74e0452939ee2a034f3e93215c29eaed23b046d97d75a70f9c0",
+   "handoff_day1/scripts/eval_test_split.py": "bcdd81d76be2385a5acdad6b4bbdb8fb10c893cc1c9998a085423f015ccf74c5",
+   "handoff_day1/scripts/extract_audio.py": "fb3369690016454ce07d30b41ca137cb375aec53e5104dd460c1ad4e7fe7c2cd",
+   "handoff_day1/scripts/extract_pose_mediapipe.py": "ecf6978bbc206a41a8d718fcaab1ce9bed867efb8cf21c5413cef7a4921b7b88",
+   "handoff_day1/scripts/extract_pose_sequences.py": "2993fc4476c93c9b59283fde976078f3287920e20dc17fa9c2393d955d561d8e",
+   "handoff_day1/scripts/fall_datasets.py": "f4888e276ad5bef8d7b040e25927df2c7fba490ecfa695e7108a7db4d8b0483f",
+   "handoff_day1/scripts/finetune_g2g4_gmdcsa.py": "4cc6ad6e93104558819eb4da7c00c3c5221537cf799640bbe0304b485eb1a169",
+   "handoff_day1/scripts/primock_transcript_segments.py": "096f34461c97af1544e80431be943db5d288b5830ea570bae395293ab1a2e4fe",
+   "handoff_day1/scripts/retrain_g2g4_from_notebook.py": "3d2fdc92dd3010602a26e4b399e5d601e986c559816bdd7c284deb5d5d71967e",
+   "handoff_day1/scripts/run_asr_sample.py": "c09a4bf60773683bb35a61397d07e28630518dedfe9029dbd7da611a50b3b483",
+   "handoff_day1/scripts/run_cross_dataset.py": "2966a1efc308948c61599cea274fbeeb6247b456fcb75acc0258106c1dba9c04",
+   "handoff_day1/scripts/run_fall_training.py": "97b278c90d0b10b7eec4afcd0c3da61f75e436cdc11d5d183511e882a67d65ed",
+   "handoff_day1/scripts/run_v1_baseline.py": "ba80d3f7e6630a914da7156cd1c626e46dca3191633963cb60a851461a7b01a1",
+   "handoff_day1/scripts/shortcut_audit.py": "759e6aece0ea72adf42e497c3c53808391eeb3acbb751677a9c07001058822d6",
+   "handoff_day1/scripts/train_fall_gru.py": "fd5184520fb53879f7c48231dca1052619912a69e389db468a771a36cacfecc2",
+   "handoff_day1/scripts/train_fall_gru_multi.py": "94f8ac6621e60a09dd86bf37e55efa680cb6982c0d0a8447aa44fd66a2d0b709",
+   "handoff_day1/scripts/train_gru_pose.py": "6f1e937e96ccef8447904ca23659195963db20ba287d8bcf721848e5fc845bc6",
+   "handoff_day1/scripts/try_episode_qa.py": "4975a0173e1fde5f42cb980cf78c2129534871f5f0f6eb20639b417206ef4dd9",
+   "handoff_day1/scripts/try_photo_read.py": "ef9953400a2d1f0698b52965f23fb7f3a62e753907d1b34d40f4894c1d03a3f9",
+   "handoff_day1/scripts/verify_timestamps.py": "24fc81e66796c227b1f69feafdf75621b156bf466905a46c009b303b675c11c1",
+   "handoff_day1/ui/app.py": "3221170c31d815268738bde3485c9932ebcf087e11f35648e3cdb7da976f4de1",
+   "handoff_day1/ui/pages/1_Family_timeline.py": "4c85256c3bca05d87c6b48d480ff7df40a66e03e381f31c8cc42260e1a66539a",
+   "handoff_day1/ui/pages/shell/amd_runtime.py": "0616136c28618210bf9c913c552fd665de83c4a160772e2f7f97a77da67b9163",
+   "handoff_day1/ui/pages/shell/kindred_app.py": "9c8ca67c444f49b676cf4ff88c509609c73137339fa4b00734fa2c96dfa5e462",
+   "handoff_day1/ui/pages/shell/runtime_trace.py": "892373536053c87d05a5fd6582ab17f84056c6ef1b2d194d36d4632b9b77ec30",
+   "handoff_day1/ui/pages/shell/scorecard.py": "0eb4ce1498e08302cb3fb255fd53221da895f283aff2aae6e2f52d99dc0d099b",
+   "handoff_day1/ui/pages/shell/scorecard_data.py": "308b2fd2f0e5437598f37953a3b15596a8f8919538e8bbd276e661dd20d4f006",
+   "handoff_day1/ui/test_app.py": "f5e6022227f5c8dc3713ac77030661d7293a36931f9b2877bcb7a6211fbdd1e6",
+   "handoff_day1/ui/test_app_shell.py": "008f7872a6214baa7f4472d58bb766b7c8eb361d63c53b1be7f767280cb28fcc",
+   "handoff_day1/ui/test_plan_provider_failure.py": "cce17662e079500ed91e2394d88f3fcbfb33a102de86972256cdd66f3fa10553",
+   "handoff_day1/ui/test_timeline_page.py": "544a125f131901bba1a34e2486ec31991037febbe46d9aed922d659efa43d6a2",
+   "handoff_day1/ui/test_timeline_storage.py": "55fff6d76b10c58141a09b4f3664015251b2aee62aca90f903385a4758842a06",
+   "handoff_day1/ui/test_timeline_storage_residue.py": "2eb6412a97f5db2cdf5eefb55f852cd1ab9a0442e0920338463fc2855967a921",
+   "handoff_day1/ui/test_toast_headline.py": "e8c98c6473818c5b29f8062c272c5bc440fe2c6214e2907a4667bf54331d52a2",
+   "handoff_day1/ui/timeline_storage.py": "c438691b1c45e059437060da6fa51ac64a5ceace5b74b3db27c1b53495262496",
+   "requirements.txt": "7c4e1d72c4e6ee67395390962290e08220e6fa67c4e7b2a97524cdcc5488e66c",
+   "scripts/eval_handoff_replay.py": "08aa189a9d83a9e698a0af59299a955046a7fddf5cc7811b64596ca0ad76dc9a"
+  },
+  "sources_unchanged_during_run": true,
+  "test_processes": 41,
+  "unittest_cases": 832,
+  "results": [
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_asr_local.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 3,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.199,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\01_test_asr_local.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\01_test_asr_local.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_cancel_vocabulary.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 6,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.42,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\02_test_cancel_vocabulary.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\02_test_cancel_vocabulary.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_change_engine.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 8,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 6.284,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\03_test_change_engine.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\03_test_change_engine.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_display_cancel_toast.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 7,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.383,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\04_test_display_cancel_toast.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\04_test_display_cancel_toast.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_episode.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 92,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 3.735,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\05_test_episode.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\05_test_episode.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_episode_qa.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 72,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 9.053,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\06_test_episode_qa.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\06_test_episode_qa.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_episode_revisions.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 41,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 1.014,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\07_test_episode_revisions.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\07_test_episode_revisions.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_episode_safety_gaps.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 13,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.883,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\08_test_episode_safety_gaps.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\08_test_episode_safety_gaps.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_event_selection_round2.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 30,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.477,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\09_test_event_selection_round2.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\09_test_event_selection_round2.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_event_selection_round4.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 29,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.671,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\10_test_event_selection_round4.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\10_test_event_selection_round4.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_fallback_failclosed.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 17,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.225,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\11_test_fallback_failclosed.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\11_test_fallback_failclosed.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_family_intent_dedup.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 17,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.414,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\12_test_family_intent_dedup.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\12_test_family_intent_dedup.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_guardrails.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": null,
+    "requires_unittest_count": false,
+    "passed": true,
+    "seconds": 0.88,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\13_test_guardrails.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\13_test_guardrails.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_llm_client_recorder.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 13,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 6.443,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\14_test_llm_client_recorder.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\14_test_llm_client_recorder.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_plan_negation.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 11,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.473,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\15_test_plan_negation.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\15_test_plan_negation.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_procedure_negation_display.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 7,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.377,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\16_test_procedure_negation_display.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\16_test_procedure_negation_display.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_readmission_projection.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 11,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.42,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\17_test_readmission_projection.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\17_test_readmission_projection.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_review_blockers_display.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 7,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.978,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\18_test_review_blockers_display.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\18_test_review_blockers_display.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_review_fixes_s1.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 10,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.565,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\19_test_review_fixes_s1.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\19_test_review_fixes_s1.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_review_regressions_episode.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 7,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.245,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\20_test_review_regressions_episode.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\20_test_review_regressions_episode.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_state_conflicts_round2.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 35,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.645,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\21_test_state_conflicts_round2.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\21_test_state_conflicts_round2.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_context_guards.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 13,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.323,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\22_test_temporal_context_guards.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\22_test_temporal_context_guards.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_explicit_zone.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 18,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.598,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\23_test_temporal_explicit_zone.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\23_test_temporal_explicit_zone.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_family_round3.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 10,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.443,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\24_test_temporal_family_round3.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\24_test_temporal_family_round3.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_hospital_zone.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 12,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.336,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\25_test_temporal_hospital_zone.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\25_test_temporal_hospital_zone.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_program_repair.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 29,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.552,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\26_test_temporal_program_repair.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\26_test_temporal_program_repair.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_round2.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 25,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.47,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\27_test_temporal_round2.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\27_test_temporal_round2.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_temporal_round3.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 26,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.722,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\28_test_temporal_round3.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\28_test_temporal_round3.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_timeline_html.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 65,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 3.551,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\29_test_timeline_html.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\29_test_timeline_html.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_timeline_precision.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 11,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.441,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\30_test_timeline_precision.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\30_test_timeline_precision.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "agent/test_timeline_precision_guards.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 3,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.337,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\31_test_timeline_precision_guards.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\31_test_timeline_precision_guards.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_timeline_page.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 83,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 207.167,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\32_test_timeline_page.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\32_test_timeline_page.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_timeline_storage.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 21,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 16.021,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\33_test_timeline_storage.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\33_test_timeline_storage.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_plan_provider_failure.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 11,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 13.643,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\34_test_plan_provider_failure.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\34_test_plan_provider_failure.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_app_shell.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 35,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 14.892,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\35_test_app_shell.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\35_test_app_shell.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_timeline_storage_residue.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 3,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.374,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\36_test_timeline_storage_residue.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\36_test_timeline_storage_residue.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "ui/test_toast_headline.py"
+    ],
+    "cwd": "<repo>/handoff_day1",
+    "exit_code": 0,
+    "unittest_cases": 2,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 4.791,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\37_test_toast_headline.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\37_test_toast_headline.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "deploy/test_run_local.py"
+    ],
+    "cwd": "<repo>",
+    "exit_code": 0,
+    "unittest_cases": 18,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 1.523,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\38_test_run_local.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\38_test_run_local.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "deploy/test_serve.py"
+    ],
+    "cwd": "<repo>",
+    "exit_code": 0,
+    "unittest_cases": 7,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.176,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\39_test_serve.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\39_test_serve.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "deploy/test_validate_abd.py"
+    ],
+    "cwd": "<repo>",
+    "exit_code": 0,
+    "unittest_cases": 4,
+    "requires_unittest_count": true,
+    "passed": true,
+    "seconds": 0.515,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\40_test_validate_abd.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\40_test_validate_abd.stderr.log"
+   },
+   {
+    "command": [
+     "<repo>/.venv/Scripts/python.exe",
+     "scripts/eval_handoff_replay.py",
+     "--out",
+     "<repo>/release/validation_abd/final2-20261018T024113Z/replay"
+    ],
+    "cwd": "<repo>",
+    "exit_code": 0,
+    "unittest_cases": null,
+    "requires_unittest_count": false,
+    "passed": true,
+    "seconds": 0.706,
+    "stdout": "release\\validation_abd\\final2-20261018T024113Z\\41_eval_handoff_replay.stdout.log",
+    "stderr": "release\\validation_abd\\final2-20261018T024113Z\\41_eval_handoff_replay.stderr.log"
+   }
+  ],
+  "passed": true,
+  "exit_code": 0
+ }
+}

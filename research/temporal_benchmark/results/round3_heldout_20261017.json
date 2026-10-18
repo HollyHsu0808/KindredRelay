@@ -1,0 +1,876 @@
+{
+  "observed_utc": "2026-10-17T09:54:43.772371+00:00",
+  "status": "Complete frozen one-shot heldout evaluation; quality does not establish overall advantage. Dataset consumed, no tuning or rerun.",
+  "case_groups": 40,
+  "observations": 240,
+  "methods": {
+    "full_context": {
+      "variants": 80,
+      "case_groups": 40,
+      "all_correct_rate": 0.1375,
+      "all_variants_correct_case_rate": 0.1,
+      "paired_case_correct": {
+        "held_ld_01": false,
+        "held_ld_02": false,
+        "held_ld_03": false,
+        "held_ld_04": true,
+        "held_ld_05": false,
+        "held_fp_01": false,
+        "held_fp_02": false,
+        "held_fp_03": false,
+        "held_fp_04": false,
+        "held_fp_05": false,
+        "held_pc_01": false,
+        "held_pc_02": false,
+        "held_pc_03": false,
+        "held_pc_04": false,
+        "held_pc_05": false,
+        "held_ra_01": true,
+        "held_ra_02": false,
+        "held_ra_03": false,
+        "held_ra_04": false,
+        "held_ra_05": false,
+        "held_cr_01": false,
+        "held_cr_02": true,
+        "held_cr_03": false,
+        "held_cr_04": false,
+        "held_cr_05": false,
+        "held_rd_01": false,
+        "held_rd_02": false,
+        "held_rd_03": false,
+        "held_rd_04": false,
+        "held_rd_05": true,
+        "held_at_01": false,
+        "held_at_02": false,
+        "held_at_03": false,
+        "held_at_04": false,
+        "held_at_05": false,
+        "held_me_01": false,
+        "held_me_02": false,
+        "held_me_03": false,
+        "held_me_04": false,
+        "held_me_05": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "conflict_resolution": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "family_plan": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "late_document": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "mixed_events": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "planned_vs_completed": {
+          "variants": 10,
+          "all_correct": 1
+        },
+        "readmission": {
+          "variants": 10,
+          "all_correct": 4
+        },
+        "revision_deletion": {
+          "variants": 10,
+          "all_correct": 2
+        }
+      },
+      "counts": {
+        "all_correct": 11,
+        "operational_failure": 13,
+        "phase_correct": 44,
+        "phase_citations_correct": 64,
+        "plans_correct": 46,
+        "events_correct": 13,
+        "event_true_positive": 47,
+        "event_predicted": 125,
+        "event_expected": 150,
+        "time_correct": 55,
+        "time_total": 186,
+        "citation_valid": 247,
+        "citation_total": 253,
+        "citations_all_valid": 77,
+        "answerable": 52,
+        "answered": 59,
+        "phase_wrong_certain": 18,
+        "predicted_confirmed_times": 140,
+        "time_wrong_certain_count": 87,
+        "gold_known_times": 164,
+        "gold_known_times_answered": 89,
+        "stale_or_extra_items": 102
+      },
+      "phase_accuracy": 0.55,
+      "answerable_coverage": 0.8461538461538461,
+      "phase_wrong_certain_rate": 0.225,
+      "time_wrong_certain_rate": 0.6214285714285714,
+      "known_time_coverage": 0.5426829268292683,
+      "event_precision": 0.376,
+      "event_recall": 0.31333333333333335,
+      "time_accuracy": 0.2956989247311828,
+      "equivalent_groups": 40,
+      "view_invariance_rate": 0.2,
+      "accounting": {
+        "logical_calls": {
+          "total": 80,
+          "p50": 1.0,
+          "p95": 1.0
+        },
+        "logical_tokens": {
+          "total": 294900,
+          "p50": 2530.0,
+          "p95": 14121.75
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.1014196136,
+          "p50": 0.0002953104,
+          "p95": 0.01
+        },
+        "logical_network_seconds": {
+          "total": 1777.318965,
+          "p50": 16.928373,
+          "p95": 60.548788550000005
+        },
+        "cache_hits": {
+          "total": 0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "errors": {
+          "total": 8,
+          "p50": 0.0,
+          "p95": 1.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 16.9321475,
+          "p95": 60.55161975
+        }
+      }
+    },
+    "journal": {
+      "variants": 80,
+      "case_groups": 40,
+      "all_correct_rate": 0.125,
+      "all_variants_correct_case_rate": 0.125,
+      "paired_case_correct": {
+        "held_ld_01": false,
+        "held_ld_02": false,
+        "held_ld_03": false,
+        "held_ld_04": false,
+        "held_ld_05": false,
+        "held_fp_01": false,
+        "held_fp_02": false,
+        "held_fp_03": false,
+        "held_fp_04": false,
+        "held_fp_05": false,
+        "held_pc_01": false,
+        "held_pc_02": false,
+        "held_pc_03": false,
+        "held_pc_04": false,
+        "held_pc_05": false,
+        "held_ra_01": false,
+        "held_ra_02": false,
+        "held_ra_03": true,
+        "held_ra_04": false,
+        "held_ra_05": false,
+        "held_cr_01": false,
+        "held_cr_02": false,
+        "held_cr_03": false,
+        "held_cr_04": false,
+        "held_cr_05": false,
+        "held_rd_01": false,
+        "held_rd_02": true,
+        "held_rd_03": true,
+        "held_rd_04": false,
+        "held_rd_05": true,
+        "held_at_01": false,
+        "held_at_02": false,
+        "held_at_03": false,
+        "held_at_04": false,
+        "held_at_05": false,
+        "held_me_01": true,
+        "held_me_02": false,
+        "held_me_03": false,
+        "held_me_04": false,
+        "held_me_05": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "conflict_resolution": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "family_plan": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "late_document": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "mixed_events": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "planned_vs_completed": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "readmission": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "revision_deletion": {
+          "variants": 10,
+          "all_correct": 6
+        }
+      },
+      "counts": {
+        "all_correct": 10,
+        "operational_failure": 1,
+        "phase_correct": 54,
+        "phase_citations_correct": 51,
+        "plans_correct": 59,
+        "events_correct": 10,
+        "event_true_positive": 73,
+        "event_predicted": 315,
+        "event_expected": 150,
+        "time_correct": 91,
+        "time_total": 186,
+        "citation_valid": 430,
+        "citation_total": 430,
+        "citations_all_valid": 80,
+        "answerable": 52,
+        "answered": 38,
+        "phase_wrong_certain": 19,
+        "predicted_confirmed_times": 169,
+        "time_wrong_certain_count": 84,
+        "gold_known_times": 164,
+        "gold_known_times_answered": 87,
+        "stale_or_extra_items": 262
+      },
+      "phase_accuracy": 0.675,
+      "answerable_coverage": 0.6923076923076923,
+      "phase_wrong_certain_rate": 0.2375,
+      "time_wrong_certain_rate": 0.4970414201183432,
+      "known_time_coverage": 0.5304878048780488,
+      "event_precision": 0.23174603174603176,
+      "event_recall": 0.4866666666666667,
+      "time_accuracy": 0.489247311827957,
+      "equivalent_groups": 40,
+      "view_invariance_rate": 0.875,
+      "accounting": {
+        "logical_calls": {
+          "total": 266,
+          "p50": 3.0,
+          "p95": 4.0
+        },
+        "logical_tokens": {
+          "total": 295818,
+          "p50": 3325.5,
+          "p95": 4465.0
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.05248552,
+          "p50": 0.00049966,
+          "p95": 0.0006738199999999999
+        },
+        "logical_network_seconds": {
+          "total": 1807.969333,
+          "p50": 17.74112,
+          "p95": 44.316396399999995
+        },
+        "cache_hits": {
+          "total": 132,
+          "p50": 1.0,
+          "p95": 4.0
+        },
+        "errors": {
+          "total": 1,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 6.55261,
+          "p95": 34.92935454999999
+        }
+      }
+    },
+    "rag": {
+      "variants": 80,
+      "case_groups": 40,
+      "all_correct_rate": 0.1625,
+      "all_variants_correct_case_rate": 0.15,
+      "paired_case_correct": {
+        "held_ld_01": false,
+        "held_ld_02": false,
+        "held_ld_03": false,
+        "held_ld_04": true,
+        "held_ld_05": false,
+        "held_fp_01": false,
+        "held_fp_02": false,
+        "held_fp_03": false,
+        "held_fp_04": false,
+        "held_fp_05": false,
+        "held_pc_01": false,
+        "held_pc_02": false,
+        "held_pc_03": false,
+        "held_pc_04": false,
+        "held_pc_05": false,
+        "held_ra_01": true,
+        "held_ra_02": false,
+        "held_ra_03": true,
+        "held_ra_04": true,
+        "held_ra_05": false,
+        "held_cr_01": false,
+        "held_cr_02": true,
+        "held_cr_03": false,
+        "held_cr_04": false,
+        "held_cr_05": false,
+        "held_rd_01": false,
+        "held_rd_02": false,
+        "held_rd_03": false,
+        "held_rd_04": false,
+        "held_rd_05": true,
+        "held_at_01": false,
+        "held_at_02": false,
+        "held_at_03": false,
+        "held_at_04": false,
+        "held_at_05": false,
+        "held_me_01": false,
+        "held_me_02": false,
+        "held_me_03": false,
+        "held_me_04": false,
+        "held_me_05": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "conflict_resolution": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "family_plan": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "late_document": {
+          "variants": 10,
+          "all_correct": 2
+        },
+        "mixed_events": {
+          "variants": 10,
+          "all_correct": 0
+        },
+        "planned_vs_completed": {
+          "variants": 10,
+          "all_correct": 1
+        },
+        "readmission": {
+          "variants": 10,
+          "all_correct": 6
+        },
+        "revision_deletion": {
+          "variants": 10,
+          "all_correct": 2
+        }
+      },
+      "counts": {
+        "all_correct": 13,
+        "operational_failure": 10,
+        "phase_correct": 51,
+        "phase_citations_correct": 64,
+        "plans_correct": 50,
+        "events_correct": 15,
+        "event_true_positive": 57,
+        "event_predicted": 117,
+        "event_expected": 150,
+        "time_correct": 65,
+        "time_total": 186,
+        "citation_valid": 233,
+        "citation_total": 235,
+        "citations_all_valid": 79,
+        "answerable": 52,
+        "answered": 58,
+        "phase_wrong_certain": 17,
+        "predicted_confirmed_times": 128,
+        "time_wrong_certain_count": 65,
+        "gold_known_times": 164,
+        "gold_known_times_answered": 85,
+        "stale_or_extra_items": 81
+      },
+      "phase_accuracy": 0.6375,
+      "answerable_coverage": 0.8846153846153846,
+      "phase_wrong_certain_rate": 0.2125,
+      "time_wrong_certain_rate": 0.5078125,
+      "known_time_coverage": 0.5182926829268293,
+      "event_precision": 0.48717948717948717,
+      "event_recall": 0.38,
+      "time_accuracy": 0.34946236559139787,
+      "equivalent_groups": 40,
+      "view_invariance_rate": 0.45,
+      "accounting": {
+        "logical_calls": {
+          "total": 80,
+          "p50": 1.0,
+          "p95": 1.0
+        },
+        "logical_tokens": {
+          "total": 230649,
+          "p50": 2443.5,
+          "p95": 2973.0
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.0516817496,
+          "p50": 0.0002847404,
+          "p95": 0.000393008
+        },
+        "logical_network_seconds": {
+          "total": 1535.853906,
+          "p50": 14.6334825,
+          "p95": 51.53122635
+        },
+        "cache_hits": {
+          "total": 0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "errors": {
+          "total": 3,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 14.638282499999999,
+          "p95": 51.53441109999999
+        }
+      }
+    }
+  },
+  "paired_case_comparison": [
+    {
+      "left": "full_context",
+      "right": "journal",
+      "case_groups": 40,
+      "left_only_correct": 3,
+      "right_only_correct": 4,
+      "both_correct": 1,
+      "neither_correct": 32,
+      "complete_observation_rate_difference_left_minus_right": 0.0125,
+      "case_group_bootstrap_95_interval": [
+        -0.1125,
+        0.1375
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    },
+    {
+      "left": "full_context",
+      "right": "rag",
+      "case_groups": 40,
+      "left_only_correct": 0,
+      "right_only_correct": 2,
+      "both_correct": 4,
+      "neither_correct": 34,
+      "complete_observation_rate_difference_left_minus_right": -0.025,
+      "case_group_bootstrap_95_interval": [
+        -0.0625,
+        0.0
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    },
+    {
+      "left": "journal",
+      "right": "rag",
+      "case_groups": 40,
+      "left_only_correct": 3,
+      "right_only_correct": 4,
+      "both_correct": 2,
+      "neither_correct": 31,
+      "complete_observation_rate_difference_left_minus_right": -0.0375,
+      "case_group_bootstrap_95_interval": [
+        -0.1625,
+        0.1
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    }
+  ],
+  "run_summary": {
+    "completed_utc": "2026-10-17T09:52:11.127714+00:00",
+    "variants_executed": 240,
+    "operational_failures": 24,
+    "sources_unchanged_during_run": true,
+    "physical_calls": 294,
+    "physical_tokens_accounted": 678294,
+    "physical_cost_usd_calculated": null,
+    "usd_pricing_status": "unpriced",
+    "provider_cost_accounted": 0.18443498319999996,
+    "provider_cost_currency": "unknown",
+    "provider_unknown_cost_requests": 12,
+    "physical_unknown_usage_requests": 12,
+    "physical_provider_request_seconds": 4221.187950999999,
+    "actual_run_wall_seconds": 4223.927128,
+    "logical_calls": 426,
+    "logical_tokens": 821367,
+    "cache_hits": 132,
+    "scope": "Predictions only; no answer keys opened. Operational failure remains in score denominator.",
+    "exit_code": 1
+  },
+  "failed_observations": [
+    {
+      "method": "rag",
+      "case_id": "held_fp_01",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_fp_02",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_fp_02",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_fp_02",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_fp_03",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_fp_03",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_fp_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_fp_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_fp_05",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_pc_02",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "RuntimeError"
+      ],
+      "http_codes": [
+        "429"
+      ],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "journal",
+      "case_id": "held_pc_02",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "RuntimeError"
+      ],
+      "http_codes": [
+        "429"
+      ],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_ra_02",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_ra_04",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "RuntimeError"
+      ],
+      "http_codes": [
+        "500"
+      ],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_ra_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_cr_03",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_cr_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_rd_03",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_at_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_at_05",
+      "variant_id": "arrival_a",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_at_05",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_me_01",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "TimeoutError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_me_02",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "rag",
+      "case_id": "held_me_02",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "ValueError"
+      ],
+      "http_codes": [],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    },
+    {
+      "method": "full_context",
+      "case_id": "held_me_03",
+      "variant_id": "arrival_b",
+      "error_types": [
+        "RuntimeError"
+      ],
+      "http_codes": [
+        "429"
+      ],
+      "raw_error_artifact": "release/validation_abd/depth_round3_20261017/model_round3/heldout/predictions.jsonl"
+    }
+  ],
+  "failure_type_counts": {
+    "ValueError": 12,
+    "TimeoutError": 8,
+    "RuntimeError": 4
+  },
+  "http_failure_counts": {
+    "429": 3,
+    "500": 1
+  },
+  "freeze_sha256": "5466bb081a5328a920b22c745ce708c6a27ebcba350d243915549e9c20e482c8",
+  "source_sha256": {
+    "handoff_day1/agent/asr_local.py": "882b5c89e4b7af87ca62900db539afbcc048c22696012b61e4ca5dd3777cbdb6",
+    "handoff_day1/agent/case_agent.py": "1457c55d367b9694a6b85dc20ef82be3211d511e218eaf606204baf360fae226",
+    "handoff_day1/agent/case_store.py": "141d36a7ebf78471946c0406a4769d44f969e8dd9d2e0fde6af2c6bbbf58ad25",
+    "handoff_day1/agent/change_engine.py": "c0514be7c34949bca6b2142c3a112a9c946fe25e41a49f76e6ef988bfffc4765",
+    "handoff_day1/agent/demo_propagation.py": "2c8efe337d15cef077547a254f7527475a1b6c8e63b0d07539a861bcc8f8deab",
+    "handoff_day1/agent/episode.py": "9aeb134d199e05eb9b9823a16798f9e176bb5f1159b1c17f3ada4c2bb9e3d211",
+    "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+    "handoff_day1/agent/episode_qa.py": "e1d609102afbb80ca1b2251b68b3f73a0ff3a74d6f764bf330c01282601a9dea",
+    "handoff_day1/agent/eval_care_cases.py": "a70f612fe136414b46953e39e63e01dbe1ee95353f26c45bc7c5cb8ecaaddfe6",
+    "handoff_day1/agent/evidence_gate.py": "627d92f66a30bc9947f06304eb12f0a24626fcee010e5c2c65f5dfb1ae3935a6",
+    "handoff_day1/agent/extract_instructions.py": "6cc5d3b084a4df5edbb7d85fe6efe54cdfdd64b25ab3467de6127aae18d2ff7d",
+    "handoff_day1/agent/fake_llm_server.py": "4e33b38bb59dd31127696ac1bf862587b619c08d4a1e752414f5cae0a1d9c304",
+    "handoff_day1/agent/guardrails.py": "dde6460cca04c1658974523dbc831ca0d0087c0594366faa41a54a4158da48ee",
+    "handoff_day1/agent/kr_runtime.py": "59f38a460b72358ee5d47454e0ede8c89fc915aad8e8a536fbffaa32feff6376",
+    "handoff_day1/agent/llm_client.py": "0d7f0654a1f75fb69b4f26270ebc4f36741d2715ebfe7c46f279e341be80fdc5",
+    "handoff_day1/agent/test_asr_local.py": "29c0699b6eb17feb52bb897121a584b0619161b49df95f6ba52a6a068f2a4c4b",
+    "handoff_day1/agent/test_change_engine.py": "7ece7bc5ff79cb631770318c4b06a30446b3ecd931c753d707082827cad0697b",
+    "handoff_day1/agent/test_episode.py": "757cc796afa1b3ea138f4573709d21a940cf21152cd9f8e847eb6e1f209e24d7",
+    "handoff_day1/agent/test_episode_qa.py": "2f0466596dc5cd9895c9f23faac72d6f364af4de68feb6d9830e1229f2e25103",
+    "handoff_day1/agent/test_episode_revisions.py": "512dc4dff401fdd50c50602ff7b3482cc388236caaa9c2e88ecc3b9ad78fbccf",
+    "handoff_day1/agent/test_event_selection_round2.py": "cb5213137fcb6c3cf7afbfacacaa72d5d89465622f2606b0fc82679641427ad2",
+    "handoff_day1/agent/test_guardrails.py": "e0d2c33a546daad84de0e096c58f2d90c956d33f596c7646d4225418eba0370d",
+    "handoff_day1/agent/test_state_conflicts_round2.py": "00970c66b212c44e7599197154d32dcddfd8711e7682a276ed8c37144d5ec809",
+    "handoff_day1/agent/test_temporal_context_guards.py": "9a243a88cfede849ff6848d1e90cdc648cb75ac8949aa7c602cd6888c232405e",
+    "handoff_day1/agent/test_temporal_family_round3.py": "ecd7e9fbada955da621ee3ca19c2d8f91c6a32cc06ecf28ff128f9c42033139b",
+    "handoff_day1/agent/test_temporal_program_repair.py": "dcf034c73d04b1d3a977c04ce4762e3a165977fbdba9bc5dd184dc7cd669c6f4",
+    "handoff_day1/agent/test_temporal_round2.py": "7380acc63ddaa82eccdd885a1c427deecb9e0f17540da88cbd203b4e5fd6fcce",
+    "handoff_day1/agent/test_temporal_round3.py": "b8ece8741e4d0f775a690538eabb6c09d5feb3bf2bd580581c4a808508062ad7",
+    "handoff_day1/agent/test_timeline_html.py": "744719cad0ed735b3349f7c804798bc5076985ab1ab3cd6af5e24f7d439c0dc0",
+    "handoff_day1/agent/timeline_html.py": "443807a3bc0d7188a3b2769f5a8f6344be1b3f92b1ac64f63e3e7ecc434112d6",
+    "scripts/temporal_benchmark.py": "456f1b038fe132a3183e1e13687e960cd0f5aa1fd8509ca75b40e4ff6bfde9fb",
+    "scripts/eval_temporal_benchmark.py": "3b8a67dcc21c209c9f4643d651ee55f71573c61f4b66b9a08d43d0734c4ebcac",
+    "scripts/test_temporal_benchmark.py": "ec17d1121ecd0541cc93adfc4b715fd2f9c34a8c48be75c982bf41af04f89040"
+  },
+  "config_sha256": "a6e7086007144e70fbf2aaf34192cf5f51a3973fa93d539a181594256992a465",
+  "protocol_sha256": "410a0276e1f4b0072256d8ec5223c7ca08b31278fdca814a7070227474134deb",
+  "cases_sha256": "8dd19317a0ab7a6cf92a49e99179f1e63e9b5452af45fcc34d8e98e8e0b4c5e9",
+  "gold_sha256": "bac3952380e840d4d2dd85c23e3d76a66b8ca9ac6f1c217ee589f7035298806f",
+  "sealed_runs": [
+    "62829bfff525c4df0f3a24e81b8e470cb10bb2e0e3321fdb01fd7c8105f993ad"
+  ],
+  "source_run": "release/validation_abd/depth_round3_20261017/model_round3/heldout",
+  "source_scores": "release/validation_abd/depth_round3_20261017/model_round3/heldout_score/scores.json",
+  "prediction_exit_code": 1,
+  "score_exit_code": 0,
+  "interpretation": [
+    "Strict Journal10/80 (12.5%), full_context11/80 (13.75%), lexicalRAG13/80 (16.25%); all paired intervals include zero. No established overall advantage.",
+    "Journal higher phase/time/recall/order-consistency here, lower eventprecision and lower answerablecoverage; not globally more accurate or safe.",
+    "Journal eventTP73/pred315/expected150: precision23.17%, recall48.67%, extra/stale262. Important-event selection and completeness remain serious gaps.",
+    "Literal validcite430/430 is not semantic support/clinical truth. Wrong-certain-time also penalizes unmatched extra events, phase includes missing gold support.",
+    "24 failed observations kept in denominator:8timeouts,4HTTP failures (3x429,1x500),12schema/observation validation failures. Methodfailures Journal1/full_context13/RAG10.",
+    "Frozen source/config/prompt/schema/scorer; all240 predictions sealed before separate gold scoring. Test consumed once; new tuned versions need new independent tests.",
+    "Small LLM-authored fictional English text,40independent storygroups, no human clinical review or actualASR/OCR/phone.",
+    "One fixed lexical baseline with fourqueries top6perqueryunion and forcedplans/revisions, shortstories oftenallsource; no strongretrieval/promptoptimization comparison.",
+    "Journal132cachehits vsbaseline0 and different inference workloads; cached walltime doesnotprove uncached architecture speed or AMD GPU performance.",
+    "678294physicalaccountedtokens includes12unknownusage requestreserves, not exactbilledtokens; USD UNPRICED/providercurrencyunknown/freeaccess userattested.",
+    "Model alias/endpoint fixed, underlying weights and AMD GPU hardware unknown.",
+    "Known product/gold authority-policy discrepancy remains included; no retrospective gold edits or case exclusion."
+  ]
+}

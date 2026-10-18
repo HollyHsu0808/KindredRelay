@@ -1,0 +1,13 @@
+PriMock57 - Korfiatis et al., 2022; released by Babylon Health.
+Official source: https://github.com/babylonhealth/primock57
+Licence: Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/).
+Original licence: data/raw/primock57/LICENSE.md
+Papers: PriMock57: A Dataset Of Primary Care Mock Consultations (ACL 2022, arXiv:2204.00333); Human Evaluation and
+Correlation with Automatic Metrics in Consultation Note Generation (ACL 2022, arXiv:2204.00447).
+
+Material derived from PriMock57 in this folder (records.jsonl, results.json, summary.md, human_review.csv,
+human_review_context.md): excerpts of the consultation notes written by the consulting clinicians and of the manual
+transcripts. Changes: the transcripts' PriMock markup was removed, consecutive segments of one speaker were joined into
+speaker-labelled turns and cut into consecutive parts; the notes were split into atomic note facts by fixed rules
+(scripts/primock_gold_eval.py split_note); facts were extracted and labelled by language models as described in
+research/primock_gold_v1/PROTOCOL.md. These are simulated consultations with actors, not real patients.

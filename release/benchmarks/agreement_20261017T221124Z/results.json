@@ -1,0 +1,1908 @@
+{
+  "schema_version": "kindredrelay-bench-agreement-v1",
+  "created_utc": "2026-10-17T22:11:24+00:00",
+  "inputs": {
+    "bench_dir": "release/benchmarks/tf_bench_20261017T213905Z",
+    "records_jsonl": {
+      "path": "release/benchmarks/tf_bench_20261017T213905Z/records.jsonl",
+      "sha256": "07043f944220b6588a26f8c0f4f87f98872504f5ce1074cb3f547c5a92c07788",
+      "lines_skipped": []
+    },
+    "results_json": {
+      "path": "release/benchmarks/tf_bench_20261017T213905Z/results.json",
+      "sha256": "3b19d88224156564c974fcde043d121f28d3e9e8da43b2913f51291c9dd3d06b"
+    },
+    "story": {
+      "path": "handoff_day1/care_cases/episode_hip_fracture.json",
+      "sha256": "b2532dd3164b80859265544ff0da081f726e7ef09ac884c7398b2feccf9088f7",
+      "matches_run": true
+    },
+    "heuristic_source": {
+      "path": "scripts/bench_tf_handover.py",
+      "sha256": "e812e5fdfb10120b0f8167f41f86beb718261465300b555d96d88dd968e0f571",
+      "matches_run": true
+    },
+    "norm_source": {
+      "path": "handoff_day1/agent/episode.py",
+      "sha256": "3d3181701ed7a6e686bf19fb8a0ef6c7a3876b7aebdaf7575e524792b6c07e66",
+      "matches_run": true
+    }
+  },
+  "run": {
+    "bench_schema_version": "kindredrelay-bench-token-factory-v1",
+    "models": [
+      "DeepSeek-V4-Flash",
+      "Gemma-4-31B-IT"
+    ],
+    "case_ids": [
+      "episode_hip_fracture/u01",
+      "episode_hip_fracture/u02",
+      "episode_hip_fracture/u03",
+      "episode_hip_fracture/u04",
+      "episode_hip_fracture/u05",
+      "episode_hip_fracture/u06",
+      "episode_hip_fracture/u07",
+      "episode_hip_fracture/u07b",
+      "episode_hip_fracture/u07c",
+      "episode_hip_fracture/u08",
+      "episode_hip_fracture/u09",
+      "episode_hip_fracture/u10"
+    ],
+    "update_ids": [
+      "u01",
+      "u02",
+      "u03",
+      "u04",
+      "u05",
+      "u06",
+      "u07",
+      "u07b",
+      "u07c",
+      "u08",
+      "u09",
+      "u10"
+    ],
+    "repeats": 3,
+    "dry_run": false
+  },
+  "definitions": {
+    "fact_key": "per update, over every model's and repeat's accepted facts: the connected components of the bench's agreement heuristic (scripts/bench_tf_handover.py reference_match: same type, and one quote contains the other after episode.norm); a key is named by its type and its shortest normalized quote; a repeat's fact set is the set of keys of its accepted facts (two facts of one repeat in one key count once)",
+    "used_pairs": "a (model, update) pair is used when every repeat of it completed (status ok)",
+    "within_model_jaccard": "per (model, update): the mean Jaccard over the 3 pairs of repeat fact sets; per model: the mean over updates; Jaccard of two empty sets is 1",
+    "repeat_count": "in how many of a model's repeats of an update the key was accepted (1..repeats)",
+    "majority_vote_set": "the keys a model accepted in more than half of its repeats of an update (2 of 3)",
+    "cross_model_jaccard": "per update: Jaccard of the two models' majority-vote sets; mean over updates",
+    "other_model_present": "the other model accepted the same key in at least one of its repeats of the update",
+    "reference_match": "at least one of this model's accepted facts in the key has the type of a fact of the story's recorded extraction for that update and one quote contains the other (reference_match); the reference is the story's recorded extraction (the fixture's curated facts for each update), matched with the bench's heuristic (same type, one quote contains the other); it is not clinical ground truth and not a quality score",
+    "unit_of_the_rates": "one (model, update, key); 'pooled' adds both models' units",
+    "bootstrap": "percentile 2.5 / 97.5 of the mean over 2000 resamples of the updates with replacement, seed 20261017 with a per-statistic key (bench_tf_handover.bootstrap_ci), no interval below n = 5",
+    "wilson95": "Wilson score interval, z = 1.959964 (bench_tf_handover.wilson95)"
+  },
+  "numbers": {
+    "within_model": {
+      "DeepSeek-V4-Flash": {
+        "n_updates": 12,
+        "mean_pairwise_jaccard": 0.9005,
+        "ci95": [
+          0.7894,
+          1.0
+        ],
+        "min": 0.4722,
+        "max": 1.0,
+        "keys": 47,
+        "keys_by_repeat_count": {
+          "3": 40,
+          "2": 4,
+          "1": 3
+        },
+        "share_by_repeat_count": {
+          "3": 0.8511,
+          "2": 0.0851,
+          "1": 0.0638
+        },
+        "per_update": {
+          "u01": {
+            "keys_per_repeat": [
+              4,
+              4,
+              4
+            ],
+            "keys": 4,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 4,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 4,
+            "empty_repeat_pairs": 0
+          },
+          "u02": {
+            "keys_per_repeat": [
+              6,
+              6,
+              6
+            ],
+            "keys": 6,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 6,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 6,
+            "empty_repeat_pairs": 0
+          },
+          "u03": {
+            "keys_per_repeat": [
+              4,
+              4,
+              4
+            ],
+            "keys": 4,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 4,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 4,
+            "empty_repeat_pairs": 0
+          },
+          "u04": {
+            "keys_per_repeat": [
+              2,
+              2,
+              2
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 0.5556,
+            "keys_by_repeat_count": {
+              "3": 1,
+              "2": 1,
+              "1": 1
+            },
+            "majority_keys": 2,
+            "empty_repeat_pairs": 0
+          },
+          "u05": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u06": {
+            "keys_per_repeat": [
+              2,
+              2,
+              2
+            ],
+            "keys": 2,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 2,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 2,
+            "empty_repeat_pairs": 0
+          },
+          "u07": {
+            "keys_per_repeat": [
+              3,
+              2,
+              3
+            ],
+            "keys": 4,
+            "mean_pairwise_jaccard": 0.4722,
+            "keys_by_repeat_count": {
+              "3": 1,
+              "2": 2,
+              "1": 1
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u07b": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u07c": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u08": {
+            "keys_per_repeat": [
+              5,
+              5,
+              5
+            ],
+            "keys": 5,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 5,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 5,
+            "empty_repeat_pairs": 0
+          },
+          "u09": {
+            "keys_per_repeat": [
+              5,
+              5,
+              5
+            ],
+            "keys": 6,
+            "mean_pairwise_jaccard": 0.7778,
+            "keys_by_repeat_count": {
+              "3": 4,
+              "2": 1,
+              "1": 1
+            },
+            "majority_keys": 5,
+            "empty_repeat_pairs": 0
+          },
+          "u10": {
+            "keys_per_repeat": [
+              4,
+              4,
+              4
+            ],
+            "keys": 4,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 4,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 4,
+            "empty_repeat_pairs": 0
+          }
+        }
+      },
+      "Gemma-4-31B-IT": {
+        "n_updates": 12,
+        "mean_pairwise_jaccard": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "min": 1.0,
+        "max": 1.0,
+        "keys": 37,
+        "keys_by_repeat_count": {
+          "3": 37,
+          "2": 0,
+          "1": 0
+        },
+        "share_by_repeat_count": {
+          "3": 1.0,
+          "2": 0.0,
+          "1": 0.0
+        },
+        "per_update": {
+          "u01": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u02": {
+            "keys_per_repeat": [
+              5,
+              5,
+              5
+            ],
+            "keys": 5,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 5,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 5,
+            "empty_repeat_pairs": 0
+          },
+          "u03": {
+            "keys_per_repeat": [
+              4,
+              4,
+              4
+            ],
+            "keys": 4,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 4,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 4,
+            "empty_repeat_pairs": 0
+          },
+          "u04": {
+            "keys_per_repeat": [
+              1,
+              1,
+              1
+            ],
+            "keys": 1,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 1,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 1,
+            "empty_repeat_pairs": 0
+          },
+          "u05": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u06": {
+            "keys_per_repeat": [
+              2,
+              2,
+              2
+            ],
+            "keys": 2,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 2,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 2,
+            "empty_repeat_pairs": 0
+          },
+          "u07": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u07b": {
+            "keys_per_repeat": [
+              2,
+              2,
+              2
+            ],
+            "keys": 2,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 2,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 2,
+            "empty_repeat_pairs": 0
+          },
+          "u07c": {
+            "keys_per_repeat": [
+              3,
+              3,
+              3
+            ],
+            "keys": 3,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 3,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 3,
+            "empty_repeat_pairs": 0
+          },
+          "u08": {
+            "keys_per_repeat": [
+              5,
+              5,
+              5
+            ],
+            "keys": 5,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 5,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 5,
+            "empty_repeat_pairs": 0
+          },
+          "u09": {
+            "keys_per_repeat": [
+              5,
+              5,
+              5
+            ],
+            "keys": 5,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 5,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 5,
+            "empty_repeat_pairs": 0
+          },
+          "u10": {
+            "keys_per_repeat": [
+              1,
+              1,
+              1
+            ],
+            "keys": 1,
+            "mean_pairwise_jaccard": 1.0,
+            "keys_by_repeat_count": {
+              "3": 1,
+              "2": 0,
+              "1": 0
+            },
+            "majority_keys": 1,
+            "empty_repeat_pairs": 0
+          }
+        }
+      }
+    },
+    "cross_model": {
+      "DeepSeek-V4-Flash vs Gemma-4-31B-IT": {
+        "models": [
+          "DeepSeek-V4-Flash",
+          "Gemma-4-31B-IT"
+        ],
+        "n_updates": 12,
+        "mean_jaccard": 0.7556,
+        "ci95": [
+          0.5805,
+          0.9167
+        ],
+        "min": 0.0,
+        "max": 1.0,
+        "per_update": {
+          "u01": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 4,
+              "Gemma-4-31B-IT": 3
+            },
+            "shared": 2,
+            "jaccard": 0.4,
+            "both_empty": false
+          },
+          "u02": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 6,
+              "Gemma-4-31B-IT": 5
+            },
+            "shared": 5,
+            "jaccard": 0.8333,
+            "both_empty": false
+          },
+          "u03": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 4,
+              "Gemma-4-31B-IT": 4
+            },
+            "shared": 4,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u04": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 2,
+              "Gemma-4-31B-IT": 1
+            },
+            "shared": 1,
+            "jaccard": 0.5,
+            "both_empty": false
+          },
+          "u05": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 3,
+              "Gemma-4-31B-IT": 3
+            },
+            "shared": 3,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u06": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 2,
+              "Gemma-4-31B-IT": 2
+            },
+            "shared": 2,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u07": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 3,
+              "Gemma-4-31B-IT": 3
+            },
+            "shared": 3,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u07b": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 3,
+              "Gemma-4-31B-IT": 2
+            },
+            "shared": 2,
+            "jaccard": 0.6667,
+            "both_empty": false
+          },
+          "u07c": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 3,
+              "Gemma-4-31B-IT": 3
+            },
+            "shared": 3,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u08": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 5,
+              "Gemma-4-31B-IT": 5
+            },
+            "shared": 5,
+            "jaccard": 1.0,
+            "both_empty": false
+          },
+          "u09": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 5,
+              "Gemma-4-31B-IT": 5
+            },
+            "shared": 4,
+            "jaccard": 0.6667,
+            "both_empty": false
+          },
+          "u10": {
+            "majority_keys": {
+              "DeepSeek-V4-Flash": 4,
+              "Gemma-4-31B-IT": 1
+            },
+            "shared": 0,
+            "jaccard": 0.0,
+            "both_empty": false
+          }
+        }
+      }
+    },
+    "confidence_signal": {
+      "grounding_acceptance": {
+        "computable": false,
+        "reason": "not computable from these records: a case record keeps its accepted facts (fact_id, type, quote) but a rejected fact only as a reason string (rejection_reasons), with no type or quote, and no model reply is stored, so a rejected fact cannot be given a key; every keyed fact here passed the grounding check by construction"
+      },
+      "reference_agreement": {
+        "note": "the reference is the story's recorded extraction (the fixture's curated facts for each update), matched with the bench's heuristic (same type, one quote contains the other); it is not clinical ground truth and not a quality score",
+        "pooled": {
+          "by_repeat_count": {
+            "3": {
+              "n": 77,
+              "reference_matched": 61,
+              "rate": 0.7922,
+              "wilson95": [
+                0.6888,
+                0.8678
+              ]
+            },
+            "2": {
+              "n": 4,
+              "reference_matched": 2,
+              "rate": 0.5,
+              "wilson95": [
+                0.15,
+                0.85
+              ]
+            },
+            "1": {
+              "n": 3,
+              "reference_matched": 0,
+              "rate": 0.0,
+              "wilson95": [
+                0.0,
+                0.5615
+              ]
+            },
+            "1-2": {
+              "n": 7,
+              "reference_matched": 2,
+              "rate": 0.2857,
+              "wilson95": [
+                0.0822,
+                0.6411
+              ]
+            }
+          },
+          "by_other_model": {
+            "present": {
+              "n": 68,
+              "reference_matched": 56,
+              "rate": 0.8235,
+              "wilson95": [
+                0.7164,
+                0.8961
+              ]
+            },
+            "absent": {
+              "n": 16,
+              "reference_matched": 7,
+              "rate": 0.4375,
+              "wilson95": [
+                0.231,
+                0.6682
+              ]
+            }
+          },
+          "by_repeat_count_and_other_model": {
+            "3|present": {
+              "n": 65,
+              "reference_matched": 54,
+              "rate": 0.8308,
+              "wilson95": [
+                0.7218,
+                0.9028
+              ]
+            },
+            "3|absent": {
+              "n": 12,
+              "reference_matched": 7,
+              "rate": 0.5833,
+              "wilson95": [
+                0.3195,
+                0.8067
+              ]
+            },
+            "2|present": {
+              "n": 3,
+              "reference_matched": 2,
+              "rate": 0.6667,
+              "wilson95": [
+                0.2077,
+                0.9385
+              ]
+            },
+            "2|absent": {
+              "n": 1,
+              "reference_matched": 0,
+              "rate": 0.0,
+              "wilson95": [
+                0.0,
+                0.7935
+              ]
+            },
+            "1|present": {
+              "n": 0,
+              "reference_matched": 0,
+              "rate": null,
+              "wilson95": null
+            },
+            "1|absent": {
+              "n": 3,
+              "reference_matched": 0,
+              "rate": 0.0,
+              "wilson95": [
+                0.0,
+                0.5615
+              ]
+            }
+          }
+        },
+        "per_model": {
+          "DeepSeek-V4-Flash": {
+            "by_repeat_count": {
+              "3": {
+                "n": 40,
+                "reference_matched": 32,
+                "rate": 0.8,
+                "wilson95": [
+                  0.6524,
+                  0.895
+                ]
+              },
+              "2": {
+                "n": 4,
+                "reference_matched": 2,
+                "rate": 0.5,
+                "wilson95": [
+                  0.15,
+                  0.85
+                ]
+              },
+              "1": {
+                "n": 3,
+                "reference_matched": 0,
+                "rate": 0.0,
+                "wilson95": [
+                  0.0,
+                  0.5615
+                ]
+              },
+              "1-2": {
+                "n": 7,
+                "reference_matched": 2,
+                "rate": 0.2857,
+                "wilson95": [
+                  0.0822,
+                  0.6411
+                ]
+              }
+            },
+            "by_other_model": {
+              "present": {
+                "n": 34,
+                "reference_matched": 28,
+                "rate": 0.8235,
+                "wilson95": [
+                  0.6649,
+                  0.9165
+                ]
+              },
+              "absent": {
+                "n": 13,
+                "reference_matched": 6,
+                "rate": 0.4615,
+                "wilson95": [
+                  0.2321,
+                  0.7086
+                ]
+              }
+            },
+            "by_repeat_count_and_other_model": {
+              "3|present": {
+                "n": 31,
+                "reference_matched": 26,
+                "rate": 0.8387,
+                "wilson95": [
+                  0.6737,
+                  0.9291
+                ]
+              },
+              "3|absent": {
+                "n": 9,
+                "reference_matched": 6,
+                "rate": 0.6667,
+                "wilson95": [
+                  0.3542,
+                  0.8794
+                ]
+              },
+              "2|present": {
+                "n": 3,
+                "reference_matched": 2,
+                "rate": 0.6667,
+                "wilson95": [
+                  0.2077,
+                  0.9385
+                ]
+              },
+              "2|absent": {
+                "n": 1,
+                "reference_matched": 0,
+                "rate": 0.0,
+                "wilson95": [
+                  0.0,
+                  0.7935
+                ]
+              },
+              "1|present": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "1|absent": {
+                "n": 3,
+                "reference_matched": 0,
+                "rate": 0.0,
+                "wilson95": [
+                  0.0,
+                  0.5615
+                ]
+              }
+            }
+          },
+          "Gemma-4-31B-IT": {
+            "by_repeat_count": {
+              "3": {
+                "n": 37,
+                "reference_matched": 29,
+                "rate": 0.7838,
+                "wilson95": [
+                  0.628,
+                  0.8861
+                ]
+              },
+              "2": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "1": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "1-2": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              }
+            },
+            "by_other_model": {
+              "present": {
+                "n": 34,
+                "reference_matched": 28,
+                "rate": 0.8235,
+                "wilson95": [
+                  0.6649,
+                  0.9165
+                ]
+              },
+              "absent": {
+                "n": 3,
+                "reference_matched": 1,
+                "rate": 0.3333,
+                "wilson95": [
+                  0.0615,
+                  0.7923
+                ]
+              }
+            },
+            "by_repeat_count_and_other_model": {
+              "3|present": {
+                "n": 34,
+                "reference_matched": 28,
+                "rate": 0.8235,
+                "wilson95": [
+                  0.6649,
+                  0.9165
+                ]
+              },
+              "3|absent": {
+                "n": 3,
+                "reference_matched": 1,
+                "rate": 0.3333,
+                "wilson95": [
+                  0.0615,
+                  0.7923
+                ]
+              },
+              "2|present": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "2|absent": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "1|present": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              },
+              "1|absent": {
+                "n": 0,
+                "reference_matched": 0,
+                "rate": null,
+                "wilson95": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "units": [
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u01",
+        "type": "event",
+        "quote": "can't stand up",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u01",
+        "type": "event",
+        "quote": "the ambulance is taking her to st mary's hospital a&e",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u01",
+        "type": "family",
+        "quote": "i'm going with her",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u01",
+        "type": "location",
+        "quote": "st mary's hospital a&e",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "admitted",
+        "quote": "we are admitting her to the orthopaedic ward, ward 5b, bed 12.",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "attending",
+        "quote": "mr okafor is the consultant in charge of her care.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "diagnosis_stated",
+        "quote": "the x-ray shows a fracture of the left hip, at the top of the thigh bone.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "instruction",
+        "quote": "she must not eat anything after midnight.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "location",
+        "quote": "admitting her to the orthopaedic ward, ward 5b, bed 12",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u02",
+        "type": "procedure_planned",
+        "quote": "the plan is surgery tomorrow morning, she is first on the list at about 9 a.m.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u03",
+        "type": "contact",
+        "quote": "ward phone: 020 7946 0123",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u03",
+        "type": "location",
+        "quote": "ward 5b orthopaedics",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u03",
+        "type": "rounds",
+        "quote": "consultant ward round: weekdays 8:30",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u03",
+        "type": "visiting",
+        "quote": "visiting hours: 11:00 - 13:00 and 17:00 - 20:00",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u04",
+        "type": "event",
+        "quote": "booked a flight from toronto",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u04",
+        "type": "event",
+        "quote": "i can do the evening visits from wednesday",
+        "repeat_count": 2,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u04",
+        "type": "family",
+        "quote": "i can do the evening visits from wednesday",
+        "repeat_count": 1,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u05",
+        "type": "expected_discharge",
+        "quote": "if she is walking safely with the frame, she could go home on friday.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u05",
+        "type": "next_step",
+        "quote": "get up with a walking frame",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u05",
+        "type": "procedure_done",
+        "quote": "we replaced the top of the hip joint, a half hip replacement.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u06",
+        "type": "event",
+        "quote": "physio got her standing with the frame this morning",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u06",
+        "type": "event",
+        "quote": "she's tired but smiling",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07",
+        "type": "event",
+        "quote": "she is a little dizzy when she stands up",
+        "repeat_count": 2,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07",
+        "type": "expected_discharge",
+        "quote": "going home is now planned for saturday morning",
+        "repeat_count": 2,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07",
+        "type": "next_step",
+        "quote": "the team wants to keep her one more day to be safe",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07",
+        "type": "warning_signs",
+        "quote": "she is a little dizzy when she stands up",
+        "repeat_count": 1,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07b",
+        "type": "event",
+        "quote": "the wound looks clean",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07b",
+        "type": "event",
+        "quote": "you walked well with the physiotherapist yesterday",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07b",
+        "type": "expected_discharge",
+        "quote": "you can go home today, once the pharmacy has your medicines ready",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07c",
+        "type": "event",
+        "quote": "she was dizzy again after lunch",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07c",
+        "type": "expected_discharge",
+        "quote": "goes home tomorrow morning, saturday",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u07c",
+        "type": "next_step",
+        "quote": "she stays with us tonight",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "continue: amlodipine 5 mg once a day.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "enoxaparin 40 mg injection once a day for 28 days (to prevent blood clots).",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "lansoprazole 15 mg once a day.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "paracetamol 1 g four times a day as needed for pain.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "stop taking ibuprofen.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "discharged",
+        "quote": "she has been discharged and is free to leave the ward",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "follow_up",
+        "quote": "the follow-up appointment at the fracture clinic is on monday 30 november at 10:30 a.m.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "next_step",
+        "quote": "the district nurse will visit her at home to check the wound on tuesday.",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "next_step",
+        "quote": "the staples come out at the gp practice in 12 days.",
+        "repeat_count": 1,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "procedure_planned",
+        "quote": "the staples come out at the gp practice in 12 days",
+        "repeat_count": 2,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u09",
+        "type": "warning_signs",
+        "quote": "come back straight away if the leg becomes hot, red or swollen",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u10",
+        "type": "event",
+        "quote": "mum is home and settled",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u10",
+        "type": "family",
+        "quote": "david is staying until thursday",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u10",
+        "type": "family",
+        "quote": "i'll do evenings",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "DeepSeek-V4-Flash",
+        "update_id": "u10",
+        "type": "family",
+        "quote": "joy will do the morning visits from tomorrow",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u01",
+        "type": "event",
+        "quote": "can't stand up",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u01",
+        "type": "location",
+        "quote": "st mary's hospital a&e",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u01",
+        "type": "next_step",
+        "quote": "the ambulance is taking her to st mary's hospital a&e",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u02",
+        "type": "attending",
+        "quote": "mr okafor is the consultant in charge of her care.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u02",
+        "type": "diagnosis_stated",
+        "quote": "the x-ray shows a fracture of the left hip, at the top of the thigh bone.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u02",
+        "type": "instruction",
+        "quote": "she must not eat anything after midnight.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u02",
+        "type": "location",
+        "quote": "admitting her to the orthopaedic ward, ward 5b, bed 12",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u02",
+        "type": "procedure_planned",
+        "quote": "the plan is surgery tomorrow morning, she is first on the list at about 9 a.m.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u03",
+        "type": "contact",
+        "quote": "ward phone: 020 7946 0123",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u03",
+        "type": "location",
+        "quote": "ward 5b orthopaedics",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u03",
+        "type": "rounds",
+        "quote": "consultant ward round: weekdays 8:30",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u03",
+        "type": "visiting",
+        "quote": "visiting hours: 11:00 - 13:00 and 17:00 - 20:00",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u04",
+        "type": "event",
+        "quote": "booked a flight from toronto",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u05",
+        "type": "expected_discharge",
+        "quote": "if she is walking safely with the frame, she could go home on friday.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u05",
+        "type": "next_step",
+        "quote": "get up with a walking frame",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u05",
+        "type": "procedure_done",
+        "quote": "we replaced the top of the hip joint, a half hip replacement.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u06",
+        "type": "event",
+        "quote": "physio got her standing with the frame this morning",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u06",
+        "type": "event",
+        "quote": "she's tired but smiling",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07",
+        "type": "event",
+        "quote": "she is a little dizzy when she stands up",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07",
+        "type": "expected_discharge",
+        "quote": "going home is now planned for saturday morning",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07",
+        "type": "next_step",
+        "quote": "the team wants to keep her one more day to be safe",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07b",
+        "type": "event",
+        "quote": "you walked well with the physiotherapist yesterday",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07b",
+        "type": "expected_discharge",
+        "quote": "you can go home today, once the pharmacy has your medicines ready",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07c",
+        "type": "event",
+        "quote": "she was dizzy again after lunch",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07c",
+        "type": "expected_discharge",
+        "quote": "goes home tomorrow morning, saturday",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u07c",
+        "type": "next_step",
+        "quote": "she stays with us tonight",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "continue: amlodipine 5 mg once a day.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "enoxaparin 40 mg injection once a day for 28 days (to prevent blood clots).",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "lansoprazole 15 mg once a day.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "paracetamol 1 g four times a day as needed for pain.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u08",
+        "type": "medication",
+        "quote": "stop taking ibuprofen.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u09",
+        "type": "discharged",
+        "quote": "she has been discharged and is free to leave the ward",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u09",
+        "type": "follow_up",
+        "quote": "the district nurse will visit her at home to check the wound on tuesday",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u09",
+        "type": "follow_up",
+        "quote": "the follow-up appointment at the fracture clinic is on monday 30 november at 10:30 a.m.",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u09",
+        "type": "procedure_planned",
+        "quote": "the staples come out at the gp practice in 12 days",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": false
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u09",
+        "type": "warning_signs",
+        "quote": "come back straight away if the leg becomes hot, red or swollen",
+        "repeat_count": 3,
+        "other_model_present": true,
+        "reference_match": true
+      },
+      {
+        "model": "Gemma-4-31B-IT",
+        "update_id": "u10",
+        "type": "discharged",
+        "quote": "mum is home",
+        "repeat_count": 3,
+        "other_model_present": false,
+        "reference_match": false
+      }
+    ],
+    "diagnostics": {
+      "completed_cases_used": 72,
+      "incomplete_model_update_pairs": [],
+      "keys_per_update": {
+        "u01": 5,
+        "u02": 6,
+        "u03": 4,
+        "u04": 3,
+        "u05": 3,
+        "u06": 2,
+        "u07": 4,
+        "u07b": 3,
+        "u07c": 3,
+        "u08": 5,
+        "u09": 7,
+        "u10": 5
+      },
+      "keys_merging_several_quotes": 14,
+      "bridged_keys": 3,
+      "facts_collapsed_within_a_repeat": 10,
+      "merged_keys": [
+        {
+          "update_id": "u01",
+          "type": "event",
+          "key_quote": "can't stand up",
+          "bridged": true,
+          "member_quotes": [
+            "can't stand up",
+            "mum fell in the kitchen this morning",
+            "mum fell in the kitchen this morning and can't stand up."
+          ]
+        },
+        {
+          "update_id": "u01",
+          "type": "event",
+          "key_quote": "the ambulance is taking her to st mary's hospital a&e",
+          "bridged": false,
+          "member_quotes": [
+            "the ambulance is taking her to st mary's hospital a&e",
+            "the ambulance is taking her to st mary's hospital a&e."
+          ]
+        },
+        {
+          "update_id": "u01",
+          "type": "family",
+          "key_quote": "i'm going with her",
+          "bridged": false,
+          "member_quotes": [
+            "i'm going with her",
+            "i'm going with her."
+          ]
+        },
+        {
+          "update_id": "u02",
+          "type": "location",
+          "key_quote": "admitting her to the orthopaedic ward, ward 5b, bed 12",
+          "bridged": false,
+          "member_quotes": [
+            "admitting her to the orthopaedic ward, ward 5b, bed 12",
+            "admitting her to the orthopaedic ward, ward 5b, bed 12.",
+            "we are admitting her to the orthopaedic ward, ward 5b, bed 12."
+          ]
+        },
+        {
+          "update_id": "u03",
+          "type": "visiting",
+          "key_quote": "visiting hours: 11:00 - 13:00 and 17:00 - 20:00",
+          "bridged": false,
+          "member_quotes": [
+            "visiting hours: 11:00 - 13:00 and 17:00 - 20:00",
+            "visiting hours: 11:00 - 13:00 and 17:00 - 20:00. maximum 2 visitors per bed."
+          ]
+        },
+        {
+          "update_id": "u04",
+          "type": "event",
+          "key_quote": "booked a flight from toronto",
+          "bridged": true,
+          "member_quotes": [
+            "booked a flight from toronto",
+            "booked a flight from toronto, landing at heathrow on wednesday morning",
+            "landing at heathrow on wednesday morning"
+          ]
+        },
+        {
+          "update_id": "u05",
+          "type": "next_step",
+          "key_quote": "get up with a walking frame",
+          "bridged": true,
+          "member_quotes": [
+            "get up with a walking frame",
+            "she will start physiotherapy tomorrow",
+            "she will start physiotherapy tomorrow and get up with a walking frame."
+          ]
+        },
+        {
+          "update_id": "u06",
+          "type": "event",
+          "key_quote": "physio got her standing with the frame this morning",
+          "bridged": false,
+          "member_quotes": [
+            "physio got her standing with the frame this morning",
+            "physio got her standing with the frame this morning."
+          ]
+        },
+        {
+          "update_id": "u06",
+          "type": "event",
+          "key_quote": "she's tired but smiling",
+          "bridged": false,
+          "member_quotes": [
+            "she's tired but smiling",
+            "she's tired but smiling."
+          ]
+        },
+        {
+          "update_id": "u07c",
+          "type": "expected_discharge",
+          "key_quote": "goes home tomorrow morning, saturday",
+          "bridged": false,
+          "member_quotes": [
+            "goes home tomorrow morning, saturday",
+            "she stays with us tonight and goes home tomorrow morning, saturday"
+          ]
+        },
+        {
+          "update_id": "u09",
+          "type": "discharged",
+          "key_quote": "she has been discharged and is free to leave the ward",
+          "bridged": false,
+          "member_quotes": [
+            "she has been discharged and is free to leave the ward",
+            "she has been discharged and is free to leave the ward."
+          ]
+        },
+        {
+          "update_id": "u09",
+          "type": "procedure_planned",
+          "key_quote": "the staples come out at the gp practice in 12 days",
+          "bridged": false,
+          "member_quotes": [
+            "the staples come out at the gp practice in 12 days",
+            "the staples come out at the gp practice in 12 days."
+          ]
+        },
+        {
+          "update_id": "u09",
+          "type": "warning_signs",
+          "key_quote": "come back straight away if the leg becomes hot, red or swollen",
+          "bridged": false,
+          "member_quotes": [
+            "come back straight away if the leg becomes hot, red or swollen",
+            "come back straight away if the leg becomes hot, red or swollen, or if she is short of breath",
+            "come back straight away if the leg becomes hot, red or swollen, or if she is short of breath."
+          ]
+        },
+        {
+          "update_id": "u10",
+          "type": "event",
+          "key_quote": "mum is home and settled",
+          "bridged": false,
+          "member_quotes": [
+            "mum is home and settled",
+            "mum is home and settled."
+          ]
+        }
+      ]
+    }
+  },
+  "caveats": [
+    "The reference is the story's recorded extraction (the demo fixture's curated facts), matched by the bench's heuristic (same type, one quote contains the other). It is not clinical ground truth and not a quality score: a correct fact the fixture does not list, or one the model typed differently, counts as unmatched.",
+    "n is small: 12 updates of one fictional story, 3 repeats, 2 models. The bootstrap resamples updates; the Wilson intervals treat each (model, update, key) as independent, which keys of one update or of both models are not, so the intervals are optimistic.",
+    "Grounding-check acceptance could not be related to stability: the records keep rejected facts only as reason strings (no type, no quote, no stored reply). Every key is an accepted fact.",
+    "Keys come from quote containment, chained through a group: 14 key(s) group several distinct quotes and 3 are bridged (two quotes joined only through a third, e.g. two half-sentence facts and one whole-sentence fact). A model that splits a sentence into two facts in one repeat and quotes it whole in another counts as stable; facts of different types never share a key.",
+    "A key's reference match counts any of the model's member quotes, so a key seen in more repeats has slightly more chances to match.",
+    "The other-model split and the reference match use the same test (same type, one quote contains the other), so a fact given an unusual type fails both: part of that split measures agreement on the type label, not only on the content.",
+    "Repeat variation is what the endpoint returned under the bench's settings (see its results.json); the analysis does not know the sampling parameters."
+  ]
+}

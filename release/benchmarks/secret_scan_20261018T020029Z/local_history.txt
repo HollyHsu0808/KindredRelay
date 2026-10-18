@@ -1,0 +1,6 @@
+objects with a path: 873; blobs scanned: 704; exact-key check: on
+suspicious file names: ['KindredRelay_Research_20261017/github_audit/main/deploy/release.env.example', 'deploy/release.env.example']
+HIT openai_style_sk	handoff_day1/agent/test_llm_client_recorder.py	blobs=f1d3c0a48a
+HIT openai_style_sk	handoff_day1/ui/test_app_shell.py	blobs=90f5e9b036
+HIT openai_style_sk	scripts/test_bench_tf_handover.py	blobs=09babc3799
+HIT openai_style_sk	scripts/test_freeze_scorecard_results.py	blobs=aa272ab9c6

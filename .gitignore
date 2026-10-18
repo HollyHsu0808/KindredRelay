@@ -1,0 +1,40 @@
+# Data and caches are rebuilt by scripts/amd_bootstrap.sh (download + sha256 verification); never commit them
+/data/
+/runs/
+/outputs/
+/env/
+/logs/
+.venv/
+**/_runs/
+
+# Model weights: fetched and sha256-verified by handoff_day1/model/fetch_weights.py
+*.pt
+*.pth
+*.onnx
+*.task
+*.part
+# Exception: our own GRU weights (20 KB each, sha256 in their training_summary.json)
+!handoff_day1/model/weights/g2g4/*/best.pt
+!handoff_day1/model/weights/carerelay_fall/best.pt
+
+# Archives, Python and OS junk
+*.tar.gz
+*.zip
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Secrets: never commit credentials or API tokens
+.env
+*.env
+kaggle.json
+*token*
+.streamlit/
+
+# Per-clip result files of the cross-dataset runs (rebuilt by the scripts)
+per_clip_le2i*.csv
+# Generated deterministic run evidence is delivered with the working package,
+# but is not part of the source diff or a model artifact.
+/release/validation_abd/

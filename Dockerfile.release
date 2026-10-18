@@ -1,0 +1,49 @@
+# Fixed family-site release. Build context: repository root, NOT handoff_day1/.
+# This image includes recording support; the older handoff_day1/Dockerfile does not.
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PORT=8501 \
+    CARERELAY_REQUIRE_LIVE=1 \
+    CARERELAY_REQUIRE_ASR=1 \
+    CARERELAY_ASR_MODEL=base.en \
+    CARERELAY_STATE_DIR=/var/lib/kindredrelay \
+    CARERELAY_LLM_GUIDED_JSON=0 \
+    KINDRED_VERIFIER_MODE=off \
+    XDG_CACHE_HOME=/app/.cache \
+    OMP_NUM_THREADS=2 \
+    MKL_NUM_THREADS=2
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt /app/requirements.txt
+COPY deploy/requirements-speech.txt /app/deploy/requirements-speech.txt
+COPY deploy/requirements-release.lock /app/deploy/requirements-release.lock
+COPY deploy/requirements-verifier.txt /app/deploy/requirements-verifier.txt
+RUN python -m pip install torch==2.10.0 --index-url https://download.pytorch.org/whl/cpu \
+    && python -m pip install -r /app/deploy/requirements-release.lock
+# Optional inference overlay. It replaces protobuf 7.x with the notebook's <6
+# requirement. The base off-mode image retains its original dependency lock.
+ARG INSTALL_VERIFIER=0
+RUN if [ "$INSTALL_VERIFIER" = "1" ]; then \
+      python -m pip install -r /app/deploy/requirements-verifier.txt && python -m pip check; \
+    elif [ "$INSTALL_VERIFIER" != "0" ]; then echo "INSTALL_VERIFIER must be 0 or 1" >&2; exit 2; fi
+# Bake the official weights into the image so the first visitor does not trigger a model download.
+RUN python -c "import whisper; whisper.load_model('base.en', device='cpu', download_root='/app/.cache/whisper')"
+COPY handoff_day1/agent/ /app/handoff_day1/agent/
+COPY handoff_day1/care_cases/ /app/handoff_day1/care_cases/
+COPY handoff_day1/ui/pages/ /app/handoff_day1/ui/pages/
+COPY handoff_day1/ui/timeline_storage.py /app/handoff_day1/ui/timeline_storage.py
+COPY handoff_day1/scripts/asr_whisper.py /app/handoff_day1/scripts/asr_whisper.py
+COPY handoff_day1/RELEASE_VERSION.txt /app/handoff_day1/RELEASE_VERSION.txt
+COPY deploy/serve.py /app/deploy/serve.py
+RUN useradd --create-home --uid 1000 carerelay \
+    && mkdir -p /var/lib/kindredrelay \
+    && chown -R carerelay:carerelay /app /var/lib/kindredrelay
+USER carerelay
+EXPOSE 8501
+HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
+    CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ.get('PORT', '8501') + '/_stcore/health', timeout=3)"
+CMD ["python", "deploy/serve.py"]

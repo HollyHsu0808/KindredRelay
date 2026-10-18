@@ -1,0 +1,8 @@
+# Optional CPU inference overlay, matching the v1.2 notebook's input contract.
+# Install AFTER the base release lock; protobuf replaces the base 7.x pin.
+# No training dependencies or model downloads are included here.
+transformers==4.57.1
+sentencepiece==0.2.1
+protobuf>=4.25,<6
+safetensors>=0.4.3
+psutil>=5.9

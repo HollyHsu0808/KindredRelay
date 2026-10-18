@@ -1,0 +1,136 @@
+{
+  "schema_version": "kindredrelay-primock-gold-v1-preregistration",
+  "created_utc": "2026-10-17T23:36:28.552+00:00",
+  "written_before_any_live_call": true,
+  "protocol_sha256": "75077d1e159d4d28017776bd059fb5a8e49c78df17e8121c6484c42a561f8c65",
+  "annotation_guide_sha256": "e8f4655dc8ff9bfcc80e2809183fe281efd86c83ada8b2a962ff30a16147c848",
+  "script_sha256": "1a2d7bca05ee703e06294f4dd5f5d55ac53132c3a79220b6fcd50a52f244ee71",
+  "annotator_fixed_prompt_sha256": "163e8a2858e074cf8fe1cec3339ed53f7d95d8ce8c1b0fefbeb47dbe4c1f627f",
+  "analysis_sha256": "d44d609962aa743d10b3f55b8f65e619e177c48eccfc3edf9f76a8dc1081049f",
+  "analysis": {
+    "severity": {
+      "critical": 5,
+      "major": 3,
+      "minor": 1
+    },
+    "error_classes": {
+      "negation_polarity": "critical",
+      "dose_number": "critical",
+      "attribution_speaker": "major",
+      "temporal": "major",
+      "other_contradiction": "major",
+      "omission_safety_net": "major",
+      "omission_other": "minor"
+    },
+    "labels": {
+      "A": [
+        "covered",
+        "not_covered"
+      ],
+      "B": [
+        "consistent",
+        "contradicts",
+        "not_in_note"
+      ]
+    },
+    "error_types": [
+      "none",
+      "negation_polarity",
+      "dose_number",
+      "attribution_speaker",
+      "temporal",
+      "other_contradiction"
+    ],
+    "bootstrap": {
+      "seed": 20261018,
+      "resamples": 2000,
+      "min_n": 5,
+      "unit": "consultation",
+      "interval": "percentile 2.5 / 97.5"
+    },
+    "human_sample": {
+      "fraction": 0.2,
+      "seed": 20261018
+    },
+    "order_seed": 20261018,
+    "shuffle_seed": 20261018,
+    "chunk_chars": 3000,
+    "note_splitter": "primock-note-split-v1",
+    "anchor_at": "2026-01-05T09:00:00+00:00",
+    "generator": {
+      "model": "DeepSeek-V4-Flash",
+      "max_tokens": 2000,
+      "guided_json": false,
+      "extra_body": {},
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 120.0,
+      "timeout_retries": 0,
+      "evidence_verifier": "off (KINDRED_VERIFIER_MODE=off, deploy/release.env.example)"
+    },
+    "annotators": [
+      [
+        "Qwen3.8-Flash-Next",
+        {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      ],
+      [
+        "MiMo-V2.6-Flash",
+        {}
+      ]
+    ],
+    "annotator": {
+      "max_tokens": 4096,
+      "guided_json": false,
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 240.0,
+      "timeout_retries": 1
+    }
+  },
+  "source_sha256": {
+    "handoff_day1/agent/episode.py": "3d3181701ed7a6e686bf19fb8a0ef6c7a3876b7aebdaf7575e524792b6c07e66",
+    "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+    "handoff_day1/agent/llm_client.py": "ed825126b721043424e0eceea121186c49521b2b0e62f82d2a0f16dc54f2b6ff",
+    "scripts/bench_tf_handover.py": "4b3fa96eef984c15c1737f4d798aed69c6f7c8265e5cb497ae323cb98bbc8d64",
+    "scripts/primock_transcript_segments.py": "096f34461c97af1544e80431be943db5d288b5830ea570bae395293ab1a2e4fe",
+    "scripts/primock_gold_eval.py": "1a2d7bca05ee703e06294f4dd5f5d55ac53132c3a79220b6fcd50a52f244ee71",
+    "research/primock_gold_v1/PROTOCOL.md": "75077d1e159d4d28017776bd059fb5a8e49c78df17e8121c6484c42a561f8c65",
+    "research/primock_gold_v1/ANNOTATION_GUIDE.md": "e8f4655dc8ff9bfcc80e2809183fe281efd86c83ada8b2a962ff30a16147c848"
+  },
+  "annotator_prompt": {
+    "system": "You are a careful annotator. You compare two independent records of the same mock primary-care consultation (actors, not real patients): the clinician's own note, and a list of candidate facts that an unnamed process derived from the consultation's transcript. You only label; you give no medical advice and judge nothing about the patient. Follow the definitions exactly. Reply with one JSON object only.",
+    "task_a": "TASK A - is each NOTE FACT covered by the CANDIDATE FACTS?\nLabels (exactly one per note fact):\n- covered: one or more candidate facts, read together, state the note fact's clinical content (the same symptom, finding, negative finding, history item, impression or plan item). Wording may differ; read clinical abbreviations as clinicians do (4/7 = four days, hx = history, sx = symptoms, SOB = shortness of breath, NKDA = no known drug allergies, PMH = past medical history, DH = drug history, FH = family history, SH = social history, Imp = impression, mx = management, INB = if no better, etOH = alcohol).\n- not_covered: no candidate fact states it; or the candidate facts state only part of it and miss the clinically important part (the polarity, a number or duration that is the point of the fact, the action of a plan item, the condition of a safety-net instruction); or a candidate states it with the opposite polarity, a different number, a different time or a different person (that is not coverage).\nJudge only against the CANDIDATE FACTS, never against what was probably said in the consultation.\nFor each note fact return: id; label; fact_ids (the candidate ids that cover it, [] when not_covered); why (at most 12 words).",
+    "task_b": "TASK B - how does each CANDIDATE FACT relate to the clinician's NOTE?\nLabels (exactly one per candidate fact):\n- consistent: the note states the same thing (wording may differ; read clinical abbreviations as clinicians do).\n- contradicts: the note states something incompatible with it: the opposite polarity (present vs absent, done vs not done, an instruction reversed), a different number, dose, frequency or duration, a different time or order of events, a different person (whose symptom or condition it is, or who said or advised it), or another incompatible detail.\n- not_in_note: the note neither states it nor states anything incompatible with it. The note is a short summary, so such a fact is usually not wrong: never label a fact contradicts only because the note leaves it out.\nerror_type: for contradicts exactly one of negation_polarity (present vs absent, yes vs no, done vs not done, an instruction reversed), dose_number (a different number, dose, frequency, quantity or duration), attribution_speaker (the wrong person: a relative's condition given as the patient's, the patient's own report or idea presented as the clinician's statement or advice, or the reverse), temporal (a wrong time, date, onset or order, or past given as future or the reverse), other_contradiction (any other incompatibility). For consistent and not_in_note use none, except attribution_speaker when the content agrees with or is absent from the note but the fact gives it to the wrong person (each candidate shows who said the words it quotes).\nFor each candidate fact return: id; label; error_type; note_ids (the note fact ids it agrees with or contradicts, [] for not_in_note); why (at most 12 words).",
+    "date_note": "Dates in candidate facts were resolved against a placeholder consultation date, Monday 5 January 2026, 09:00 (the note has no date): judge times relative to that date."
+  },
+  "unit": "one PriMock57 consultation",
+  "pilot": {
+    "consultation": "day1_consultation04",
+    "raw": "data/raw/primock57",
+    "role": "harness check; included again in the full run"
+  },
+  "full_run": {
+    "raw": "data/raw/primock57_full",
+    "consultations": "every consultation with a note and both TextGrids, in the seeded processing order; a call cap stop leaves a random subset"
+  },
+  "call_cap_total": 400,
+  "primary_metrics": [
+    "note_fact_recall (pooled)",
+    "contradiction_rate (pooled)",
+    "weighted_error_per_note_fact (pooled)",
+    "grounding_pass_rate (pooled)"
+  ],
+  "secondary_metrics": [
+    "macro means of the same",
+    "safety_net_recall",
+    "recall_by_section",
+    "not_in_note_rate",
+    "consistent_rate",
+    "error_counts"
+  ],
+  "human_check": "seeded 20% sample of annotator decisions in OUT/human_review.csv; Cohen's kappa via `kappa`"
+}

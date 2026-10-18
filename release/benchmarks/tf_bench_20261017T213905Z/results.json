@@ -1,0 +1,318 @@
+{
+  "schema_version": "kindredrelay-bench-token-factory-v1",
+  "created_utc": "2026-10-17T21:58:32.160+00:00",
+  "git": {
+    "bench_script_tracked": false,
+    "dirty": true,
+    "head": "07b8008fa24fe76127bde4fc039fb580e096558d",
+    "untracked_files": 29
+  },
+  "argv": [
+    "--models",
+    "DeepSeek-V4-Flash,Gemma-4-31B-IT",
+    "--cases",
+    "12",
+    "--repeats",
+    "3",
+    "--ttft-probe",
+    "5",
+    "--max-calls",
+    "400",
+    "--api-key-file",
+    "<redacted path>",
+    "--out",
+    "release/benchmarks/tf_bench_20261017T213905Z"
+  ],
+  "dry_run": false,
+  "endpoint": {
+    "host": "developer.amd.com.cn",
+    "transport": "urllib",
+    "is_token_factory_default": true
+  },
+  "pipeline": {
+    "entry_point": "handoff_day1/agent/episode_events.py EpisodeJournal.add_update(update, extractor=episode.llm_extractor(client), evidence_checker=evidence_gate.checker_from_env()), as ui/pages/1_Family_timeline.py get_extractor() and add_verified() call it",
+    "client": "llm_client.OpenAIChat.chat (production) over an instrumented HTTP layer (this script's Session)",
+    "case_unit": "one story update added after the earlier updates were replayed from their recorded extraction",
+    "story": "handoff_day1/care_cases/episode_hip_fracture.json",
+    "story_sha256": "b2532dd3164b80859265544ff0da081f726e7ef09ac884c7398b2feccf9088f7",
+    "max_tokens": 2000,
+    "guided_json": false,
+    "timeout_s": 120.0,
+    "max_tries": 6,
+    "max_wait_s": 60.0,
+    "timeout_retries": 0,
+    "backoff_base_s": 2.0,
+    "extra_body": {},
+    "verifier_mode": [
+      "off"
+    ],
+    "citation_check": "episode.grounding_problem: quote word for word in the update (>= 3 words, not negated), field values and numbers from the quote, dates agree with the words",
+    "gate": "evidence_gate.bind_check withhold in KINDRED_VERIFIER_MODE=gate; off in deploy/release.env.example"
+  },
+  "models": [
+    "DeepSeek-V4-Flash",
+    "Gemma-4-31B-IT"
+  ],
+  "case_ids": [
+    "episode_hip_fracture/u01",
+    "episode_hip_fracture/u02",
+    "episode_hip_fracture/u03",
+    "episode_hip_fracture/u04",
+    "episode_hip_fracture/u05",
+    "episode_hip_fracture/u06",
+    "episode_hip_fracture/u07",
+    "episode_hip_fracture/u07b",
+    "episode_hip_fracture/u07c",
+    "episode_hip_fracture/u08",
+    "episode_hip_fracture/u09",
+    "episode_hip_fracture/u10"
+  ],
+  "repeats": 3,
+  "ttft_probe": 5,
+  "stopped_reason": null,
+  "invocations": [
+    {
+      "invocation": 1,
+      "created_utc": "2026-10-17T21:39:06.350+00:00",
+      "max_calls": 400,
+      "git_head": "07b8008fa24fe76127bde4fc039fb580e096558d"
+    }
+  ],
+  "sources_changed_between_invocations": false,
+  "source_sha256": {
+    "handoff_day1/agent/episode.py": "3d3181701ed7a6e686bf19fb8a0ef6c7a3876b7aebdaf7575e524792b6c07e66",
+    "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+    "handoff_day1/agent/evidence_gate.py": "627d92f66a30bc9947f06304eb12f0a24626fcee010e5c2c65f5dfb1ae3935a6",
+    "handoff_day1/agent/llm_client.py": "ed825126b721043424e0eceea121186c49521b2b0e62f82d2a0f16dc54f2b6ff",
+    "handoff_day1/ui/pages/1_Family_timeline.py": "d6612e68f4233c5a2e206b2175a486f5400068693fcc439f7d6d4ab4ce8ddb34",
+    "scripts/bench_tf_handover.py": "e812e5fdfb10120b0f8167f41f86beb718261465300b555d96d88dd968e0f571"
+  },
+  "http_calls": {
+    "total": 83,
+    "retries": 1,
+    "by_invocation": {
+      "1": 83
+    }
+  },
+  "per_model": {
+    "DeepSeek-V4-Flash": {
+      "n_planned": 36,
+      "n_completed": 36,
+      "n_aborted": 0,
+      "success": {
+        "count": 36,
+        "rate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "wilson95": [
+          0.9036,
+          1.0
+        ]
+      },
+      "failures": {},
+      "e2e_latency_s": {
+        "n": 36,
+        "p50": 6.1544,
+        "p95": 15.6161,
+        "mean": 9.2848,
+        "min": 2.8002,
+        "max": 53.3436,
+        "p50_ci95": [
+          5.7299,
+          9.0628
+        ],
+        "p50_excluding_retry_waits": 6.1544
+      },
+      "call_latency_s": {
+        "n": 36,
+        "p50": 6.1227,
+        "p95": 15.5949
+      },
+      "completion_tokens_per_s": {
+        "n_calls": 36,
+        "aggregate": 18.4466,
+        "p50": 21.3605
+      },
+      "tokens_per_handover": {
+        "n_with_usage": 36,
+        "n_missing_usage": 0,
+        "mean": 1218.8,
+        "p50": 1167.0,
+        "prompt_mean": 1048.8,
+        "completion_mean": 169.9
+      },
+      "facts_per_handover": {
+        "proposed_mean": 3.92,
+        "accepted_mean": 3.75,
+        "withheld_mean": 0.0,
+        "handovers_with_no_accepted_fact": 0
+      },
+      "citation_validity": {
+        "proposed": 141,
+        "valid": 135,
+        "rate": 0.9574,
+        "ci95": [
+          0.9156,
+          0.9928
+        ],
+        "rejection_reasons": {
+          "quote shorter than 3 words": 4,
+          "condition says 'be', which the quote does not": 1,
+          "missing hours": 1
+        }
+      },
+      "gate": {
+        "mode": [
+          "off"
+        ],
+        "decisions": {
+          "off": 36
+        },
+        "n_gated": 0,
+        "pass_rate": null,
+        "ci95": null,
+        "wilson95": null
+      },
+      "reference_agreement_heuristic": {
+        "recorded_facts": 102,
+        "matched": 91,
+        "rate": 0.8922
+      },
+      "story_sum_of_case_p50_s": 100.6567,
+      "ttft_s": {
+        "probes": 5,
+        "n": 5,
+        "p50": 1.5051,
+        "p95": 1.848,
+        "stream_supported": true
+      },
+      "http": {
+        "calls": 42,
+        "retries": 1,
+        "statuses": {
+          "200": 41,
+          "429": 1
+        },
+        "calls_without_usage": 0
+      }
+    },
+    "Gemma-4-31B-IT": {
+      "n_planned": 36,
+      "n_completed": 36,
+      "n_aborted": 0,
+      "success": {
+        "count": 36,
+        "rate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "wilson95": [
+          0.9036,
+          1.0
+        ]
+      },
+      "failures": {},
+      "e2e_latency_s": {
+        "n": 36,
+        "p50": 16.6555,
+        "p95": 51.4022,
+        "mean": 22.6223,
+        "min": 8.6105,
+        "max": 70.4418,
+        "p50_ci95": [
+          14.3439,
+          23.2471
+        ],
+        "p50_excluding_retry_waits": 16.6555
+      },
+      "call_latency_s": {
+        "n": 36,
+        "p50": 16.6414,
+        "p95": 51.3786
+      },
+      "completion_tokens_per_s": {
+        "n_calls": 36,
+        "aggregate": 10.7824,
+        "p50": 12.1312
+      },
+      "tokens_per_handover": {
+        "n_with_usage": 36,
+        "n_missing_usage": 0,
+        "mean": 1329.6,
+        "p50": 1284.0,
+        "prompt_mean": 1085.9,
+        "completion_mean": 243.7
+      },
+      "facts_per_handover": {
+        "proposed_mean": 3.78,
+        "accepted_mean": 3.25,
+        "withheld_mean": 0.0,
+        "handovers_with_no_accepted_fact": 0
+      },
+      "citation_validity": {
+        "proposed": 136,
+        "valid": 117,
+        "rate": 0.8603,
+        "ci95": [
+          0.8027,
+          0.9113
+        ],
+        "rejection_reasons": {
+          "missing what": 12,
+          "missing hours": 3,
+          "quote shorter than 3 words": 3,
+          "quote not found in the update": 1
+        }
+      },
+      "gate": {
+        "mode": [
+          "off"
+        ],
+        "decisions": {
+          "off": 36
+        },
+        "n_gated": 0,
+        "pass_rate": null,
+        "ci95": null,
+        "wilson95": null
+      },
+      "reference_agreement_heuristic": {
+        "recorded_facts": 102,
+        "matched": 87,
+        "rate": 0.8529
+      },
+      "story_sum_of_case_p50_s": 253.3863,
+      "ttft_s": {
+        "probes": 5,
+        "n": 5,
+        "p50": 1.4735,
+        "p95": 1.5657,
+        "stream_supported": true
+      },
+      "http": {
+        "calls": 41,
+        "retries": 0,
+        "statuses": {
+          "200": 41
+        },
+        "calls_without_usage": 0
+      }
+    }
+  },
+  "statistics": {
+    "percentile": "linear interpolation between closest ranks",
+    "bootstrap": {
+      "resamples": 2000,
+      "seed": 20261017,
+      "min_n": 5,
+      "interval": "percentile 2.5 / 97.5",
+      "unit": "completed case"
+    },
+    "latency_population": "successful cases only; e2e includes retries and backoff waits",
+    "tokens": "as returned in usage; null when absent, never estimated"
+  },
+  "records_skipped_lines": []
+}

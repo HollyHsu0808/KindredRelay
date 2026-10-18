@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="cover-t cover-d" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">
+<title id="cover-t">KindredRelay</title>
+<desc id="cover-d">KindredRelay: one shared family timeline after a fall; every fact quotes the care team's own words. AMD Token Factory, Gemma, DeepSeek. The quote shown is from the fictional demo story.</desc>
+<defs>
+  <radialGradient id="cover-glow1" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#F4B183" stop-opacity="0.55"/>
+    <stop offset="1" stop-color="#F4B183" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="cover-glow2" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#F7CBA6" stop-opacity="0.6"/>
+    <stop offset="1" stop-color="#F7CBA6" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="1920" height="1080" fill="#F8F2EA"/>
+<circle cx="260" cy="160" r="520" fill="url(#cover-glow1)"/>
+<circle cx="1700" cy="980" r="560" fill="url(#cover-glow2)"/>
+<rect x="0" y="0" width="1920" height="14" fill="#D9480F"/>
+
+<!-- centre: everything a thumbnail must keep -->
+<text x="960" y="292" font-size="40" font-weight="600" fill="#8A3B12" text-anchor="middle">For families, after a fall</text>
+<text x="960" y="468" font-size="168" font-weight="700" fill="#1F2328" text-anchor="middle" letter-spacing="-3">KindredRelay</text>
+<text x="960" y="572" font-size="58" font-weight="600" fill="#2D333A" text-anchor="middle">One shared family timeline.</text>
+<text x="960" y="648" font-size="58" font-weight="600" fill="#2D333A" text-anchor="middle">Every fact quotes the care team's own words.</text>
+<rect x="610" y="712" width="700" height="64" rx="32" fill="#FFF1E6" stroke="#D9480F" stroke-width="3"/>
+<text x="960" y="755" font-size="31" font-weight="600" fill="#9C330A" text-anchor="middle">AMD Token Factory · Gemma · DeepSeek</text>
+
+<!-- left card: a care-team recording (fictional demo story, update u07) -->
+<g>
+  <rect x="64" y="800" width="470" height="200" rx="22" fill="#FFFFFF" stroke="#E2D6C8" stroke-width="2"/>
+  <circle cx="104" cy="842" r="16" fill="#3657A8"/>
+  <text x="132" y="850" font-size="24" font-weight="700" fill="#1F2328">Ward nurse · recording</text>
+  <text x="92" y="900" font-size="25" fill="#2D333A">“Going home is now planned</text>
+  <text x="92" y="934" font-size="25" fill="#2D333A">for Saturday morning.”</text>
+  <text x="92" y="976" font-size="20" fill="#2B7A4B" font-weight="600">✓ quoted word for word</text>
+</g>
+
+<!-- right card: what the family sees -->
+<g>
+  <rect x="1386" y="800" width="470" height="200" rx="22" fill="#FFFFFF" stroke="#E2D6C8" stroke-width="2"/>
+  <rect x="1386" y="800" width="12" height="200" rx="6" fill="#D9480F"/>
+  <text x="1424" y="850" font-size="24" font-weight="700" fill="#1F2328">Going home moved</text>
+  <text x="1424" y="900" font-size="25" fill="#59636E" text-decoration="line-through">Fri 23 Oct</text>
+  <text x="1560" y="900" font-size="25" fill="#2D333A">→  Sat 24 Oct, morning</text>
+  <text x="1424" y="950" font-size="20" fill="#59636E">London · Toronto · Melbourne</text>
+  <text x="1424" y="980" font-size="20" fill="#59636E">each in their own time zone</text>
+</g>
+
+<text x="960" y="1046" font-size="24" fill="#6B7280" text-anchor="middle">AMD Developer Hackathon ACT III · Health &amp; Wellbeing · fictional demo story · never diagnoses</text>
+</svg>

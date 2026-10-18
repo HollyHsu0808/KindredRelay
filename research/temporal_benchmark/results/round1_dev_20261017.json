@@ -1,0 +1,603 @@
+{
+  "observed_utc": "2026-10-17T05:02:21.758705+00:00",
+  "status": "Development evaluation completed; quality gaps remain. Heldout is deferred before predictor freeze.",
+  "independent_story_groups": 16,
+  "variants_per_story": 2,
+  "methods": {
+    "full_context": {
+      "variants": 32,
+      "case_groups": 16,
+      "all_correct_rate": 0.21875,
+      "all_variants_correct_case_rate": 0.1875,
+      "paired_case_correct": {
+        "dev_ld_01": false,
+        "dev_ld_02": false,
+        "dev_fp_01": false,
+        "dev_fp_02": false,
+        "dev_pc_01": false,
+        "dev_pc_02": false,
+        "dev_ra_01": true,
+        "dev_ra_02": false,
+        "dev_cr_01": false,
+        "dev_cr_02": false,
+        "dev_rd_01": true,
+        "dev_rd_02": true,
+        "dev_at_01": false,
+        "dev_at_02": false,
+        "dev_me_01": false,
+        "dev_me_02": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "conflict_resolution": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "family_plan": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "late_document": {
+          "variants": 4,
+          "all_correct": 1
+        },
+        "mixed_events": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "planned_vs_completed": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "readmission": {
+          "variants": 4,
+          "all_correct": 2
+        },
+        "revision_deletion": {
+          "variants": 4,
+          "all_correct": 4
+        }
+      },
+      "counts": {
+        "all_correct": 7,
+        "operational_failure": 3,
+        "phase_correct": 20,
+        "phase_citations_correct": 29,
+        "plans_correct": 23,
+        "events_correct": 11,
+        "event_true_positive": 24,
+        "event_predicted": 47,
+        "event_expected": 60,
+        "time_correct": 30,
+        "time_total": 74,
+        "citation_valid": 98,
+        "citation_total": 98,
+        "citations_all_valid": 32,
+        "answerable": 20,
+        "answered": 25,
+        "phase_wrong_certain": 9,
+        "predicted_confirmed_times": 58,
+        "time_wrong_certain_count": 30,
+        "gold_known_times": 66,
+        "gold_known_times_answered": 41,
+        "stale_or_extra_items": 30
+      },
+      "phase_accuracy": 0.625,
+      "answerable_coverage": 0.85,
+      "phase_wrong_certain_rate": 0.28125,
+      "time_wrong_certain_rate": 0.5172413793103449,
+      "known_time_coverage": 0.6212121212121212,
+      "event_precision": 0.5106382978723404,
+      "event_recall": 0.4,
+      "time_accuracy": 0.40540540540540543,
+      "equivalent_groups": 16,
+      "view_invariance_rate": 0.25,
+      "accounting": {
+        "logical_calls": {
+          "total": 32,
+          "p50": 1.0,
+          "p95": 1.0
+        },
+        "logical_tokens": {
+          "total": 90377,
+          "p50": 2450.0,
+          "p95": 2969.8
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.019037084,
+          "p50": 0.0002608536,
+          "p95": 0.0004578279999999999
+        },
+        "logical_network_seconds": {
+          "total": 604.462782,
+          "p50": 15.482581,
+          "p95": 45.20350175
+        },
+        "cache_hits": {
+          "total": 0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "errors": {
+          "total": 1,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 15.486021999999998,
+          "p95": 45.2073773
+        }
+      }
+    },
+    "journal": {
+      "variants": 32,
+      "case_groups": 16,
+      "all_correct_rate": 0.1875,
+      "all_variants_correct_case_rate": 0.1875,
+      "paired_case_correct": {
+        "dev_ld_01": false,
+        "dev_ld_02": false,
+        "dev_fp_01": true,
+        "dev_fp_02": false,
+        "dev_pc_01": false,
+        "dev_pc_02": false,
+        "dev_ra_01": false,
+        "dev_ra_02": false,
+        "dev_cr_01": false,
+        "dev_cr_02": false,
+        "dev_rd_01": false,
+        "dev_rd_02": false,
+        "dev_at_01": true,
+        "dev_at_02": true,
+        "dev_me_01": false,
+        "dev_me_02": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 4,
+          "all_correct": 4
+        },
+        "conflict_resolution": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "family_plan": {
+          "variants": 4,
+          "all_correct": 2
+        },
+        "late_document": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "mixed_events": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "planned_vs_completed": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "readmission": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "revision_deletion": {
+          "variants": 4,
+          "all_correct": 0
+        }
+      },
+      "counts": {
+        "all_correct": 6,
+        "operational_failure": 0,
+        "phase_correct": 26,
+        "phase_citations_correct": 20,
+        "plans_correct": 26,
+        "events_correct": 6,
+        "event_true_positive": 34,
+        "event_predicted": 108,
+        "event_expected": 60,
+        "time_correct": 42,
+        "time_total": 74,
+        "citation_valid": 158,
+        "citation_total": 158,
+        "citations_all_valid": 32,
+        "answerable": 20,
+        "answered": 20,
+        "phase_wrong_certain": 10,
+        "predicted_confirmed_times": 66,
+        "time_wrong_certain_count": 28,
+        "gold_known_times": 66,
+        "gold_known_times_answered": 42,
+        "stale_or_extra_items": 80
+      },
+      "phase_accuracy": 0.8125,
+      "answerable_coverage": 0.9,
+      "phase_wrong_certain_rate": 0.3125,
+      "time_wrong_certain_rate": 0.42424242424242425,
+      "known_time_coverage": 0.6363636363636364,
+      "event_precision": 0.3148148148148148,
+      "event_recall": 0.5666666666666667,
+      "time_accuracy": 0.5675675675675675,
+      "equivalent_groups": 16,
+      "view_invariance_rate": 1.0,
+      "accounting": {
+        "logical_calls": {
+          "total": 96,
+          "p50": 3.0,
+          "p95": 4.0
+        },
+        "logical_tokens": {
+          "total": 103426,
+          "p50": 3213.5,
+          "p95": 4332.45
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.014614902400000001,
+          "p50": 0.00046487,
+          "p95": 0.0006412
+        },
+        "logical_network_seconds": {
+          "total": 596.661508,
+          "p50": 15.534740499999998,
+          "p95": 51.36196270000001
+        },
+        "cache_hits": {
+          "total": 48,
+          "p50": 1.0,
+          "p95": 3.4499999999999993
+        },
+        "errors": {
+          "total": 0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 2.1562975,
+          "p95": 34.029902549999974
+        }
+      }
+    },
+    "rag": {
+      "variants": 32,
+      "case_groups": 16,
+      "all_correct_rate": 0.25,
+      "all_variants_correct_case_rate": 0.1875,
+      "paired_case_correct": {
+        "dev_ld_01": false,
+        "dev_ld_02": true,
+        "dev_fp_01": false,
+        "dev_fp_02": false,
+        "dev_pc_01": false,
+        "dev_pc_02": false,
+        "dev_ra_01": false,
+        "dev_ra_02": false,
+        "dev_cr_01": false,
+        "dev_cr_02": false,
+        "dev_rd_01": true,
+        "dev_rd_02": true,
+        "dev_at_01": false,
+        "dev_at_02": false,
+        "dev_me_01": false,
+        "dev_me_02": false
+      },
+      "category": {
+        "ambiguous_time": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "conflict_resolution": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "family_plan": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "late_document": {
+          "variants": 4,
+          "all_correct": 3
+        },
+        "mixed_events": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "planned_vs_completed": {
+          "variants": 4,
+          "all_correct": 0
+        },
+        "readmission": {
+          "variants": 4,
+          "all_correct": 1
+        },
+        "revision_deletion": {
+          "variants": 4,
+          "all_correct": 4
+        }
+      },
+      "counts": {
+        "all_correct": 8,
+        "operational_failure": 4,
+        "phase_correct": 21,
+        "phase_citations_correct": 28,
+        "plans_correct": 23,
+        "events_correct": 10,
+        "event_true_positive": 23,
+        "event_predicted": 47,
+        "event_expected": 60,
+        "time_correct": 29,
+        "time_total": 74,
+        "citation_valid": 92,
+        "citation_total": 92,
+        "citations_all_valid": 32,
+        "answerable": 20,
+        "answered": 24,
+        "phase_wrong_certain": 7,
+        "predicted_confirmed_times": 55,
+        "time_wrong_certain_count": 29,
+        "gold_known_times": 66,
+        "gold_known_times_answered": 37,
+        "stale_or_extra_items": 29
+      },
+      "phase_accuracy": 0.65625,
+      "answerable_coverage": 0.85,
+      "phase_wrong_certain_rate": 0.21875,
+      "time_wrong_certain_rate": 0.5272727272727272,
+      "known_time_coverage": 0.5606060606060606,
+      "event_precision": 0.48936170212765956,
+      "event_recall": 0.38333333333333336,
+      "time_accuracy": 0.3918918918918919,
+      "equivalent_groups": 16,
+      "view_invariance_rate": 0.25,
+      "accounting": {
+        "logical_calls": {
+          "total": 32,
+          "p50": 1.0,
+          "p95": 1.0
+        },
+        "logical_tokens": {
+          "total": 110530,
+          "p50": 2425.5,
+          "p95": 13797.25
+        },
+        "logical_cost_usd": {
+          "total": null,
+          "p50": null,
+          "p95": null,
+          "pricing_status": "unpriced"
+        },
+        "logical_provider_cost": {
+          "total": 0.038138849600000004,
+          "p50": 0.0002790004,
+          "p95": 0.01
+        },
+        "logical_network_seconds": {
+          "total": 671.9223020000001,
+          "p50": 15.703963000000002,
+          "p95": 52.69440415
+        },
+        "cache_hits": {
+          "total": 0,
+          "p50": 0.0,
+          "p95": 0.0
+        },
+        "errors": {
+          "total": 3,
+          "p50": 0.0,
+          "p95": 1.0
+        },
+        "actual_variant_wall_seconds": {
+          "p50": 15.706852,
+          "p95": 52.697293849999994
+        }
+      }
+    }
+  },
+  "paired_case_comparison": [
+    {
+      "left": "full_context",
+      "right": "journal",
+      "case_groups": 16,
+      "left_only_correct": 3,
+      "right_only_correct": 3,
+      "both_correct": 0,
+      "neither_correct": 10,
+      "complete_observation_rate_difference_left_minus_right": 0.03125,
+      "case_group_bootstrap_95_interval": [
+        -0.28125,
+        0.3125
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    },
+    {
+      "left": "full_context",
+      "right": "rag",
+      "case_groups": 16,
+      "left_only_correct": 1,
+      "right_only_correct": 1,
+      "both_correct": 2,
+      "neither_correct": 12,
+      "complete_observation_rate_difference_left_minus_right": -0.03125,
+      "case_group_bootstrap_95_interval": [
+        -0.125,
+        0.0625
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    },
+    {
+      "left": "journal",
+      "right": "rag",
+      "case_groups": 16,
+      "left_only_correct": 3,
+      "right_only_correct": 3,
+      "both_correct": 0,
+      "neither_correct": 10,
+      "complete_observation_rate_difference_left_minus_right": -0.0625,
+      "case_group_bootstrap_95_interval": [
+        -0.375,
+        0.25
+      ],
+      "bootstrap_seed": 20261017,
+      "bootstrap_draws": 5000,
+      "interval_notice": "Exploratory paired case-group bootstrap; small synthetic sample, no clinical or significance claim."
+    }
+  ],
+  "scores_sha256": "38d450aafe66cfd90524bbbc27a58e562627b057f68303f7e80090b218e9c1f4",
+  "cases_sha256": "e2194bfeae48282c75353f8c7202e6450901a0e5a1c4dc998d440e0045ea94ad",
+  "gold_sha256": "9efd4b7d0b34b582a9bad2739c1de42d52993714597f91511e9e548d4068fe66",
+  "predictor_source_sha256": {
+    "handoff_day1/agent/asr_local.py": "882b5c89e4b7af87ca62900db539afbcc048c22696012b61e4ca5dd3777cbdb6",
+    "handoff_day1/agent/case_agent.py": "1457c55d367b9694a6b85dc20ef82be3211d511e218eaf606204baf360fae226",
+    "handoff_day1/agent/case_store.py": "141d36a7ebf78471946c0406a4769d44f969e8dd9d2e0fde6af2c6bbbf58ad25",
+    "handoff_day1/agent/change_engine.py": "c0514be7c34949bca6b2142c3a112a9c946fe25e41a49f76e6ef988bfffc4765",
+    "handoff_day1/agent/demo_propagation.py": "2c8efe337d15cef077547a254f7527475a1b6c8e63b0d07539a861bcc8f8deab",
+    "handoff_day1/agent/episode.py": "2d46f778d5aa0aca6f1e1ba56ab310ccc260868be4f8ee73fd8513495f404384",
+    "handoff_day1/agent/episode_events.py": "e5d3736152379cc2e62788ec27b279966d23dfe10e4a65ec1eb42a46b2b8d195",
+    "handoff_day1/agent/episode_qa.py": "6092f1ca0794b22e20ddd66b4f2f522e360c8a2f44c0bc7f386bb04caa3f395c",
+    "handoff_day1/agent/eval_care_cases.py": "a70f612fe136414b46953e39e63e01dbe1ee95353f26c45bc7c5cb8ecaaddfe6",
+    "handoff_day1/agent/evidence_gate.py": "627d92f66a30bc9947f06304eb12f0a24626fcee010e5c2c65f5dfb1ae3935a6",
+    "handoff_day1/agent/extract_instructions.py": "6cc5d3b084a4df5edbb7d85fe6efe54cdfdd64b25ab3467de6127aae18d2ff7d",
+    "handoff_day1/agent/fake_llm_server.py": "4e33b38bb59dd31127696ac1bf862587b619c08d4a1e752414f5cae0a1d9c304",
+    "handoff_day1/agent/guardrails.py": "dde6460cca04c1658974523dbc831ca0d0087c0594366faa41a54a4158da48ee",
+    "handoff_day1/agent/kr_runtime.py": "59f38a460b72358ee5d47454e0ede8c89fc915aad8e8a536fbffaa32feff6376",
+    "handoff_day1/agent/llm_client.py": "0d7f0654a1f75fb69b4f26270ebc4f36741d2715ebfe7c46f279e341be80fdc5",
+    "handoff_day1/agent/test_asr_local.py": "29c0699b6eb17feb52bb897121a584b0619161b49df95f6ba52a6a068f2a4c4b",
+    "handoff_day1/agent/test_change_engine.py": "7ece7bc5ff79cb631770318c4b06a30446b3ecd931c753d707082827cad0697b",
+    "handoff_day1/agent/test_episode.py": "65bdb733252b56d41787253c646be142631e76df9cd7ff2cf70cea8a598f26dd",
+    "handoff_day1/agent/test_episode_qa.py": "e8bbd91edf64f05b5de2b9d0dcce01e57a6bc765c6f0d82c39548e9b13af38e2",
+    "handoff_day1/agent/test_episode_revisions.py": "512dc4dff401fdd50c50602ff7b3482cc388236caaa9c2e88ecc3b9ad78fbccf",
+    "handoff_day1/agent/test_guardrails.py": "e0d2c33a546daad84de0e096c58f2d90c956d33f596c7646d4225418eba0370d",
+    "handoff_day1/agent/test_temporal_dev_repair.py": "a8afac7426f3c244b68c7b98e879481b02e5cb0a8e031941d88186f3aa127218",
+    "handoff_day1/agent/test_timeline_html.py": "159424b4086ef3906f68b00ed384576127fb04dd61a5169b3e50c823380242fb",
+    "handoff_day1/agent/timeline_html.py": "4ae50fedf8abaca1d178e398bf82dd92504ef6b5da9cb103177d8ac78393e68a",
+    "scripts/temporal_benchmark.py": "1b0b5ce51d70a1f906e47b438432bd053a470b33c66ded9f503eefd2addf6b5b",
+    "scripts/eval_temporal_benchmark.py": "3b8a67dcc21c209c9f4643d651ee55f71573c61f4b66b9a08d43d0734c4ebcac",
+    "scripts/test_temporal_benchmark.py": "ec17d1121ecd0541cc93adfc4b715fd2f9c34a8c48be75c982bf41af04f89040"
+  },
+  "predictor_snapshot": "<repo>/release/validation_abd/temporal_round1_20261017/final_source",
+  "runs": {
+    "journal": {
+      "summary": {
+        "completed_utc": "2026-10-17T04:44:26.804622+00:00",
+        "variants_executed": 32,
+        "operational_failures": 0,
+        "sources_unchanged_during_run": true,
+        "physical_calls": 48,
+        "physical_tokens_accounted": 51713,
+        "physical_cost_usd_calculated": null,
+        "usd_pricing_status": "unpriced",
+        "provider_cost_accounted": 0.007307451199999999,
+        "provider_cost_currency": "unknown",
+        "provider_unknown_cost_requests": 0,
+        "physical_unknown_usage_requests": 0,
+        "physical_provider_request_seconds": 298.33075399999996,
+        "actual_run_wall_seconds": 298.902042,
+        "logical_calls": 96,
+        "logical_tokens": 103426,
+        "cache_hits": 48,
+        "scope": "Predictions only; no answer keys opened. Operational failure remains in score denominator.",
+        "exit_code": 0
+      },
+      "seal_payload_sha256": "550dcf8495c75e26345bcfde485cd4c2b73a03874bc6a50f629deaee6647d8cc",
+      "seal_file_sha256": "a173746d330533145cd4acd1ec60a4e7083ac306f4f76412379118a159e5c410",
+      "runner_receipt_sha256": "0097cac471de346ad6becdb9fd784c387d6bd3e8803fcf7b1b641dcf5b854531",
+      "runner_receipt": "release/validation_abd/temporal_round1_20261017/dev_journal.exit.json"
+    },
+    "full_context": {
+      "summary": {
+        "completed_utc": "2026-10-17T04:49:32.525235+00:00",
+        "variants_executed": 32,
+        "operational_failures": 3,
+        "sources_unchanged_during_run": true,
+        "physical_calls": 32,
+        "physical_tokens_accounted": 90377,
+        "physical_cost_usd_calculated": null,
+        "usd_pricing_status": "unpriced",
+        "provider_cost_accounted": 0.019037084,
+        "provider_cost_currency": "unknown",
+        "provider_unknown_cost_requests": 1,
+        "physical_unknown_usage_requests": 1,
+        "physical_provider_request_seconds": 604.462782,
+        "actual_run_wall_seconds": 604.626091,
+        "logical_calls": 32,
+        "logical_tokens": 90377,
+        "cache_hits": 0,
+        "scope": "Predictions only; no answer keys opened. Operational failure remains in score denominator.",
+        "exit_code": 1
+      },
+      "seal_payload_sha256": "9b7220ee39186670d84b978993e482f4d50e563eafd75fa2f30f24dc18d0006b",
+      "seal_file_sha256": "51885fbf2f1493ab0d65573662f350ce9fd0dcf146569a06fcf88a4d866301c1",
+      "runner_receipt_sha256": "7eea6f1087035679f674bcedf7b238e40d84e19caa3876991eb1f66b0ed72390",
+      "runner_receipt": "release/validation_abd/temporal_round1_20261017/dev_full_context.exit.json"
+    },
+    "rag": {
+      "summary": {
+        "completed_utc": "2026-10-17T04:58:00.949858+00:00",
+        "variants_executed": 32,
+        "operational_failures": 4,
+        "sources_unchanged_during_run": true,
+        "physical_calls": 32,
+        "physical_tokens_accounted": 110530,
+        "physical_cost_usd_calculated": null,
+        "usd_pricing_status": "unpriced",
+        "provider_cost_accounted": 0.03813884959999999,
+        "provider_cost_currency": "unknown",
+        "provider_unknown_cost_requests": 3,
+        "physical_unknown_usage_requests": 3,
+        "physical_provider_request_seconds": 671.9223020000001,
+        "actual_run_wall_seconds": 672.09618,
+        "logical_calls": 32,
+        "logical_tokens": 110530,
+        "cache_hits": 0,
+        "scope": "Predictions only; no answer keys opened. Operational failure remains in score denominator.",
+        "exit_code": 1
+      },
+      "seal_payload_sha256": "8b848761abdb3c74334d04d5a729879a6f0440413b877973fc1c160f7222f2ee",
+      "seal_file_sha256": "018f751f396244933405d06f609a323cdff0b72b96ed12bf978ea5e6247435f9",
+      "runner_receipt_sha256": "f739fc8ea02c9184839438f09af88e73e662a5ea85545a22855b852c17d36b16",
+      "runner_receipt": "release/validation_abd/temporal_round1_20261017/dev_rag.exit.json"
+    }
+  },
+  "mechanisms": {
+    "journal_denominator": 32,
+    "passed": 32,
+    "failed": 0,
+    "unverifiable": 0,
+    "repeat_reads": 20,
+    "extra_external_calls": 0
+  },
+  "mechanisms_sha256": "c158b0ba22c3db3a1748a92021da65945db4226fb0a9d41effc4d28364366ab6",
+  "journal_phase_diagnostics": {
+    "wrong_certain_metric_count": 10,
+    "wrong_certain_with_correct_phase_label": 6,
+    "wrong_certain_with_wrong_phase_label": 4,
+    "notice": "The frozen metric includes insufficient minimum supporting quotation, not just wrong phase labels."
+  },
+  "heldout_predictions_executed_by_this_round": false,
+  "heldout_gold_opened_by_dispatcher": false,
+  "notices": [
+    "Synthetic pretranscribed English sources; no ASR/OCR/clinical validation.",
+    "Baseline methods ran separately with the same client/config, not fully interleaved.",
+    "Journal arrival-order variants reused 48 source-extraction responses. Observed wall times are cache affected.",
+    "USD prices unavailable; provider cost currency unknown. Unknown-usage requests include reserved cost, not invoices.",
+    "No architecture-quality superiority established."
+  ]
+}

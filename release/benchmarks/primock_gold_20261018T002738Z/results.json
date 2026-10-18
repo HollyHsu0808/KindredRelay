@@ -1,0 +1,1531 @@
+{
+  "schema_version": "kindredrelay-primock-gold-v1",
+  "created_utc": "2026-10-18T02:25:50.292+00:00",
+  "dry_run": false,
+  "argv": [
+    "run",
+    "--raw",
+    "data/raw/primock57_full",
+    "--amendment",
+    "research/primock_gold_v1/preregistration_amendment_1.json",
+    "--api-key-file",
+    "<redacted path>",
+    "--max-calls",
+    "390",
+    "--deadline-utc",
+    "2026-10-18T03:10:00Z"
+  ],
+  "endpoint": {
+    "host": "developer.amd.com.cn",
+    "is_token_factory_default": true
+  },
+  "git": {
+    "bench_script_tracked": true,
+    "dirty": true,
+    "head": "0874ecde81ab4acf3a48c9967a8c932522cb6b91",
+    "untracked_files": 37
+  },
+  "stopped_reason": null,
+  "preregistration": {
+    "path": "research/primock_gold_v1/preregistration.json",
+    "created_utc": "2026-10-17T23:36:28.552+00:00",
+    "sha256": "fa9375a56665c3a270f37598c273a6a0f78ad5e366daea1f3c014db6359608b6",
+    "first_live_call_utc": "2026-10-18T00:27:38.190+00:00",
+    "written_before_first_live_call": true,
+    "script_sha256_at_prereg": "1a2d7bca05ee703e06294f4dd5f5d55ac53132c3a79220b6fcd50a52f244ee71",
+    "amendment": {
+      "available": 57,
+      "created_utc": "2026-10-18T00:27:31.428+00:00",
+      "path": "research/primock_gold_v1/preregistration_amendment_1.json",
+      "sha256": "465ec277842d0105c52b52af953cb0b23e021fb7277e9e2023aded18febebaae",
+      "subset": 30
+    },
+    "amendment_written_before_first_live_call": true,
+    "script_sha256_at_run": [
+      "c125090c50b8c87846b79231db4cfbeee106d288e3ccab1a1f3881fb84277249"
+    ]
+  },
+  "data": {
+    "raw": "data/raw/primock57_full",
+    "consultations_planned": 30,
+    "consultations_done": 30,
+    "skipped": [],
+    "order": [
+      "day2_consultation06",
+      "day1_consultation11",
+      "day4_consultation09",
+      "day2_consultation01",
+      "day5_consultation05",
+      "day1_consultation14",
+      "day1_consultation15",
+      "day3_consultation07",
+      "day5_consultation02",
+      "day3_consultation10",
+      "day3_consultation03",
+      "day1_consultation09",
+      "day2_consultation10",
+      "day5_consultation07",
+      "day1_consultation05",
+      "day3_consultation01",
+      "day5_consultation06",
+      "day1_consultation12",
+      "day1_consultation01",
+      "day1_consultation08",
+      "day5_consultation10",
+      "day5_consultation08",
+      "day4_consultation06",
+      "day2_consultation03",
+      "day2_consultation08",
+      "day3_consultation06",
+      "day4_consultation08",
+      "day4_consultation10",
+      "day5_consultation11",
+      "day4_consultation01"
+    ],
+    "order_seed": 20261018
+  },
+  "system_under_test": {
+    "generator": {
+      "model": "DeepSeek-V4-Flash",
+      "max_tokens": 2000,
+      "guided_json": false,
+      "extra_body": {},
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 120.0,
+      "timeout_retries": 0,
+      "evidence_verifier": "off (KINDRED_VERIFIER_MODE=off, deploy/release.env.example)"
+    },
+    "entry_point": "Episode.add_update(update, extractor=episode.llm_extractor(client), evidence_checker=None) per transcript part",
+    "parts": "speaker-labelled turns, at most 3000 characters per part"
+  },
+  "annotator": {
+    "model": "Qwen3.8-Flash-Next",
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "max_tokens": 4096,
+    "guided_json": false,
+    "temperature": 0.0,
+    "seed": 0,
+    "timeout_s": 240.0,
+    "timeout_retries": 1,
+    "fixed_prompt_sha256": "163e8a2858e074cf8fe1cec3339ed53f7d95d8ce8c1b0fefbeb47dbe4c1f627f",
+    "calls_ok": 57,
+    "calls": 60,
+    "problems": {
+      "unknown_ids": 40,
+      "invalid": 1,
+      "duplicates": 0,
+      "missing": 67,
+      "coerced": 0
+    }
+  },
+  "http_calls": {
+    "total": 165,
+    "retries": 1,
+    "statuses": {
+      "200": 163,
+      "429": 1,
+      "None": 1
+    },
+    "by_purpose": {
+      "models": {
+        "calls": 1,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "extract": {
+        "calls": 104,
+        "prompt_tokens": 168835,
+        "completion_tokens": 48503
+      },
+      "annotate_A": {
+        "calls": 30,
+        "prompt_tokens": 85139,
+        "completion_tokens": 48353
+      },
+      "annotate_B": {
+        "calls": 30,
+        "prompt_tokens": 89279,
+        "completion_tokens": 62497
+      }
+    },
+    "by_invocation": {
+      "1": 165
+    }
+  },
+  "aggregate": {
+    "n_consultations": 30,
+    "n_annotated_A": 30,
+    "n_annotated_B": 27,
+    "n_both": 27,
+    "note_fact_recall": {
+      "n_consultations": 30,
+      "num": 513,
+      "den": 881,
+      "pooled": 0.5823,
+      "ci95": [
+        0.5402,
+        0.6175
+      ],
+      "macro": 0.5759,
+      "macro_ci95": [
+        0.5361,
+        0.6129
+      ]
+    },
+    "contradiction_rate": {
+      "n_consultations": 28,
+      "num": 55,
+      "den": 918,
+      "pooled": 0.0599,
+      "ci95": [
+        0.0434,
+        0.0779
+      ],
+      "macro": 0.0639,
+      "macro_ci95": [
+        0.0473,
+        0.0816
+      ]
+    },
+    "not_in_note_rate": {
+      "n_consultations": 28,
+      "num": 264,
+      "den": 918,
+      "pooled": 0.2876,
+      "ci95": [
+        0.2548,
+        0.3207
+      ],
+      "macro": 0.2888,
+      "macro_ci95": [
+        0.2602,
+        0.3199
+      ]
+    },
+    "consistent_rate": {
+      "n_consultations": 28,
+      "num": 599,
+      "den": 918,
+      "pooled": 0.6525,
+      "ci95": [
+        0.6167,
+        0.6859
+      ],
+      "macro": 0.6473,
+      "macro_ci95": [
+        0.6141,
+        0.6789
+      ]
+    },
+    "weighted_error_per_note_fact": {
+      "n_consultations": 27,
+      "num": 543,
+      "den": 796,
+      "pooled": 0.6822,
+      "ci95": [
+        0.5741,
+        0.7997
+      ],
+      "macro": 0.7353,
+      "macro_ci95": [
+        0.6173,
+        0.8663
+      ]
+    },
+    "grounding_pass_rate": {
+      "n_consultations": 30,
+      "num": 985,
+      "den": 1210,
+      "pooled": 0.814,
+      "ci95": [
+        0.7808,
+        0.8442
+      ],
+      "macro": 0.8071,
+      "macro_ci95": [
+        0.7693,
+        0.8398
+      ]
+    },
+    "safety_net_recall": {
+      "n_consultations": 22,
+      "num": 22,
+      "den": 28,
+      "pooled": 0.7857,
+      "ci95": [
+        0.5769,
+        0.931
+      ],
+      "macro": 0.7273,
+      "macro_ci95": [
+        0.5455,
+        0.9091
+      ]
+    },
+    "recall_by_section": {
+      "allergies": {
+        "n_consultations": 10,
+        "num": 1,
+        "den": 15,
+        "pooled": 0.0667,
+        "ci95": [
+          0.0,
+          0.1364
+        ],
+        "macro": 0.02,
+        "macro_ci95": [
+          0.0,
+          0.06
+        ]
+      },
+      "examination": {
+        "n_consultations": 1,
+        "num": 0,
+        "den": 4,
+        "pooled": 0.0,
+        "ci95": null,
+        "macro": 0.0,
+        "macro_ci95": null
+      },
+      "family_history": {
+        "n_consultations": 14,
+        "num": 14,
+        "den": 26,
+        "pooled": 0.5385,
+        "ci95": [
+          0.2592,
+          0.8065
+        ],
+        "macro": 0.5238,
+        "macro_ci95": [
+          0.2857,
+          0.7619
+        ]
+      },
+      "history": {
+        "n_consultations": 30,
+        "num": 252,
+        "den": 439,
+        "pooled": 0.574,
+        "ci95": [
+          0.4975,
+          0.6453
+        ],
+        "macro": 0.562,
+        "macro_ci95": [
+          0.4939,
+          0.6286
+        ]
+      },
+      "ice": {
+        "n_consultations": 2,
+        "num": 2,
+        "den": 4,
+        "pooled": 0.5,
+        "ci95": null,
+        "macro": 0.5,
+        "macro_ci95": null
+      },
+      "impression": {
+        "n_consultations": 24,
+        "num": 48,
+        "den": 80,
+        "pooled": 0.6,
+        "ci95": [
+          0.5046,
+          0.7314
+        ],
+        "macro": 0.692,
+        "macro_ci95": [
+          0.5347,
+          0.8358
+        ]
+      },
+      "medications": {
+        "n_consultations": 22,
+        "num": 32,
+        "den": 49,
+        "pooled": 0.6531,
+        "ci95": [
+          0.4762,
+          0.814
+        ],
+        "macro": 0.6212,
+        "macro_ci95": [
+          0.4393,
+          0.7917
+        ]
+      },
+      "plan": {
+        "n_consultations": 25,
+        "num": 94,
+        "den": 127,
+        "pooled": 0.7402,
+        "ci95": [
+          0.674,
+          0.8017
+        ],
+        "macro": 0.7401,
+        "macro_ci95": [
+          0.6701,
+          0.809
+        ]
+      },
+      "pmh": {
+        "n_consultations": 24,
+        "num": 27,
+        "den": 48,
+        "pooled": 0.5625,
+        "ci95": [
+          0.325,
+          0.7334
+        ],
+        "macro": 0.5208,
+        "macro_ci95": [
+          0.3333,
+          0.7016
+        ]
+      },
+      "social_history": {
+        "n_consultations": 21,
+        "num": 43,
+        "den": 89,
+        "pooled": 0.4831,
+        "ci95": [
+          0.3708,
+          0.5921
+        ],
+        "macro": 0.4619,
+        "macro_ci95": [
+          0.3428,
+          0.5786
+        ]
+      }
+    },
+    "error_counts": {
+      "negation_polarity": 23,
+      "dose_number": 6,
+      "attribution_speaker": 1,
+      "temporal": 9,
+      "other_contradiction": 16,
+      "omission_safety_net": 3,
+      "omission_other": 311
+    },
+    "error_counts_by_severity": {
+      "critical": 29,
+      "major": 29,
+      "minor": 311
+    },
+    "weighted_error_total": 543,
+    "facts": {
+      "note_facts": 881,
+      "proposed": 1210,
+      "accepted": 985
+    },
+    "extraction_parts": {
+      "total": 103,
+      "failed": 2,
+      "failure_classes": {
+        "timeout": 1,
+        "truncated": 1
+      }
+    }
+  },
+  "per_consultation": [
+    {
+      "consultation": "day2_consultation06",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 88,
+      "accepted": 37,
+      "candidates": 37,
+      "candidates_labelled": 37,
+      "consistent": 22,
+      "contradiction_rate": 0.027,
+      "contradicts": 1,
+      "covered": 21,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 16,
+        "omission_safety_net": 0,
+        "other_contradiction": 1,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8222,
+      "not_in_note": 14,
+      "note_facts": 37,
+      "note_facts_labelled": 37,
+      "proposed": 45,
+      "recall": 0.5676,
+      "safety_net_covered": 4,
+      "safety_net_note_facts": 4,
+      "weighted_error": 19,
+      "weighted_error_per_note_fact": 0.5135
+    },
+    {
+      "consultation": "day1_consultation11",
+      "status": "ok",
+      "parts": 5,
+      "parts_failed": 0,
+      "turns": 104,
+      "accepted": 51,
+      "candidates": 51,
+      "candidates_labelled": 51,
+      "consistent": 29,
+      "contradiction_rate": 0.0784,
+      "contradicts": 4,
+      "covered": 20,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 2,
+        "omission_other": 5,
+        "omission_safety_net": 1,
+        "other_contradiction": 2,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.9107,
+      "not_in_note": 18,
+      "note_facts": 28,
+      "note_facts_labelled": 28,
+      "proposed": 56,
+      "recall": 0.7143,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 24,
+      "weighted_error_per_note_fact": 0.8571
+    },
+    {
+      "consultation": "day4_consultation09",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 96,
+      "accepted": 47,
+      "candidates": 47,
+      "candidates_labelled": 47,
+      "consistent": 27,
+      "contradiction_rate": 0.0213,
+      "contradicts": 1,
+      "covered": 44,
+      "errors": {
+        "attribution_speaker": 1,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 22,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7966,
+      "not_in_note": 19,
+      "note_facts": 66,
+      "note_facts_labelled": 66,
+      "proposed": 59,
+      "recall": 0.6667,
+      "safety_net_covered": 2,
+      "safety_net_note_facts": 2,
+      "weighted_error": 25,
+      "weighted_error_per_note_fact": 0.3788
+    },
+    {
+      "consultation": "day2_consultation01",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 50,
+      "accepted": 22,
+      "candidates": 22,
+      "candidates_labelled": 22,
+      "consistent": 13,
+      "contradiction_rate": 0.1364,
+      "contradicts": 3,
+      "covered": 6,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 6,
+        "omission_safety_net": 0,
+        "other_contradiction": 1,
+        "temporal": 1
+      },
+      "grounding_pass_rate": 0.9167,
+      "not_in_note": 6,
+      "note_facts": 13,
+      "note_facts_labelled": 13,
+      "proposed": 24,
+      "recall": 0.4615,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 17,
+      "weighted_error_per_note_fact": 1.3077
+    },
+    {
+      "consultation": "day5_consultation05",
+      "status": "ok",
+      "parts": 2,
+      "parts_failed": 0,
+      "turns": 101,
+      "accepted": 13,
+      "candidates": 13,
+      "candidates_labelled": 13,
+      "consistent": 7,
+      "contradiction_rate": 0.0769,
+      "contradicts": 1,
+      "covered": 11,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 18,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.4643,
+      "not_in_note": 5,
+      "note_facts": 30,
+      "note_facts_labelled": 30,
+      "proposed": 28,
+      "recall": 0.3667,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 23,
+      "weighted_error_per_note_fact": 0.7667
+    },
+    {
+      "consultation": "day1_consultation14",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 95,
+      "accepted": 47,
+      "candidates": 47,
+      "candidates_labelled": 47,
+      "consistent": 27,
+      "contradiction_rate": 0.0426,
+      "contradicts": 2,
+      "covered": 21,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 1,
+        "negation_polarity": 1,
+        "omission_other": 10,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.9038,
+      "not_in_note": 18,
+      "note_facts": 33,
+      "note_facts_labelled": 33,
+      "proposed": 52,
+      "recall": 0.6364,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 20,
+      "weighted_error_per_note_fact": 0.6061
+    },
+    {
+      "consultation": "day1_consultation15",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 100,
+      "accepted": 28,
+      "candidates": 28,
+      "candidates_labelled": 28,
+      "consistent": 20,
+      "contradiction_rate": 0.0714,
+      "contradicts": 2,
+      "covered": 13,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 2,
+        "omission_other": 8,
+        "omission_safety_net": 1,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8235,
+      "not_in_note": 6,
+      "note_facts": 23,
+      "note_facts_labelled": 23,
+      "proposed": 34,
+      "recall": 0.5652,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 21,
+      "weighted_error_per_note_fact": 0.913
+    },
+    {
+      "consultation": "day3_consultation07",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 78,
+      "accepted": 28,
+      "candidates": 28,
+      "candidates_labelled": 28,
+      "consistent": 19,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 15,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 7,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7568,
+      "not_in_note": 9,
+      "note_facts": 22,
+      "note_facts_labelled": 22,
+      "proposed": 37,
+      "recall": 0.6818,
+      "safety_net_covered": 2,
+      "safety_net_note_facts": 2,
+      "weighted_error": 7,
+      "weighted_error_per_note_fact": 0.3182
+    },
+    {
+      "consultation": "day5_consultation02",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 113,
+      "accepted": 30,
+      "candidates": 30,
+      "candidates_labelled": 30,
+      "consistent": 15,
+      "contradiction_rate": 0.1,
+      "contradicts": 3,
+      "covered": 12,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 10,
+        "omission_safety_net": 0,
+        "other_contradiction": 2,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7317,
+      "not_in_note": 12,
+      "note_facts": 23,
+      "note_facts_labelled": 23,
+      "proposed": 41,
+      "recall": 0.5217,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 21,
+      "weighted_error_per_note_fact": 0.913
+    },
+    {
+      "consultation": "day3_consultation10",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 94,
+      "accepted": 20,
+      "candidates": 20,
+      "candidates_labelled": 20,
+      "consistent": 10,
+      "contradiction_rate": 0.15,
+      "contradicts": 3,
+      "covered": 13,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 2,
+        "negation_polarity": 1,
+        "omission_other": 13,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.6897,
+      "not_in_note": 7,
+      "note_facts": 27,
+      "note_facts_labelled": 27,
+      "proposed": 29,
+      "recall": 0.4815,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 28,
+      "weighted_error_per_note_fact": 1.037
+    },
+    {
+      "consultation": "day3_consultation03",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 111,
+      "accepted": 37,
+      "candidates": 37,
+      "candidates_labelled": 37,
+      "consistent": 18,
+      "contradiction_rate": 0.1622,
+      "contradicts": 6,
+      "covered": 10,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 1,
+        "negation_polarity": 3,
+        "omission_other": 10,
+        "omission_safety_net": 0,
+        "other_contradiction": 2,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.925,
+      "not_in_note": 13,
+      "note_facts": 21,
+      "note_facts_labelled": 21,
+      "proposed": 40,
+      "recall": 0.4762,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 36,
+      "weighted_error_per_note_fact": 1.7143
+    },
+    {
+      "consultation": "day1_consultation09",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 85,
+      "accepted": 30,
+      "candidates": 30,
+      "candidates_labelled": 30,
+      "consistent": 23,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 19,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 9,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8333,
+      "not_in_note": 7,
+      "note_facts": 28,
+      "note_facts_labelled": 28,
+      "proposed": 36,
+      "recall": 0.6786,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 9,
+      "weighted_error_per_note_fact": 0.3214
+    },
+    {
+      "consultation": "day2_consultation10",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 114,
+      "accepted": 37,
+      "candidates": 37,
+      "candidates_labelled": 37,
+      "consistent": 30,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 20,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 17,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7708,
+      "not_in_note": 7,
+      "note_facts": 37,
+      "note_facts_labelled": 37,
+      "proposed": 48,
+      "recall": 0.5405,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 17,
+      "weighted_error_per_note_fact": 0.4595
+    },
+    {
+      "consultation": "day5_consultation07",
+      "status": "extraction_incomplete",
+      "parts": 3,
+      "parts_failed": 1,
+      "turns": 102,
+      "accepted": 22,
+      "candidates": 22,
+      "candidates_labelled": 22,
+      "consistent": 14,
+      "contradiction_rate": 0.0455,
+      "contradicts": 1,
+      "covered": 9,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 22,
+        "omission_safety_net": 1,
+        "other_contradiction": 1,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8148,
+      "not_in_note": 7,
+      "note_facts": 32,
+      "note_facts_labelled": 32,
+      "proposed": 27,
+      "recall": 0.2812,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 28,
+      "weighted_error_per_note_fact": 0.875
+    },
+    {
+      "consultation": "day1_consultation05",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 83,
+      "accepted": 41,
+      "candidates": 41,
+      "candidates_labelled": 41,
+      "consistent": 30,
+      "contradiction_rate": 0.0732,
+      "contradicts": 3,
+      "covered": 21,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 10,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 2
+      },
+      "grounding_pass_rate": 0.8542,
+      "not_in_note": 8,
+      "note_facts": 34,
+      "note_facts_labelled": 34,
+      "proposed": 48,
+      "recall": 0.6176,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 21,
+      "weighted_error_per_note_fact": 0.6176
+    },
+    {
+      "consultation": "day3_consultation01",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 73,
+      "accepted": 25,
+      "candidates": 25,
+      "candidates_labelled": 25,
+      "consistent": 14,
+      "contradiction_rate": 0.04,
+      "contradicts": 1,
+      "covered": 8,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 5,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 1
+      },
+      "grounding_pass_rate": 0.7576,
+      "not_in_note": 10,
+      "note_facts": 14,
+      "note_facts_labelled": 14,
+      "proposed": 33,
+      "recall": 0.5714,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 8,
+      "weighted_error_per_note_fact": 0.5714
+    },
+    {
+      "consultation": "day5_consultation06",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 100,
+      "accepted": 34,
+      "candidates": 34,
+      "candidates_labelled": 34,
+      "consistent": 24,
+      "contradiction_rate": 0.0588,
+      "contradicts": 2,
+      "covered": 28,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 10,
+        "omission_safety_net": 0,
+        "other_contradiction": 1,
+        "temporal": 1
+      },
+      "grounding_pass_rate": 0.7727,
+      "not_in_note": 8,
+      "note_facts": 40,
+      "note_facts_labelled": 40,
+      "proposed": 44,
+      "recall": 0.7,
+      "safety_net_covered": 2,
+      "safety_net_note_facts": 2,
+      "weighted_error": 16,
+      "weighted_error_per_note_fact": 0.4
+    },
+    {
+      "consultation": "day1_consultation12",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 88,
+      "accepted": 24,
+      "candidates": 24,
+      "candidates_labelled": 24,
+      "consistent": 15,
+      "contradiction_rate": 0.0417,
+      "contradicts": 1,
+      "covered": 14,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 16,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 1
+      },
+      "grounding_pass_rate": 0.8276,
+      "not_in_note": 8,
+      "note_facts": 31,
+      "note_facts_labelled": 31,
+      "proposed": 29,
+      "recall": 0.4516,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 1,
+      "weighted_error": 19,
+      "weighted_error_per_note_fact": 0.6129
+    },
+    {
+      "consultation": "day1_consultation01",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 85,
+      "accepted": 33,
+      "candidates": 33,
+      "candidates_labelled": 33,
+      "consistent": 26,
+      "contradiction_rate": 0.0909,
+      "contradicts": 3,
+      "covered": 21,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 6,
+        "omission_safety_net": 0,
+        "other_contradiction": 1,
+        "temporal": 1
+      },
+      "grounding_pass_rate": 0.8684,
+      "not_in_note": 4,
+      "note_facts": 28,
+      "note_facts_labelled": 28,
+      "proposed": 38,
+      "recall": 0.75,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 17,
+      "weighted_error_per_note_fact": 0.6071
+    },
+    {
+      "consultation": "day1_consultation08",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 98,
+      "accepted": 33,
+      "candidates": 33,
+      "candidates_labelled": 33,
+      "consistent": 24,
+      "contradiction_rate": 0.0606,
+      "contradicts": 2,
+      "covered": 17,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 8,
+        "omission_safety_net": 0,
+        "other_contradiction": 2,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7857,
+      "not_in_note": 7,
+      "note_facts": 26,
+      "note_facts_labelled": 26,
+      "proposed": 42,
+      "recall": 0.6538,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 14,
+      "weighted_error_per_note_fact": 0.5385
+    },
+    {
+      "consultation": "day5_consultation10",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 109,
+      "accepted": 31,
+      "candidates": 31,
+      "candidates_labelled": 31,
+      "consistent": 22,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 16,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 16,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.6739,
+      "not_in_note": 9,
+      "note_facts": 32,
+      "note_facts_labelled": 32,
+      "proposed": 46,
+      "recall": 0.5,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 16,
+      "weighted_error_per_note_fact": 0.5
+    },
+    {
+      "consultation": "day5_consultation08",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 134,
+      "accepted": 31,
+      "candidates": 31,
+      "candidates_labelled": 31,
+      "consistent": 21,
+      "contradiction_rate": 0.129,
+      "contradicts": 4,
+      "covered": 18,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 4,
+        "omission_other": 18,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.6889,
+      "not_in_note": 6,
+      "note_facts": 37,
+      "note_facts_labelled": 37,
+      "proposed": 45,
+      "recall": 0.4865,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 38,
+      "weighted_error_per_note_fact": 1.027
+    },
+    {
+      "consultation": "day4_consultation06",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 102,
+      "accepted": 47,
+      "candidates": 47,
+      "candidates_labelled": 47,
+      "consistent": 35,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 19,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 8,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.94,
+      "not_in_note": 12,
+      "note_facts": 27,
+      "note_facts_labelled": 27,
+      "proposed": 50,
+      "recall": 0.7037,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 8,
+      "weighted_error_per_note_fact": 0.2963
+    },
+    {
+      "consultation": "day2_consultation03",
+      "status": "ok",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 82,
+      "accepted": 38,
+      "candidates": 38,
+      "candidates_labelled": 38,
+      "consistent": 25,
+      "contradiction_rate": 0.0789,
+      "contradicts": 3,
+      "covered": 15,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 1,
+        "negation_polarity": 0,
+        "omission_other": 8,
+        "omission_safety_net": 0,
+        "other_contradiction": 2,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8444,
+      "not_in_note": 10,
+      "note_facts": 25,
+      "note_facts_labelled": 25,
+      "proposed": 45,
+      "recall": 0.6,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 19,
+      "weighted_error_per_note_fact": 0.76
+    },
+    {
+      "consultation": "day2_consultation08",
+      "status": "extraction_incomplete",
+      "parts": 4,
+      "parts_failed": 1,
+      "turns": 109,
+      "accepted": 34,
+      "candidates": 34,
+      "candidates_labelled": 34,
+      "consistent": 24,
+      "contradiction_rate": 0.0882,
+      "contradicts": 3,
+      "covered": 24,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 20,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 2
+      },
+      "grounding_pass_rate": 0.8718,
+      "not_in_note": 7,
+      "note_facts": 44,
+      "note_facts_labelled": 44,
+      "proposed": 39,
+      "recall": 0.5455,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 31,
+      "weighted_error_per_note_fact": 0.7045
+    },
+    {
+      "consultation": "day3_consultation06",
+      "status": "ok",
+      "parts": 2,
+      "parts_failed": 0,
+      "turns": 40,
+      "accepted": 16,
+      "candidates": 16,
+      "candidates_labelled": 16,
+      "consistent": 10,
+      "contradiction_rate": 0.125,
+      "contradicts": 2,
+      "covered": 5,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 1,
+        "omission_other": 4,
+        "omission_safety_net": 0,
+        "other_contradiction": 1,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7619,
+      "not_in_note": 4,
+      "note_facts": 10,
+      "note_facts_labelled": 10,
+      "proposed": 21,
+      "recall": 0.5,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 12,
+      "weighted_error_per_note_fact": 1.2
+    },
+    {
+      "consultation": "day4_consultation08",
+      "status": "annotation_incomplete",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 109,
+      "accepted": 26,
+      "candidates": 26,
+      "candidates_labelled": 0,
+      "consistent": 0,
+      "contradiction_rate": null,
+      "contradicts": 0,
+      "covered": 18,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 11,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.7222,
+      "not_in_note": 0,
+      "note_facts": 29,
+      "note_facts_labelled": 29,
+      "proposed": 36,
+      "recall": 0.6207,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 11,
+      "weighted_error_per_note_fact": 0.3793
+    },
+    {
+      "consultation": "day4_consultation10",
+      "status": "ok",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 102,
+      "accepted": 44,
+      "candidates": 44,
+      "candidates_labelled": 44,
+      "consistent": 32,
+      "contradiction_rate": 0.0909,
+      "contradicts": 4,
+      "covered": 19,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 1,
+        "negation_polarity": 3,
+        "omission_other": 9,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.88,
+      "not_in_note": 8,
+      "note_facts": 28,
+      "note_facts_labelled": 28,
+      "proposed": 50,
+      "recall": 0.6786,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 29,
+      "weighted_error_per_note_fact": 1.0357
+    },
+    {
+      "consultation": "day5_consultation11",
+      "status": "annotation_incomplete",
+      "parts": 4,
+      "parts_failed": 0,
+      "turns": 91,
+      "accepted": 40,
+      "candidates": 40,
+      "candidates_labelled": 0,
+      "consistent": 0,
+      "contradiction_rate": null,
+      "contradicts": 0,
+      "covered": 24,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 11,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.8511,
+      "not_in_note": 0,
+      "note_facts": 35,
+      "note_facts_labelled": 35,
+      "proposed": 47,
+      "recall": 0.6857,
+      "safety_net_covered": 1,
+      "safety_net_note_facts": 1,
+      "weighted_error": 11,
+      "weighted_error_per_note_fact": 0.3143
+    },
+    {
+      "consultation": "day4_consultation01",
+      "status": "annotation_incomplete",
+      "parts": 3,
+      "parts_failed": 0,
+      "turns": 102,
+      "accepted": 39,
+      "candidates": 39,
+      "candidates_labelled": 38,
+      "consistent": 23,
+      "contradiction_rate": 0.0,
+      "contradicts": 0,
+      "covered": 12,
+      "errors": {
+        "attribution_speaker": 0,
+        "dose_number": 0,
+        "negation_polarity": 0,
+        "omission_other": 9,
+        "omission_safety_net": 0,
+        "other_contradiction": 0,
+        "temporal": 0
+      },
+      "grounding_pass_rate": 0.9512,
+      "not_in_note": 15,
+      "note_facts": 21,
+      "note_facts_labelled": 21,
+      "proposed": 41,
+      "recall": 0.5714,
+      "safety_net_covered": 0,
+      "safety_net_note_facts": 0,
+      "weighted_error": 9,
+      "weighted_error_per_note_fact": 0.4286
+    }
+  ],
+  "analysis": {
+    "severity": {
+      "critical": 5,
+      "major": 3,
+      "minor": 1
+    },
+    "error_classes": {
+      "negation_polarity": "critical",
+      "dose_number": "critical",
+      "attribution_speaker": "major",
+      "temporal": "major",
+      "other_contradiction": "major",
+      "omission_safety_net": "major",
+      "omission_other": "minor"
+    },
+    "labels": {
+      "A": [
+        "covered",
+        "not_covered"
+      ],
+      "B": [
+        "consistent",
+        "contradicts",
+        "not_in_note"
+      ]
+    },
+    "error_types": [
+      "none",
+      "negation_polarity",
+      "dose_number",
+      "attribution_speaker",
+      "temporal",
+      "other_contradiction"
+    ],
+    "bootstrap": {
+      "seed": 20261018,
+      "resamples": 2000,
+      "min_n": 5,
+      "unit": "consultation",
+      "interval": "percentile 2.5 / 97.5"
+    },
+    "human_sample": {
+      "fraction": 0.2,
+      "seed": 20261018
+    },
+    "order_seed": 20261018,
+    "shuffle_seed": 20261018,
+    "chunk_chars": 3000,
+    "note_splitter": "primock-note-split-v1",
+    "anchor_at": "2026-01-05T09:00:00+00:00",
+    "generator": {
+      "model": "DeepSeek-V4-Flash",
+      "max_tokens": 2000,
+      "guided_json": false,
+      "extra_body": {},
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 120.0,
+      "timeout_retries": 0,
+      "evidence_verifier": "off (KINDRED_VERIFIER_MODE=off, deploy/release.env.example)"
+    },
+    "annotators": [
+      [
+        "Qwen3.8-Flash-Next",
+        {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      ],
+      [
+        "MiMo-V2.6-Flash",
+        {}
+      ]
+    ],
+    "annotator": {
+      "max_tokens": 4096,
+      "guided_json": false,
+      "temperature": 0.0,
+      "seed": 0,
+      "timeout_s": 240.0,
+      "timeout_retries": 1
+    }
+  },
+  "deviations_from_preregistration": [
+    "2026-10-17T23:42Z, after the pilot: added run --deadline-utc (start no consultation that would likely end after it; stopped_reason 'deadline'). Harness only. Reason: the pilot took about 4.5 minutes per consultation with sequential calls, so a full run of 57 may not finish before the results deadline; the seeded processing order keeps a stopped run a random subset, as the protocol states.",
+    "2026-10-17T23:44Z, before the full run: a consultation whose note yields no note fact or whose transcripts yield no turn (unreadable data) is skipped and listed in results.data.skipped instead of being scored as all omissions. Harness only (a data guard); it does not change any consultation that has a note and a readable transcript.",
+    "2026-10-17T23:54Z, before the full run: code fix to match the preregistered PROTOCOL.md: recall and the task B rates now count the labelled items of an incomplete annotation (the code had left such consultations out); the weighted score still uses consultations with both tasks complete. No effect on the pilot (both tasks complete).",
+    "2026-10-17T23:55Z, before the full run: a reply cut off at max_tokens (or not one whole JSON object) is no longer dropped whole: its complete label items are recovered (salvage_items) and count, as PROTOCOL.md says the labelled items of an incomplete annotation do; the task stays incomplete. Reason: the pilot's task B reply used 3331 of the 4096 output tokens for 52 facts, so a longer consultation would be cut off.",
+    "2026-10-18T00:28Z, before any live call of the full run: the full data arrived at 00:25Z; 57 consultations at about 4 minutes each, sequential, would not finish before the 03:30Z results deadline, so a seeded random subset of 30 (the first 30 of the preregistered processing order) was fixed in preregistration_amendment_1.json (`amend`, then `run --amendment`), with a deadline stop at 03:10Z.",
+    "2026-10-18T02:30Z, after the full run, offline: the reader of annotator replies missed replies PROTOCOL.md says count: one that is invalid JSON only because of a raw line break inside a string (llm_client then returned one inner item, and every id counted as missing). read_reply now salvages any reply that is not one object with a labels list (strict=False decoding, else item by item); the task stays incomplete. `report --reparse` applies it to the stored replies (no call) and writes results_reparsed.json and summary_reparsed.md beside the as-run results.json and summary.md. Items whose id key is garbled (a token glitch) are not reinterpreted: they stay unknown ids, as preregistered."
+  ],
+  "human_review": {
+    "path": "human_review.csv",
+    "written": false,
+    "rows": 360,
+    "decisions_total": 1799,
+    "human_labels_filled": 0,
+    "reason": "exists; not overwritten"
+  }
+}

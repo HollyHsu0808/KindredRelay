@@ -1,0 +1,6 @@
+# For hosting the family timeline on Streamlit Community Cloud (main file: handoff_day1/ui/pages/1_Family_timeline.py).
+# The page and its engine need only these; the model settings go in the host's secrets, never in the repository.
+streamlit==1.64.0
+requests==2.34.2
+pandas==3.0.6
+tzdata==2025.2

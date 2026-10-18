@@ -1,0 +1,158 @@
+{
+  "notice": "Sample leaflets written for this prototype: general information in plain words, not about any one patient and not medical advice. A real deployment shows the hospital's own approved patient leaflets instead.",
+  "source": "Prototype demo (sample text)",
+  "leaflets": [
+    {
+      "leaflet_id": "L1",
+      "title": "Moving about after hip surgery",
+      "topics": [
+        "mobility"
+      ],
+      "keywords": [
+        "walk",
+        "walking",
+        "frame",
+        "walking frame",
+        "physio",
+        "physiotherapy",
+        "exercise",
+        "exercises",
+        "dizzy",
+        "get up",
+        "out of bed",
+        "get out of bed",
+        "stand up",
+        "standing up"
+      ],
+      "sentences": [
+        "After hip surgery, the physiotherapist decides when and how the patient gets up, and with which walking aid.",
+        "Use the walking aid you were given every time you walk, until the physiotherapist says otherwise.",
+        "If the care team has said to ask for help before getting out of bed, ask every time.",
+        "Feeling dizzy when standing up can happen after surgery: sit back down and tell the nurse or carer.",
+        "Do the exercises the physiotherapist showed you, as often as they said.",
+        "Ask the physiotherapist which movements to avoid while the hip heals."
+      ]
+    },
+    {
+      "leaflet_id": "L2",
+      "title": "Preventing falls at home",
+      "topics": [
+        "mobility"
+      ],
+      "keywords": [
+        "fall",
+        "falls",
+        "falling",
+        "fell",
+        "trip",
+        "rugs",
+        "grab rails",
+        "home safety",
+        "slippers at home"
+      ],
+      "sentences": [
+        "Clear rugs, cables and clutter from the routes she uses most at home.",
+        "Leave a light on the way to the toilet at night.",
+        "Keep the things she uses every day within easy reach, so she does not need to bend or climb.",
+        "Wear shoes or slippers that fit well and have a back.",
+        "Ask the care team or the GP about a home safety check and equipment such as a raised toilet seat or grab rails."
+      ]
+    },
+    {
+      "leaflet_id": "L3",
+      "title": "Blood-thinning injections at home",
+      "topics": [
+        "medicines"
+      ],
+      "keywords": [
+        "injection",
+        "injections",
+        "enoxaparin",
+        "blood thinner",
+        "blood-thinning",
+        "clot",
+        "clots",
+        "sharps",
+        "injection needle"
+      ],
+      "sentences": [
+        "Some patients go home with daily injections that lower the risk of blood clots after hip surgery.",
+        "Give the injection at about the same time each day, the way the nurse or pharmacist showed you.",
+        "A small bruise where the needle went in can happen.",
+        "Do not stop the injections early unless the doctor says so.",
+        "Call the GP or the ward if there is bleeding that does not stop, blood in urine or stools, or large bruises.",
+        "Put used needles in the sharps bin you were given."
+      ]
+    },
+    {
+      "leaflet_id": "L4",
+      "title": "Caring for the wound and staples",
+      "topics": [
+        "appointments"
+      ],
+      "keywords": [
+        "wound",
+        "staples",
+        "stitches",
+        "dressing",
+        "bath",
+        "shower",
+        "scar"
+      ],
+      "sentences": [
+        "Keep the dressing clean and dry until the nurse says otherwise.",
+        "Staples are taken out by a nurse, at the GP practice or at home, on the date you were given.",
+        "Do not soak the wound in a bath until the care team says it has healed.",
+        "Call the GP or the ward if the wound becomes hot, red or swollen, leaks, or smells."
+      ]
+    },
+    {
+      "leaflet_id": "L5",
+      "title": "Warning signs after hip surgery",
+      "topics": [
+        "warning"
+      ],
+      "keywords": [
+        "warning",
+        "warning signs",
+        "emergency",
+        "fever",
+        "swollen",
+        "swelling",
+        "breath",
+        "watch for",
+        "look out for",
+        "chest pain"
+      ],
+      "sentences": [
+        "Call your local emergency number if she has chest pain or sudden shortness of breath.",
+        "Call the GP or the ward the same day if the leg becomes hot, red, swollen or painful.",
+        "Call the GP or the ward if she has a fever or the wound leaks.",
+        "Call the GP or the ward if she cannot put weight on the leg when she could before, or the leg looks shorter or turned outwards."
+      ]
+    },
+    {
+      "leaflet_id": "L6",
+      "title": "Pain relief after hip surgery",
+      "topics": [
+        "medicines"
+      ],
+      "keywords": [
+        "pain",
+        "painkiller",
+        "painkillers",
+        "paracetamol",
+        "hurt",
+        "hurts",
+        "ache",
+        "sore hip",
+        "sore leg"
+      ],
+      "sentences": [
+        "Take pain relief as written on the medication list, and not more than the list says.",
+        "Many cold and flu medicines also contain paracetamol: check the labels so it is not taken twice.",
+        "Tell the GP or the pharmacist if the pain is getting worse instead of better."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KindredRelay · AMD Developer Hackathon ACT III</title>
+<!-- generated from submission/slides.md -->
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#2a2622;font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif}
+.deck{position:relative;width:100%;height:100%;overflow:hidden}
+.slide{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#FBFAF7;color:#1F2328;padding:72px 96px 120px;
+  transform-origin:0 0;display:none;overflow:hidden}
+.slide.active{display:block}
+.slide::before{content:"";position:absolute;left:0;top:0;width:100%;height:10px;background:linear-gradient(90deg,#D9480F,#F2A65A)}
+h1{font-size:120px;margin:40px 0 10px;letter-spacing:-2px}
+h2{font-size:58px;margin:0 0 36px;letter-spacing:-.5px}
+h3{font-size:34px;margin:0 0 14px;color:#8A3B12}
+p,li,td,th{font-size:30px;line-height:1.38}
+ul,ol{margin:0 0 0 0;padding-left:40px}
+li{margin-bottom:14px}
+.kicker{font-size:30px;color:#8A3B12;font-weight:600;margin-top:40px}
+.hook{font-size:50px;line-height:1.25;font-weight:600;max-width:1600px;margin:24px 0}
+.lead{font-size:34px;max-width:1500px;color:#3D4650}
+.pills{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
+.pill{font-size:26px;padding:10px 22px;border-radius:30px;background:#ECE8E1;color:#3D4650}
+.pill.amd{background:#FFF1E6;color:#9C330A;border:2px solid #D9480F}
+.links{position:absolute;left:96px;bottom:80px;font-size:28px;color:#59636E}
+.cols{display:flex;gap:64px}.col{flex:1}
+.cols.tight{margin-top:24px;gap:48px}
+.small{font-size:23px;color:#59636E;line-height:1.4}
+.steps li{font-size:31px;margin-bottom:20px}
+.t{border-collapse:collapse;width:100%}
+.t th,.t td{border-bottom:2px solid #E2DED6;padding:14px 18px;text-align:left;vertical-align:top;font-size:27px}
+.t th{background:#F1EEE8;font-size:25px;color:#3D4650}
+.t.big td,.t.big th{font-size:31px;padding:16px 22px}
+.amdline{font-size:30px;font-weight:600;color:#9C330A;background:#FFF1E6;border-left:8px solid #D9480F;padding:14px 22px;margin:0 0 28px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.card{border-radius:18px;padding:26px 30px;border:3px solid #59636E;background:#fff}
+.card.check{border-color:#2B7A4B;background:#EAF5EE}.card.human{border-color:#3657A8;background:#EDF2FC}
+.card p{font-size:27px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:34px}
+.stat{background:#EAF5EE;border:3px solid #2B7A4B;border-radius:18px;padding:22px 24px}
+.stat.warn{background:#FFF4E5;border-color:#C77700}
+.num{font-size:58px;font-weight:700;letter-spacing:-1px}
+.lbl{font-size:24px;line-height:1.35;color:#2D333A;margin-top:6px}
+.lim li{font-size:26.5px;margin-bottom:12px}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.role{background:#FFF1E6;border:3px solid #D9480F;border-radius:18px;padding:20px 24px}
+.rk{font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#9C330A}
+.rm{font-size:32px;font-weight:700;margin:4px 0 10px}
+.role p{font-size:24px;margin:0 0 10px;line-height:1.35}
+.role p.rd{font-size:23px;color:#3D4650;border-top:2px solid #F2C9AE;padding-top:10px}
+.pend{background:#FFF8D6;border:2px dashed #B08900;border-radius:8px;padding:0 8px}
+.pending{font-size:28px;background:#FFF8D6;border:2px dashed #B08900;padding:16px 20px;border-radius:12px}
+.src{position:absolute;left:96px;right:200px;bottom:30px;font-size:17px;line-height:1.35;color:#6B7280}
+.pageno{position:absolute;right:60px;bottom:30px;font-size:20px;color:#8A8F98}
+.slide.arch{padding:0}
+.slide.arch .arch{position:absolute;left:0;top:10px;width:1920px;height:1070px}
+.slide.arch .src{display:none}
+.notes{display:none}
+body.shownotes .slide.active .notes{display:block;position:absolute;left:96px;right:96px;bottom:70px;background:#1F2328;
+  color:#fff;font-size:24px;padding:18px 24px;border-radius:12px;z-index:5}
+.hint{position:fixed;right:12px;bottom:8px;color:#bbb;font:13px system-ui,sans-serif}
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{background:#fff;height:auto}
+  .deck{overflow:visible;height:auto}
+  .slide{display:block!important;position:relative;transform:none!important;page-break-after:always;break-after:page}
+  .slide:last-child{page-break-after:auto;break-after:auto}
+  .notes,.hint{display:none!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+code{font-family:Consolas,"Cascadia Mono",monospace;font-size:.88em;background:#F1EEE8;padding:0 6px;border-radius:6px}
+.slide.dense p,.slide.dense li,.slide.dense td,.slide.dense th{font-size:25px;line-height:1.32}
+.slide.dense li{margin-bottom:9px}
+.slide.xdense p,.slide.xdense li,.slide.xdense td,.slide.xdense th{font-size:22.5px;line-height:1.3}
+.slide.xdense li{margin-bottom:7px}
+.slide.xdense h2,.slide.dense h2{font-size:46px;margin-bottom:24px}
+.slide ul ul{margin-top:8px}
+.foot{font-size:21px;color:#59636E;line-height:1.35;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="deck">
+<section class="slide title" aria-label="Slide 1"><div class="kicker">AMD Developer Hackathon ACT III · Health &amp; Wellbeing track · https://github.com/HollyHsu0808/KindredRelay</div><h1>KindredRelay</h1><p class="hook">After a fall, the whole family needs the same story: what the care team actually said, in their words.</p><p class="lead">One shared family timeline built from what the caregiver records, types and photographs. Every fact quotes its source word for word. It never diagnoses.</p><div class="pills"><span class="pill amd">Inference via the AMD Token Factory endpoint provided for the AMD Developer Hackathon</span><span class="pill">DeepSeek-V4-Flash · Gemma-4-31B-IT</span></div><div class="links">Repo: <span class="pend">[[REPO_URL]]</span> · App: <span class="pend">[[APP_URL]]</span></div><div class="src">Sources: tagline P01; models M01, M02; AMD wording B21.</div><div class="pageno">1 / 14</div><aside class="notes">Speaker notes: Mum fell. One daughter is at the hospital; the rest of the family is in other cities. KindredRelay turns what the nurse says, a photo of the discharge list and the caregiver's own notes into one timeline the whole family shares. Every fact quotes where it came from. It never diagnoses and never gives advice.</aside></section>
+<section class="slide " aria-label="Slide 2"><h2>The problem, and who we built it for</h2>
+<ul><li><b>User:</b> the family caregiver after a fall and a hospital stay: at the bedside, hearing doctors and nurses, then repeating it all on the phone.</li><li><b>Also:</b> relatives in other cities and time zones who want to help and keep asking the same questions.</li><li>Updates arrive as hallway conversations, photos of papers, phone calls.</li><li>Plans change: "going home" moves from Friday to Saturday; the old plan lives on in someone's chat.</li><li>One misheard word matters: our own speech-to-text test turned "two tablets" into "a few tablets".</li><li>A summary that rewrites what was said cannot show who said what.</li><li>Context (secondary): 23% of inpatients in one study said they at least sometimes got conflicting information; 43 US states + DC require hospitals to instruct family caregivers before discharge (CARE Act).</li></ul><div class="src">Sources: demo story P02; misheard dose M05; 23% X03 (secondary); CARE Act X01 (secondary).</div><div class="pageno">2 / 14</div><aside class="notes">Speaker notes: Our user is the family caregiver after a fall, around the hospital stay and discharge, plus the relatives far away. The misheard-dose example is from our own Whisper smoke test, and it is the reason every number in KindredRelay is checked by a person before it is added. The two context figures come from our research note; we label them secondary until we re-check the primary papers.</aside></section>
+<section class="slide " aria-label="Slide 3"><h2>What the family does with it</h2>
+<ol><li><b>Record what the nurse said</b> (after the speaker agrees). Whisper writes it out; the caregiver corrects it and ticks every line with a number, a time, stop or continue.</li><li><b>Facts with quotes.</b> The model proposes facts; code keeps only those whose quote is in the update word for word. The timeline shows "Going home moved", the old plan crossed out.</li><li><b>Photograph the discharge medication list.</b> A vision model copies the words as a draft; the caregiver checks each line against the photo.</li><li><b>Every relative sees it</b> in their own time zone, with what changed since they last looked.</li><li><b>Ask a question.</b> "When is Elena going home?" → the care team's own sentences, who said them, when. "Can she get out of bed on her own?" → "Only the care team can decide…" plus what they said.</li><li><b>Not in the updates?</b> It goes on a shared "Questions for the doctor" list.</li></ol><div class="src">Sources: flow <code>release/evidence_en/DEMO_RECORDING.md:104-118</code>; labels <code>handoff_day1/ui/pages/1_Family_timeline.py:1089,1550,1711</code>; fixed first line <code>handoff_day1/agent/episode_qa.py:690</code>.</div><div class="pageno">3 / 14</div><aside class="notes">Speaker notes: This is the demo order. The point to stress: for a family question the model never writes the answer. It only picks sentences from the updates, and the first line is fixed text written by our code. That is how we keep "can she…?" questions with the care team.</aside></section>
+<section class="slide dense" aria-label="Slide 4"><h2>AMD at the core: two models, three roles, chosen by measurement</h2>
+<ul><li>Inference via the AMD Token Factory endpoint provided for the AMD Developer Hackathon (OpenAI-compatible, host developer.amd.com.cn).</li><li><b>Generator: DeepSeek-V4-Flash</b> turns each checked update into facts with quotes, and chooses the sentences that answer family questions.<ul><li>Chosen by data, in two benchmark runs: median 6.15 s / 6.63 s per update vs 16.66 s / 22.77 s for Gemma-4-31B-IT; 95.7% / 96.3% vs 86.0% / 83.3% of proposed facts pass the grounding check.</li></ul></li><li><b>Photo reader: Gemma-4-31B-IT</b> copies a photographed medication list or letter as a draft for the caregiver to check (57/57 words on our fictional discharge list). Same endpoint, same client.</li><li><b>Second-opinion judge: Gemma-4-31B-IT</b> (evaluation, shadow): a different model family checks paraphrased attacks. It failed its preregistered rule in both rounds, so it stays off the product path (slide 9).</li><li><b>AMD Runtime page</b>: every model call of the session with model, endpoint host, latency, tokens and what our checks did with the reply.</li><li><b>Load and capacity:</b> peak 16.84 updates per minute at 4 concurrent requests; at 8, 20 of 36 attempts were rate-limited (HTTP 429; the replies state 20 requests per minute per user). Model: about 2,431 tokens per family per day; 1.98 busy endpoint-hours per 1,000 families per day (assumptions labelled, no price).</li><li>Not on AMD, not claimed: Whisper runs on the app server's CPU. No GPU is named: the endpoint's hardware is not visible to us.</li></ul><div class="src">Sources: endpoint M03, B01; run 1 B05, B12, B09, B15; run 2 B25–B28; photo model M02; 57/57 M06; judge C01–C03, C07, C08; AMD Runtime M09 and <code>handoff_day1/ui/pages/shell/runtime_trace.py:243-262</code>; load L03–L05; capacity L06, L07; no GPU B21; Whisper CPU M04. <code>release/benchmarks/load_20261017T232951Z/summary.md:13</code> <code>release/benchmarks/capacity_20261017T233811Z/summary.md:46,52</code><!-- depth:D01 D03 D04 D05 --></div><div class="pageno">4 / 14</div><aside class="notes">Speaker notes: Read the AMD sentence exactly. Every model call in the product the judges use goes to Token Factory, and you can watch them on the AMD Runtime page. We did not pick models by reputation: we ran the app's own code path on the endpoint twice, 12 updates times 3 repeats per model each time. In both runs DeepSeek-V4-Flash was faster and more of its facts survived our grounding check, so it is the generator. Gemma-4-31B-IT reads photos, and because it is a different model family it was our second-opinion judge in evaluation; it did not pass its own rule, so it is not in the product. Two models, three roles. The load test shows where the shared endpoint stops scaling for one key: the per-user rate limit, not hardware we can see. The capacity numbers are a model with labelled assumptions; we do not invent a price. Never name a GPU.</aside></section>
+<section class="slide arch" aria-label="Slide 5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" class="arch" role="img" aria-labelledby="arch-t arch-d" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">
+<title id="arch-t">KindredRelay architecture</title>
+<desc id="arch-d">How a caregiver update becomes a sourced family timeline: speech to text on CPU, photo reading and fact extraction on AMD Token Factory, a deterministic grounding check, an evidence verifier gate that is off in the release, and the family timeline; a question path that only chooses sentences; and, outside the app path, the fall detection module and evaluation harnesses.</desc>
+<defs><marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3D4650"/></marker></defs>
+<rect width="1920" height="1080" fill="#FBFAF7"/>
+<text x="30" y="54" font-size="38" font-weight="700" fill="#1F2328">KindredRelay: how one update becomes a sourced family timeline</text>
+<text x="30" y="88" font-size="20" fill="#3D4650">Release build (Dockerfile.release). The model proposes; deterministic code decides; a person confirms.</text>
+<rect x="1302" y="22" width="34" height="24" rx="6" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/><text x="1346" y="40" font-size="17" fill="#1F2328">Runs on AMD Token Factory</text>
+<rect x="1602" y="22" width="34" height="24" rx="6" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/><text x="1646" y="40" font-size="17" fill="#1F2328">Deterministic check (code)</text>
+<rect x="1302" y="58" width="34" height="24" rx="6" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/><text x="1346" y="76" font-size="17" fill="#1F2328">A person checks</text>
+<rect x="1602" y="58" width="34" height="24" rx="6" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/><text x="1646" y="76" font-size="17" fill="#1F2328">In the repo, not in the app path</text>
+<rect x="30" y="112" width="280" height="488" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="46" y="146" font-size="23" font-weight="700" fill="#1F2328">Caregiver &amp; family</text>
+<text x="46" y="174" font-size="18.5" font-weight="700" fill="#59636E">in the browser: phone or</text>
+<text x="46" y="198.5" font-size="18.5" font-weight="700" fill="#59636E">laptop</text>
+<circle cx="50" cy="219.5" r="3" fill="#59636E"/>
+<text x="60" y="225.0" font-size="17.5" fill="#2D333A">record what the nurse said</text>
+<text x="60" y="248.5" font-size="17.5" fill="#2D333A">(after the speaker agrees)</text>
+<circle cx="50" cy="266.5" r="3" fill="#59636E"/>
+<text x="60" y="272.0" font-size="17.5" fill="#2D333A">photograph a paper</text>
+<circle cx="50" cy="290.0" r="3" fill="#59636E"/>
+<text x="60" y="295.5" font-size="17.5" fill="#2D333A">type an update or a plan</text>
+<circle cx="50" cy="313.5" r="3" fill="#59636E"/>
+<text x="60" y="319.0" font-size="17.5" fill="#2D333A">ask a question</text>
+<circle cx="50" cy="337.0" r="3" fill="#59636E"/>
+<text x="60" y="342.5" font-size="17.5" fill="#2D333A">each relative sees the</text>
+<text x="60" y="366.0" font-size="17.5" fill="#2D333A">timeline in their own time</text>
+<text x="60" y="389.5" font-size="17.5" fill="#2D333A">zone; the caregiver invites</text>
+<text x="60" y="413.0" font-size="17.5" fill="#2D333A">them with a link</text>
+<rect x="348" y="152" width="280" height="158" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="364" y="186" font-size="23" font-weight="700" fill="#1F2328">Speech to text</text>
+<text x="364" y="214" font-size="18" font-weight="700" fill="#59636E">Whisper base.en</text>
+<circle cx="368" cy="234.5" r="3" fill="#59636E"/>
+<text x="378" y="240" font-size="17" fill="#2D333A">app server CPU, not AMD</text>
+<circle cx="368" cy="257.5" r="3" fill="#59636E"/>
+<text x="378" y="263" font-size="17" fill="#2D333A">flags numbers, times,</text>
+<text x="378" y="286" font-size="17" fill="#2D333A">negations, conditions</text>
+<rect x="666" y="112" width="280" height="198" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="122" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="139" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="168" font-size="23" font-weight="700" fill="#1F2328">Photo reading</text>
+<text x="682" y="196" font-size="18" font-weight="700" fill="#D9480F">Gemma-4-31B-IT</text>
+<circle cx="686" cy="216.5" r="3" fill="#59636E"/>
+<text x="696" y="222" font-size="17" fill="#2D333A">copies the printed words of a</text>
+<text x="696" y="245" font-size="17" fill="#2D333A">medication list or letter</text>
+<circle cx="686" cy="262.5" r="3" fill="#59636E"/>
+<text x="696" y="268" font-size="17" fill="#2D333A">the result is a draft</text>
+<rect x="984" y="112" width="598" height="198" rx="14" fill="#FFF8F2" stroke="#E8A87C" stroke-width="2.5"/>
+<text x="1000" y="146" font-size="22" font-weight="700" fill="#1F2328">AMD Token Factory endpoint (developer.amd.com.cn)</text>
+<text x="1000" y="175" font-size="17" fill="#2D333A">Inference via the AMD Token Factory endpoint provided for the AMD</text>
+<text x="1000" y="198" font-size="17" fill="#2D333A">Developer Hackathon. OpenAI-compatible HTTPS; JSON asked for in the</text>
+<text x="1000" y="221" font-size="17" fill="#2D333A">prompt; the API key stays in an environment variable.</text>
+<text x="1000" y="244" font-size="17" fill="#2D333A">The hardware behind the endpoint is not visible to the client, so no GPU is</text>
+<text x="1000" y="267" font-size="17" fill="#2D333A">claimed.</text>
+<rect x="1620" y="112" width="280" height="198" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="146" font-size="23" font-weight="700" fill="#1F2328">Read-only pages</text>
+<circle cx="1640" cy="170.5" r="3" fill="#59636E"/>
+<text x="1650" y="176" font-size="16.5" fill="#2D333A">AMD Runtime: each call&#x27;s</text>
+<text x="1650" y="198.5" font-size="16.5" fill="#2D333A">model, endpoint host, latency,</text>
+<text x="1650" y="221.0" font-size="16.5" fill="#2D333A">tokens, what the checks did</text>
+<circle cx="1640" cy="238.0" r="3" fill="#59636E"/>
+<text x="1650" y="243.5" font-size="16.5" fill="#2D333A">Scorecard: each number with</text>
+<text x="1650" y="266.0" font-size="16.5" fill="#2D333A">its source file</text>
+<path d="M 1582 208 L 1616 208" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<text x="1601" y="196" font-size="14" font-style="italic" fill="#3D4650" text-anchor="middle">every call</text>
+<rect x="348" y="334" width="280" height="266" rx="14" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/>
+<text x="364" y="368" font-size="23" font-weight="700" fill="#1F2328">A person checks the</text>
+<text x="364" y="396" font-size="23" font-weight="700" fill="#1F2328">draft</text>
+<circle cx="368" cy="420.5" r="3" fill="#59636E"/>
+<text x="378" y="426" font-size="17.5" fill="#2D333A">corrects misheard or misread</text>
+<text x="378" y="449.5" font-size="17.5" fill="#2D333A">words</text>
+<circle cx="368" cy="467.5" r="3" fill="#59636E"/>
+<text x="378" y="473.0" font-size="17.5" fill="#2D333A">ticks every line with a</text>
+<text x="378" y="496.5" font-size="17.5" fill="#2D333A">number, a time, stop or</text>
+<text x="378" y="520.0" font-size="17.5" fill="#2D333A">continue</text>
+<circle cx="368" cy="538.0" r="3" fill="#59636E"/>
+<text x="378" y="543.5" font-size="17.5" fill="#2D333A">a line she edits counts as a</text>
+<text x="378" y="567.0" font-size="17.5" fill="#2D333A">family report</text>
+<rect x="666" y="334" width="280" height="266" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="344" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="361" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="390" font-size="23" font-weight="700" fill="#1F2328">Fact extraction</text>
+<text x="682" y="418" font-size="18.5" font-weight="700" fill="#D9480F">DeepSeek-V4-Flash</text>
+<circle cx="686" cy="439.0" r="3" fill="#59636E"/>
+<text x="696" y="444.5" font-size="17.5" fill="#2D333A">turns the checked text into</text>
+<text x="696" y="468.0" font-size="17.5" fill="#2D333A">facts (JSON)</text>
+<circle cx="686" cy="486.0" r="3" fill="#59636E"/>
+<text x="696" y="491.5" font-size="17.5" fill="#2D333A">each fact must quote the</text>
+<text x="696" y="515.0" font-size="17.5" fill="#2D333A">update, at least 3 words</text>
+<circle cx="686" cy="533.0" r="3" fill="#59636E"/>
+<text x="696" y="538.5" font-size="17.5" fill="#2D333A">a reply that cannot be read</text>
+<text x="696" y="562.0" font-size="17.5" fill="#2D333A">gives no facts</text>
+<rect x="984" y="334" width="280" height="266" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1000" y="368" font-size="23" font-weight="700" fill="#1F2328">Grounding check</text>
+<text x="1000" y="396" font-size="18.5" font-weight="700" fill="#2B7A4B">no model involved</text>
+<circle cx="1004" cy="417.0" r="3" fill="#59636E"/>
+<text x="1014" y="422.5" font-size="17.5" fill="#2D333A">quote in the update word for</text>
+<text x="1014" y="446.0" font-size="17.5" fill="#2D333A">word, not after a negation</text>
+<circle cx="1004" cy="464.0" r="3" fill="#59636E"/>
+<text x="1014" y="469.5" font-size="17.5" fill="#2D333A">numbers and field words</text>
+<text x="1014" y="493.0" font-size="17.5" fill="#2D333A">come from the quote</text>
+<circle cx="1004" cy="511.0" r="3" fill="#59636E"/>
+<text x="1014" y="516.5" font-size="17.5" fill="#2D333A">dates agree with the words</text>
+<circle cx="1004" cy="534.5" r="3" fill="#59636E"/>
+<text x="1014" y="540.0" font-size="17.5" fill="#2D333A">else: rejected</text>
+<rect x="1302" y="334" width="280" height="266" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<rect x="1523.0" y="344" width="49.0" height="24" rx="12" fill="#59636E"/><text x="1547.5" y="361" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">OFF</text>
+<text x="1318" y="368" font-size="23" font-weight="700" fill="#1F2328">Evidence verifier</text>
+<text x="1318" y="396" font-size="17" font-weight="700" fill="#2B7A4B">off in the release</text>
+<text x="1318" y="421" font-size="16" fill="#2D333A">KINDRED_VERIFIER_MODE=off</text>
+<circle cx="1322" cy="437.5" r="3" fill="#59636E"/>
+<text x="1332" y="443" font-size="16" fill="#2D333A">gate mode only with a validated</text>
+<text x="1332" y="465" font-size="16" fill="#2D333A">operating point</text>
+<circle cx="1322" cy="481.5" r="3" fill="#59636E"/>
+<text x="1332" y="487" font-size="16" fill="#2D333A">v2 found none: stays off</text>
+<text x="1332" y="509" font-size="16" fill="#2D333A">(fail-closed)</text>
+<circle cx="1322" cy="525.5" r="3" fill="#59636E"/>
+<text x="1332" y="531" font-size="16" fill="#2D333A">gate mode holds unverified facts</text>
+<rect x="1620" y="334" width="280" height="266" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="368" font-size="23" font-weight="700" fill="#1F2328">Family timeline &amp;</text>
+<text x="1636" y="396" font-size="23" font-weight="700" fill="#1F2328">handover</text>
+<circle cx="1640" cy="420.5" r="3" fill="#59636E"/>
+<text x="1650" y="426" font-size="17.5" fill="#2D333A">&#x27;Right now&#x27; card, newest-first</text>
+<text x="1650" y="449.5" font-size="17.5" fill="#2D333A">timeline</text>
+<circle cx="1640" cy="467.5" r="3" fill="#59636E"/>
+<text x="1650" y="473.0" font-size="17.5" fill="#2D333A">headlines from fixed</text>
+<text x="1650" y="496.5" font-size="17.5" fill="#2D333A">templates</text>
+<circle cx="1640" cy="514.5" r="3" fill="#59636E"/>
+<text x="1650" y="520.0" font-size="17.5" fill="#2D333A">a family note never overrides</text>
+<text x="1650" y="543.5" font-size="17.5" fill="#2D333A">the care team</text>
+<circle cx="1640" cy="561.5" r="3" fill="#59636E"/>
+<text x="1650" y="567.0" font-size="17.5" fill="#2D333A">no diagnosis, no advice</text>
+<path d="M 310 130 L 662 130" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<text x="488.0" y="122" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">photo</text>
+<path d="M 310 224 L 344 224" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<text x="329" y="216" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">voice</text>
+<path d="M 310 459 L 344 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<text x="329" y="449" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">typed</text>
+<path d="M 488.0 310 L 488.0 330" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 706 310 L 598 330" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 628 459 L 662 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 946 459 L 980 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 1264 459 L 1298 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 1582 459 L 1616 459" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<rect x="348" y="628" width="280" height="176" rx="14" fill="#EDF2FC" stroke="#3657A8" stroke-width="2.5"/>
+<text x="364" y="662" font-size="23" font-weight="700" fill="#1F2328">Family member asks</text>
+<circle cx="368" cy="686.5" r="3" fill="#59636E"/>
+<text x="378" y="692" font-size="17" fill="#2D333A">typed, or said and written out</text>
+<text x="378" y="715" font-size="17" fill="#2D333A">by Whisper</text>
+<circle cx="368" cy="732.5" r="3" fill="#59636E"/>
+<text x="378" y="738" font-size="17" fill="#2D333A">checks the words before</text>
+<text x="378" y="761" font-size="17" fill="#2D333A">sending</text>
+<rect x="666" y="628" width="280" height="176" rx="14" fill="#FFF1E6" stroke="#D9480F" stroke-width="2.5"/>
+<rect x="781.015625" y="638" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="858.5078125" y="655" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="682" y="684" font-size="23" font-weight="700" fill="#1F2328">Sentence choice</text>
+<text x="682" y="712" font-size="18" font-weight="700" fill="#D9480F">DeepSeek-V4-Flash</text>
+<circle cx="686" cy="732.5" r="3" fill="#59636E"/>
+<text x="696" y="738" font-size="17" fill="#2D333A">picks sentence ids from the</text>
+<text x="696" y="761" font-size="17" fill="#2D333A">updates; writes no answer text</text>
+<rect x="984" y="628" width="280" height="176" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1000" y="662" font-size="23" font-weight="700" fill="#1F2328">Answer check</text>
+<circle cx="1004" cy="686.5" r="3" fill="#59636E"/>
+<text x="1014" y="692" font-size="17" fill="#2D333A">cited ids must be real</text>
+<text x="1014" y="715" font-size="17" fill="#2D333A">sentences on the question&#x27;s</text>
+<text x="1014" y="738" font-size="17" fill="#2D333A">topic</text>
+<circle cx="1004" cy="755.5" r="3" fill="#59636E"/>
+<text x="1014" y="761" font-size="17" fill="#2D333A">else one retry, then the</text>
+<text x="1014" y="784" font-size="17" fill="#2D333A">updates&#x27; own sentences</text>
+<rect x="1302" y="628" width="280" height="176" rx="14" fill="#EAF5EE" stroke="#2B7A4B" stroke-width="2.5"/>
+<text x="1318" y="662" font-size="23" font-weight="700" fill="#1F2328">Fixed first line</text>
+<circle cx="1322" cy="686.5" r="3" fill="#59636E"/>
+<text x="1332" y="692" font-size="17" fill="#2D333A">chosen by code, not the model</text>
+<circle cx="1322" cy="709.5" r="3" fill="#59636E"/>
+<text x="1332" y="715" font-size="17" fill="#2D333A">&#x27;can she...?&#x27; gets &#x27;Only the</text>
+<text x="1332" y="738" font-size="17" fill="#2D333A">care team can decide...&#x27;</text>
+<rect x="1620" y="628" width="280" height="176" rx="14" fill="#FFFFFF" stroke="#59636E" stroke-width="2.5"/>
+<text x="1636" y="662" font-size="23" font-weight="700" fill="#1F2328">Answer shown</text>
+<circle cx="1640" cy="686.5" r="3" fill="#59636E"/>
+<text x="1650" y="692" font-size="17" fill="#2D333A">the sentences word for word,</text>
+<text x="1650" y="715" font-size="17" fill="#2D333A">with who said them and when</text>
+<circle cx="1640" cy="732.5" r="3" fill="#59636E"/>
+<text x="1650" y="738" font-size="17" fill="#2D333A">not answered: &#x27;Questions for</text>
+<text x="1650" y="761" font-size="17" fill="#2D333A">the doctor&#x27;</text>
+<path d="M 230 600 L 230 716 L 344 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<text x="280" y="706" font-size="15" font-style="italic" fill="#3D4650" text-anchor="middle">asks</text>
+<path d="M 628 716 L 662 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 946 716 L 980 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 1264 716 L 1298 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<path d="M 1582 716 L 1616 716" fill="none" stroke="#3D4650" stroke-width="2.6" marker-end="url(#arch-arrow)"/>
+<rect x="18" y="838" width="1884" height="230" rx="18" fill="none" stroke="#9AA0A8" stroke-width="2" stroke-dasharray="4 6"/>
+<text x="96" y="868" font-size="19" font-weight="700" fill="#59636E">In the repository, outside the deployed app path (not packaged in Dockerfile.release, or run only for evaluation)</text>
+<text x="1886" y="868" font-size="16" fill="#59636E" text-anchor="end">Sources for every box: submission/architecture.md</text>
+<rect x="40" y="884" width="588" height="170" rx="14" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/>
+<text x="56" y="918" font-size="21" font-weight="700" fill="#1F2328">Fall detection module (handoff_day1/model/)</text>
+<circle cx="60" cy="940.5" r="3" fill="#59636E"/>
+<text x="70" y="946" font-size="17" fill="#2D333A">video -&gt; MediaPipe Pose (CPU) -&gt; 12 pose features -&gt; GRU (4,449</text>
+<text x="70" y="969" font-size="17" fill="#2D333A">parameters)</text>
+<circle cx="60" cy="986.5" r="3" fill="#59636E"/>
+<text x="70" y="992" font-size="17" fill="#2D333A">&#x27;POSSIBLE FALL - please check&#x27;: a prompt the caregiver confirms or</text>
+<text x="70" y="1015" font-size="17" fill="#2D333A">dismisses</text>
+<circle cx="60" cy="1032.5" r="3" fill="#59636E"/>
+<text x="70" y="1038" font-size="17" fill="#2D333A">never an alarm or a diagnosis; no automatic link to the timeline</text>
+<rect x="666" y="884" width="598" height="170" rx="14" fill="#F3F3F1" stroke="#7D838C" stroke-width="2.5" stroke-dasharray="9 6"/>
+<text x="682" y="918" font-size="21" font-weight="700" fill="#1F2328">Evaluation harnesses</text>
+<circle cx="686" cy="940.5" r="3" fill="#59636E"/>
+<text x="696" y="946" font-size="17" fill="#2D333A">bench_tf_handover.py: imports the real extraction -&gt; grounding -&gt; gate</text>
+<text x="696" y="969" font-size="17" fill="#2D333A">path; calls the endpoint</text>
+<circle cx="686" cy="986.5" r="3" fill="#59636E"/>
+<text x="696" y="992" font-size="17" fill="#2D333A">redteam_safety.py: fixed adversarial and benign cases, offline</text>
+<circle cx="686" cy="1009.5" r="3" fill="#59636E"/>
+<text x="696" y="1015" font-size="17" fill="#2D333A">validate_abd.py: deterministic unit suites, offline</text>
+<rect x="1302" y="884" width="588" height="170" rx="14" fill="#FFF7F0" stroke="#D9480F" stroke-width="2.5" stroke-dasharray="9 6"/>
+<rect x="1725.015625" y="894" width="154.984375" height="24" rx="12" fill="#D9480F"/><text x="1802.5078125" y="911" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">AMD Token Factory</text>
+<text x="1318" y="918" font-size="21" font-weight="700" fill="#1F2328">Cross-model semantic check</text>
+<text x="1318" y="944" font-size="18" font-weight="700" fill="#D9480F">Gemma-4-31B-IT as judge (evaluation, shadow)</text>
+<circle cx="1322" cy="964.5" r="3" fill="#59636E"/>
+<text x="1332" y="970" font-size="17" fill="#2D333A">crosscheck_judge.py: does &#x27;rules OR judge&#x27; stop more paraphrased</text>
+<text x="1332" y="993" font-size="17" fill="#2D333A">attacks than rules alone?</text>
+<circle cx="1322" cy="1010.5" r="3" fill="#59636E"/>
+<text x="1332" y="1016" font-size="17" fill="#2D333A">rule fixed before the first judge call; not in the product</text>
+<circle cx="1322" cy="1033.5" r="3" fill="#59636E"/>
+<text x="1332" y="1039" font-size="17" fill="#2D333A">result: failed its rule in both rounds, stays shadow</text>
+<path d="M 82 884 L 82 604" fill="none" stroke="#3D4650" stroke-width="2.6" stroke-dasharray="7 6" marker-end="url(#arch-arrow)"/>
+<text x="96" y="668" font-size="15" font-style="italic" fill="#3D4650">a person</text><text x="96" y="688" font-size="15" font-style="italic" fill="#3D4650">confirms a</text><text x="96" y="708" font-size="15" font-style="italic" fill="#3D4650">fall prompt</text>
+</svg>
+<div class="src">Sources: every box with path:line in <code>architecture.md</code>.</div><div class="pageno">5 / 14</div><aside class="notes">Speaker notes: Follow one update left to right. Speech to text on the app server's CPU; a person checks the draft; DeepSeek on Token Factory proposes facts; our code checks every quote; the evidence verifier is switched off in the release because it did not pass its own gate; then the timeline. The second row is a family question: the model only picks sentences, code checks them and writes the first line. Dashed boxes are in the repository but not in the deployed app, including the fall-detection prototype and the evaluation tools.</aside></section>
+<section class="slide " aria-label="Slide 6"><h2>Safety by design: the model proposes, code and people decide</h2>
+<ul><li><b>Every fact quotes its source.</b> Shown only if its quote is in the update word for word (≥ 3 words, not after a negation) and its numbers and dates come from that quote. No model in this check.</li><li><b>No diagnosis, no advice.</b> For questions the model only picks sentence ids; it writes no answer text. The first line is fixed: "Only the care team can decide what Elena may do."</li><li><b>A person checks every draft.</b> Transcripts and photo text are drafts; lines with a number, a time, stop or continue must be ticked. Edited lines are labelled as family words.</li><li><b>Fail-closed where not proven.</b> The evidence verifier stays off unless it has a validated operating point; v2 found none (0 of 4,048 thresholds), v1 let 9/131 unsupported QA claims through. The release refuses gate mode without one. Family notes never override the care team.</li></ul><div class="src">Sources: <code>handoff_day1/agent/episode.py</code>; <code>handoff_day1/agent/episode_qa.py:686-690</code>; <code>handoff_day1/ui/pages/1_Family_timeline.py</code>; V02, V06, V08, V09; <code>deploy/serve.py:42-43</code>; <code>Dockerfile.release:14</code>; <code>handoff_day1/agent/README.md:29</code>.<!-- depth:D15 --></div><div class="pageno">6 / 14</div><aside class="notes">Speaker notes: Four rules. The important one: the model can propose but cannot publish. The verifier is off because it failed its own preregistered gate, not because we forgot it; we would rather ship it switched off than pretend. The server refuses to start in gate mode without a validated operating point, so it cannot be switched on by accident.</aside></section>
+<section class="slide dense" aria-label="Slide 7"><h2>How we know it works (and where it doesn't): the handover step, measured twice</h2>
+<table class="t big"><tr><th></th><th>DeepSeek-V4-Flash (default), run 1 / run 2</th><th>Gemma-4-31B-IT, run 1 / run 2</th></tr><tr><td>Updates processed</td><td>36/36 / 35/36 (1 timeout)</td><td>36/36 / 36/36</td></tr><tr><td>Median time per update</td><td>6.15 s / 6.63 s</td><td>16.66 s / 22.77 s</td></tr><tr><td>p95 time per update</td><td>15.62 s / 16.53 s</td><td>51.40 s / 82.36 s</td></tr><tr><td>Tokens per update (mean)</td><td>1,219 / 1,216</td><td>1,330 / 1,331</td></tr><tr><td>Proposed facts passing the grounding check</td><td>95.7% / 96.3%</td><td>86.0% / 83.3%</td></tr><tr><td>Same facts across 3 repeats (mean Jaccard)</td><td>0.900 / 0.854</td><td>1.000 / 0.989</td></tr></table>
+<ul><li><b>Roles follow the data:</b> in both runs DeepSeek-V4-Flash was faster and more of its facts were grounded.</li><li><b>A hypothesis that did not replicate:</b> run 1 suggested stable facts match the reference more often (79.2% vs 28.6%); in run 2 the gap shrank (81.4% vs 45.5%, overlapping intervals), and stability did not predict passing the grounding check (85.0% vs 85.7%). We do not use stability as a confidence signal.</li><li><b>Under load:</b> 16.84 updates per minute at 4 concurrent requests; at 8, throughput fell to 9.49 as 20 of 36 attempts were rate-limited (20 requests per minute per user).</li></ul>
+<p class="foot">One update = the app's real path (extraction → grounding check → gate) called by <code>scripts/bench_tf_handover.py</code>; 12 updates of one fictional story × 3 repeats per model per run; verifier off. Latency includes the network from our machine. Engineering measurement, not clinical validation.</p><div class="src">Sources: run 1 B02–B19, A01–A05; run 2 B24–B29, A09–A11; load L03–L05. <code>release/benchmarks/tf_bench_20261017T213905Z/results.json</code> <code>release/benchmarks/tf_bench_20261017T230311Z/results.json</code> <code>release/benchmarks/agreement_20261017T221124Z/summary.md</code> <code>release/benchmarks/agreement_20261017T232917Z/summary.md:39-42</code> <code>release/benchmarks/load_20261017T232951Z/rate_limit_breakdown.md:12</code><!-- depth:D01 D02 D03 D04 --></div><div class="pageno">7 / 14</div><aside class="notes">Speaker notes: We ran the same benchmark twice, an hour and a half apart. The ranking held: DeepSeek is faster and more of its proposed facts pass the grounding check, so it stays the default. Run 2 also tested an idea from run 1, that facts which come back in every repeat are more trustworthy. It did not hold up clearly, so we dropped it rather than ship a confidence badge we cannot defend. Under load the limit we hit was the endpoint's per-user rate limit, which the 429 replies state.</aside></section>
+<section class="slide xdense" aria-label="Slide 8"><h2>How we know it works: a red team, and metamorphic tests that need no answer key</h2>
+<ul><li><b>Red team</b> (offline, deterministic, no model): the same 32 attacks <b>23/32 → 30/32</b> stopped before → after our fixes; <b>46/54</b> in the full 73-case set; <b>0/19</b> benign controls blocked; <b>1/7</b> held-out attacks. Final rerun on the shipped code (after the DX-05 and PI-04 fixes): <b>49/54</b> stopped, <b>48/48</b> excluding the documented known gaps, <b>0/19</b> controls blocked, held-out <b>2/7</b>; the 5 attacks that still pass are all on the Case Agent answer path, none on the deployed family timeline (SOURCES R11, R12).</li><li><b>Test-first fixes:</b> the failing run is recorded before the fix (red team 12:26 UTC before, 14:00 UTC after; metamorphic before_fix run on the same seed), and the test suite fails on any new violation signature.</li><li><b>Metamorphic testing:</b> 6 relations × 200 seeded instances, e.g. "adding a negation must flip acceptance", "renaming people must change nothing". Invariance: <b>0/200</b> violations. <b>7</b> guardrail bug signatures closed (negation relation 132 → 62 violations; 38 in the final run after the plan-negation fix, and the dose relation 40 → 0); the rest are listed as known gaps.</li><li><b>Live, on DeepSeek-V4-Flash:</b> 2 of 20 accepted facts had the wrong negation polarity on a flipped clause.</li><li><b>A real bug found:</b> "Going home is not planned for Saturday" was shown as "Going home moved". Fixed, with a regression test. Negated-procedure display: "The surgeon will not operate tomorrow morning" and "Surgery has been cancelled" are no longer shown as a planned operation anywhere; the card shows the source's own words (7 + 7 regression tests, SOURCES DF01).</li></ul><div class="src">Sources: R01–R10, R11; MT01–MT05. <code>release/benchmarks/redteam_before_20261017T122640Z/results.json</code> <code>release/benchmarks/redteam_20261017T140024Z/results.json</code> <code>release/benchmarks/metamorphic_20261017T233944Z/summary.md:5-12,60-78,117,129</code> <code>release/benchmarks/metamorphic_20261017T233944Z/before_fix/</code> <code>handoff_day1/agent/test_plan_negation.py</code><!-- depth:D06 D07 D09 --></div><div class="pageno">8 / 14</div><aside class="notes">Speaker notes: Two ways of attacking our own rules. The red team is a fixed list of attacks; be upfront that only 1 of 7 held-out attacks was stopped. Metamorphic testing does not need a correct answer for each input: it needs a relation that must hold, such as "adding not must flip the decision". We generated 200 cases per relation, fixed seven bug patterns, and kept the remaining ones on a visible known-gap list. The same method, run live against the model, found a real display bug in going-home plans, which we fixed with a regression test.</aside></section>
+<section class="slide dense" aria-label="Slide 9"><h2>How we know it works: a second model as judge, two preregistered rounds, two honest FAILs</h2>
+<ul><li><b>Question:</b> does "rules OR judge" (judge = Gemma-4-31B-IT) stop more paraphrased attacks than the rules alone, without blocking normal updates?</li><li><b>Rule written before the first judge call:</b> attack recall Wilson lower bound ≥ 0.80 AND benign false blocks ≤ 5% AND unverified ≤ 5%.</li><li><b>Round 1</b> (paraphrases by DeepSeek-V4.1-Flash): rules OR judge stopped 127/134 attacks but blocked 26/45 benign updates → <b>FAIL</b>.</li><li><b>Change decided from round 1 only:</b> "not supported" is no longer a flag; one prompt rule (instruction override) rewritten.</li><li><b>Round 2</b> (new held-out paraphrases by MiMo-V2.6-Flash): <b>141/143</b> attacks (Wilson lower 0.9504); benign false blocks <b>14/52</b> (26.9%) vs 9/52 (17.3%) for the rules alone → <b>FAIL</b>.</li><li><b>Paired exact McNemar</b> (preregistered, secondary): attacks b = 0, c = 29, p = 3.73e-09; benign b = 0, c = 5, p = 0.0625.</li><li><b>Verdict:</b> the judge catches attacks the rules miss, but blocks too many normal updates. It stays shadow-only.</li></ul><div class="src">Sources: C01–C03, C05–C12. <code>release/benchmarks/crosscheck_20261017T221103Z/results.json</code> <code>release/benchmarks/crosscheck_r2_20261017T235438Z/summary.md:9,14-33,39-40</code> <code>release/benchmarks/crosscheck_r2_20261017T235438Z/preregistration.json</code><!-- depth:D08 D19 --></div><div class="pageno">9 / 14</div><aside class="notes">Speaker notes: This is the experiment we are proudest of, because it failed twice in public. Each round wrote its acceptance rule and its paraphrased attacks to a file before the first judge call, and the timestamps prove it. Round 2 changed only what round 1's data justified. The judge clearly adds attack recall: in the paired test it never lost an attack the rules caught and gained 29. But a judge that blocks a quarter of normal updates would bury the family in false alarms, so by our own rule it stays out of the product.</aside></section>
+<section class="slide dense" aria-label="Slide 10"><h2>How we know it works: an external reference the team did not write (PriMock57 clinician notes)</h2>
+<ul><li><b>Why:</b> every other correctness number is self-referential: we wrote the story, the reference facts, the attacks and the judge prompt.</li><li><b>Data:</b> PriMock57, 57 public mock primary-care consultations (CC BY 4.0) with the consulting clinician's own note.</li><li><b>Method, fixed before any live call:</b> each transcript goes through the product's unchanged extractor on DeepSeek-V4-Flash; a blind annotator model matches accepted facts to the clinician's note; a person re-labels a 20% sample for Cohen's kappa.</li><li><b>Metrics:</b> note-fact recall, contradiction rate, severity-weighted errors (negation and dose errors weigh most), grounding pass rate.</li><li><b>Result:</b> 30 of 57 PriMock57 consultations (preregistered seeded subset): note-fact recall 58.2% [54.0, 61.8], contradiction rate 6.0% [4.3, 7.8], severity-weighted errors 0.682 per note fact [0.574, 0.800] (critical: 23 negation, 6 dose), safety-net facts covered 22/28; model annotator (Qwen3.8-Flash-Next), Cohen's kappa pending a 360-row human sample (<code>release/benchmarks/primock_gold_20261018T002738Z/human_review.csv</code>)</li><li><b>Limits:</b> role-played consultations, not patients; the annotator is a model until the human sample is labelled; a note is one clinician's summary, not ground truth.</li></ul><div class="src">Sources: G01, G02. <code>research/primock_gold_v1/PROTOCOL.md</code> <code>research/primock_gold_v1/preregistration.json</code> <code>research/primock_gold_v1/ANNOTATION_GUIDE.md</code><!-- depth:D10 --></div><div class="pageno">10 / 14</div><aside class="notes">Speaker notes: Everything else we measured, we also designed. So we took a public dataset of mock consultations where the clinicians wrote their own notes, and asked: how many of the clinician's facts does our extractor recover, and does it ever contradict the note? The protocol and analysis were fixed and hashed before the first call. Read the final numbers from the result box; do not round them up.</aside></section>
+<section class="slide dense" aria-label="Slide 11"><h2>How we know it works: anyone can recompute our numbers, without a key</h2>
+<ul><li><b>Recompute:</b> <code>scripts/verify_claims.py</code> (Python standard library only) recomputes the headline metrics from the raw records and checks every row of <code>SOURCES.md</code> against the file it cites. Final result: (final pre-submission run: 578 checks pass, 0 mismatches, <code>RESULT: PASS</code>)</li><li><b>Preregistration ordering:</b> in both judge rounds the preregistration file was written before the first judge call (round 1: 22:25:08.544 vs 22:25:28.710 UTC; round 2: 00:19:58.999 vs 00:20:06.623 UTC); <code>verify_claims.py</code> re-checks it.</li><li><b>Offline test suite:</b> <code>deploy/validate_abd.py</code>, final run PASS: 832 unittest cases in 41 test processes, sources unchanged during the run.</li><li><b>CI:</b> <code>.github/workflows/validate.yml</code> runs the offline suites and both checkers on GitHub with no secrets: <span class="pend">[[CI_URL]]</span> (not yet run; the repository is pushed at submission).</li><li><b>Coverage of this deck:</b> <code>scripts/check_depth_coverage.py</code> checks that every engineering-depth item appears in the public documents and that the paths next to it exist.</li></ul><div class="src">Sources: Q01, Q03, C05, C06, C11, S01, S03. <code>scripts/verify_claims.py</code> <code>.github/workflows/validate.yml:3</code> <code>release/benchmarks/crosscheck_20261017T221103Z/preregistration.json</code> <code>release/benchmarks/crosscheck_r2_20261017T235438Z/preregistration.json</code> <code>handoff_day1/ui/pages/shell/data/validation.json</code> <code>scripts/check_depth_coverage.py</code><!-- depth:D11 D12 D17 D19 --></div><div class="pageno">11 / 14</div><aside class="notes">Speaker notes: Do not trust our slides; run our checker. It needs no key and no network, and it reads the raw records, not our summaries. The preregistration timestamps are in the files, so anyone can confirm the rules came before the results. The CI workflow will run the same checks on GitHub once the repository is public.</aside></section>
+<section class="slide dense" aria-label="Slide 12"><h2>How we know it works: a hazard log and a privacy threat model, every line cited</h2>
+<ul><li><b>Hazard log:</b> 12 hazards scored severity × likelihood, each control and test cited to a line of code; <b>2 open</b> (speech mis-transcription not measured, no semantic check active); the diagnosis-label and recording-instruction hazards were closed by the DX-05 and PI-04 fixes and are mitigated, with tests. <code>scripts/check_hazard_log.py</code> checks every citation: <code>RESULT: PASS</code>, 87 citations (SOURCES H02, H03).</li><li><b>Privacy threat model:</b> exactly which fields leave the app (update text, photos, and questions with the asker's name and relation go to the Token Factory endpoint), what is stored, STRIDE and LINDDUN per trust boundary. Gaps written down: a family link is full access, no encryption at rest, no retention limit, photos stay after an update is deleted.</li><li><b>Secret hygiene:</b> the API key comes only from the environment; tests plant a sentinel key and assert it never reaches any output file, error text or argv; history scan of every blob of every branch, here and in the earlier public CareRelay repository: the real key is in no committed version of any file, and the only key-shaped strings are the 4 planted test sentinels (<code>release/benchmarks/secret_scan_20261018T020029Z/</code>, SOURCES K02).</li></ul><div class="src">Sources: H01, H02; PV01, PV08–PV12, PV19, PV21; K01, K02. <code>submission/HAZARD_LOG.md</code> <code>scripts/check_hazard_log.py</code> <code>submission/PRIVACY_THREAT_MODEL.md</code> <code>scripts/test_bench_tf_handover.py:22</code><!-- depth:D13 D14 D18 --></div><div class="pageno">12 / 14</div><aside class="notes">Speaker notes: A hackathon prototype is not cleared for patient data, and we say so in writing. The hazard log is the list of ways this could hurt a family, each with the control, the test and an honest status; four are open. The threat model lists every field that leaves the app and every gap we know about. Both are checked by scripts, so the citations cannot drift silently.</aside></section>
+<section class="slide dense" aria-label="Slide 13"><h2>Honest failures: what failed, and what we kept off</h2>
+<ul><li><b>Evidence verifier v2 failed its gate:</b> 0 of 4,048 thresholds met false-acceptance ≤ 5% with ≥ 10% acceptance in every scope (weakest scope AUROC 0.673). Kept off; v1 (AUROC 0.9800) also off: 9/131 false acceptances on QA.</li><li><b>Cross-model judge failed its own rule twice:</b> benign false blocks 26/45, then 14/52. Shadow only.</li><li><b>Guardrails generalise poorly:</b> 2/7 held-out attacks stopped (the 5 misses are on the Case Agent answer path; DX-05 and PI-04 on the deployed path are closed); own-words diagnoses (48/200) and unknown override phrasings (47/200) pass the pattern lists.</li><li><b>Stability as a confidence signal did not replicate</b> across two benchmark runs.</li><li><b>Timeline reasoning is not better than baselines:</b> held-out strict all-correct 10/80 (journal), 11/80 (full context), 13/80 (lexical RAG); all paired intervals include 0.</li><li><b>The fall detector is a separate prototype</b>, not in the deployed app: preliminary leave-one-subject-out AUC 0.975 ± 0.011, but on the sealed test v0.1 flagged 6/17 falls and v0.2 12/17 (5/20 false prompts). A prompt to confirm, never an alarm.</li><li><b>Fictional data only; no clinical validation.</b> Token Factory keeps prompts about 2 days and its terms say not to send health data: production needs a dedicated endpoint under a data-processing agreement.</li></ul><div class="src">Sources: V01–V07; C07, C08; R05, R06; MT01; A11; T01–T03, T05; F03, F05, F06, F07; M07. <code>release/benchmarks/metamorphic_20261017T233944Z/summary.md:11-12</code> <code>handoff_day1/logs/test_split_record.json</code> <code>release/evidence_en/DEV_README_EXCERPT.md:16</code><!-- depth:D02 D08 D15 D16 --></div><div class="pageno">13 / 14</div><aside class="notes">Speaker notes: This is the credibility slide. Every failure has a number and a file. We kept the failing parts switched off instead of shipping them, and we report the hypotheses that did not survive a second run.</aside></section>
+<section class="slide dense" aria-label="Slide 14"><h2>Business value, team and next steps</h2>
+<ul><li><b>Who could pay (hypotheses to test, secondary figures):</b> hospitals and discharge teams (the CARE Act requires hospitals to instruct family caregivers before discharge in 43 states + DC; a meta-analysis links family involvement in discharge planning to 25% fewer 90-day readmissions); families directly (consumer care-coordination apps charge, e.g. US$6.99 per month).</li><li><b>Measured:</b> one caregiver update becomes sourced timeline facts in a median 6.15–6.63 s at about 1,216–1,219 tokens (DeepSeek-V4-Flash on AMD Token Factory).</li><li><b>Modelled, not measured:</b> about 2,431 tokens per family per day at an assumed 2 updates a day; 1.98 busy endpoint-hours per 1,000 families per day. No price assumed.</li><li><b>Not measured (hypothesis):</b> caregiver time saved; fewer repeat questions to ward staff. Pilot metric: caregiver minutes per day spent relaying updates, before vs after.</li><li><b>Team:</b> <span class="pend">[[TEAM_NAMES_AND_ROLES]]</span> · code https://github.com/HollyHsu0808/KindredRelay · app <span class="pend">[[APP_URL]]</span> · video <span class="pend">[[VIDEO_URL]]</span></li><li><b>Next:</b> close the held-out misses on the Case Agent path; retrain the verifier against a preregistered gate; a dedicated endpoint under a data-processing agreement; a pilot with one discharge team.</li><li>Inference via the AMD Token Factory endpoint provided for the AMD Developer Hackathon.</li></ul><div class="src">Sources: X01, X02, X04, X05, X06 (secondary); B05, B08, B25, L06, L07; open gaps R06; verifier V06–V07; data handling M07. <code>release/benchmarks/capacity_20261017T233811Z/summary.md:33-36,46,52</code><!-- depth:D04 --></div><div class="pageno">14 / 14</div><aside class="notes">Speaker notes: We do not claim time saved: we have not measured it. The buyer is a hypothesis backed by the regulatory and survey context, and we propose the metric a pilot would measure. The token figures are a capacity model built on measured tokens per update with the assumptions printed next to them; no currency is quoted because the endpoint publishes none to us. Roles from the handoff (to confirm): Holly owns data, models, experiments and care content; Leo owns backend, integration and deployment (the team handoff notes, in the private development repository).</aside></section>
+</div>
+<div class="hint">← → to move · N for notes · print = one slide per page</div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0;
+  function fit(){var k=Math.min(window.innerWidth/1920,window.innerHeight/1080),
+    x=(window.innerWidth-1920*k)/2,y=(window.innerHeight-1080*k)/2;
+    s.forEach(function(e){e.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';});}
+  function show(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach(function(e,j){e.classList.toggle('active',j===i);});
+    if(location.hash!=='#'+(i+1))history.replaceState(null,'','#'+(i+1));}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' ','ArrowDown'].indexOf(e.key)>=0){show(i+1);e.preventDefault();}
+    else if(['ArrowLeft','PageUp','ArrowUp'].indexOf(e.key)>=0){show(i-1);e.preventDefault();}
+    else if(e.key==='Home'){show(0);}else if(e.key==='End'){show(s.length-1);}
+    else if(e.key==='n'||e.key==='N'){document.body.classList.toggle('shownotes');}});
+  document.addEventListener('click',function(e){if(e.target.closest('a'))return;show(e.clientX>window.innerWidth/2?i+1:i-1);});
+  window.addEventListener('resize',fit);
+  var h=parseInt((location.hash||'#1').slice(1),10);fit();show(isNaN(h)?0:h-1);
+})();
+</script>
+</body>
+</html>
