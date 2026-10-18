@@ -162,7 +162,7 @@ PAGE_CSS = """
  .st-key-add_paper button p:first-child,.st-key-add_recording button p:first-child,.st-key-add_ask button p:first-child{
  font-size:calc(19px*var(--cr-fs,1))}
  .st-key-add_paper button p,.st-key-add_recording button p,.st-key-add_ask button p{font-size:calc(14px*var(--cr-fs,1));overflow-wrap:anywhere}}
-[data-testid='stSidebar']{background:var(--cr-surface)}
+[data-testid='stSidebar']{background:var(--cr-surface);color:var(--cr-ink,#2E241C)} [data-testid='stSidebarNav'] a *,[data-testid='stSidebar'] label p,[data-testid='stSelectbox'] label p,[data-testid='stSelectbox'] [role='group'] div,[data-baseweb='popover'] li,[data-baseweb='menu'] li{color:var(--cr-ink,#2E241C)}
 .stApp .st-key-about_kindredrelay [data-testid='stMarkdownContainer'] p,
 .stApp .st-key-about_kindredrelay [data-testid='stMarkdownContainer'] strong{color:var(--cr-ink,#2E241C)}
 .stApp .st-key-about_kindredrelay [data-testid='stCaptionContainer'] p{color:var(--cr-muted,#584434)}

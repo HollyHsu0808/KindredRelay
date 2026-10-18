@@ -31,7 +31,9 @@ Thumbs.db
 *.env
 kaggle.json
 *token*
-.streamlit/
+.streamlit/*
+# the pinned light theme is part of the app; .streamlit/secrets.toml stays ignored
+!.streamlit/config.toml
 
 # Per-clip result files of the cross-dataset runs (rebuilt by the scripts)
 per_clip_le2i*.csv

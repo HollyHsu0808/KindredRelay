@@ -1,0 +1,5 @@
+# The family page paints its own warm, light surfaces (the CSS in handoff_day1/ui/pages/1_Family_timeline.py).
+# Pin the light theme so Streamlit's own widgets keep dark text on them: with the theme left to the viewer's
+# browser, a viewer in dark mode saw white text on the cream sidebar navigation and the "Viewing as" field.
+[theme]
+base = "light"
