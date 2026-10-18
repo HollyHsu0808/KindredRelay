@@ -1,6 +1,18 @@
-# For hosting the family timeline on Streamlit Community Cloud (main file: handoff_day1/ui/pages/1_Family_timeline.py).
-# The page and its engine need only these; the model settings go in the host's secrets, never in the repository.
+# Streamlit Community Cloud WITH speech-to-text (branch: speech; main's file installs the page only).
+#
+# main gives the page and its engine, so the recorder is absent and the page asks the family to type what was said.
+# This branch adds what handoff_day1/agent/asr_local.py looks for: openai-whisper, torch and the ffmpeg program
+# (packages.txt). The versions are the release image's (deploy/requirements-release.lock); whisper's own
+# dependencies are left to the resolver, because that lock was written for python:3.12-slim and has never been
+# installed anywhere yet (DEPLOY.md: the first Render build would be the first build of the image).
+#
+# The +cpu wheels come from PyTorch's own index, not PyPI; without this line the resolver takes the much larger
+# default build. Unlike Dockerfile.release the weights are not baked in: the first recording downloads base.en
+# (about 140 MB) into the container's cache, so it is slower than every later one, and again after a restart.
+--extra-index-url https://download.pytorch.org/whl/cpu
 streamlit==1.64.0
 requests==2.34.2
 pandas==3.0.6
 tzdata==2025.2
+torch==2.10.0+cpu
+openai-whisper==20250625
