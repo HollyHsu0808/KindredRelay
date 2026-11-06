@@ -3,6 +3,12 @@
 **One place for a family to understand what is happening during a hospital stay, with every statement traceable to
 what the care team actually said.** Built for the AMD Developer Hackathon: ACT III, Health & Wellbeing track.
 
+**At a glance:** two models were benchmarked before their roles were assigned (DeepSeek 95.7% vs Gemma 86.0% source-grounded
+answers, median 6.15 s vs 16.66 s). An external check on 30 PriMock57 consultations gave human–model agreement of κ = 0.797.
+The repo also includes a 12-item hazard log, a script that recomputes every published claim (578 checks, 0 mismatches) and a public list of what failed.
+
+**Roles:** Holly Hsu: product design, implementation, evaluation and debugging. Leo Liao: deployment support.
+
 A family member records or types what a nurse or doctor said, or photographs a discharge or medication sheet.
 KindredRelay turns each update into dated facts on a shared family timeline. Every fact must quote its source word
 for word; a person checks each transcript line and photo reading before it is added; questions are answered only
@@ -42,7 +48,7 @@ consultations; none is a clinical validation.
 | D09 <!-- depth:D09 --> | Metamorphic testing; bugs found and fixed | 200 instances per relation; published run MR1 132 → 62, MR4 152 → 122; final rerun on the shipped code: MR1 38, MR2 0 (was 40), MR3 0, MR4 122, MR5 48, MR6 47; fixes for a negated going-home plan and a negated-procedure display, each with its own test | [final](release/benchmarks/metamorphic_final_20261018T024113Z/summary.md), [published run](release/benchmarks/metamorphic_20261017T233944Z/summary.md), [`test_plan_negation.py`](handoff_day1/agent/test_plan_negation.py), [`test_procedure_negation_display.py`](handoff_day1/agent/test_procedure_negation_display.py) |
 | D10 <!-- depth:D10 --> | External reference: PriMock57 clinician notes | Protocol fixed before any live call; 30 of 57 consultations (preregistered seeded subset): note-fact recall 58.2% [54.0, 61.8], contradiction rate 6.0% [4.3, 7.8], weighted errors 0.682 [0.574, 0.800] per note fact, grounding pass 81.4% [78.1, 84.4], safety-net facts 22/28; model annotator Qwen3.8-Flash-Next, human-vs-model Cohen's kappa 0.797 [0.747, 0.845] (n = 349 of a 360-row seeded sample, labelled by a team member); measured on the code at the time of the run (file hashes in `records.jsonl` and `results.json`) | [protocol](research/primock_gold_v1/PROTOCOL.md), [subset amendment](research/primock_gold_v1/preregistration_amendment_1.json), [final run](release/benchmarks/primock_gold_20261018T002738Z/summary.md), [pilot](release/benchmarks/primock_gold_20261017T233638Z/summary.md) |
 | D11 <!-- depth:D11 --> | Claim recomputation | Recomputes published numbers from raw records and checks every cited source in `SOURCES.md` (standard library only); final pre-submission run: 578 checks pass, 0 mismatches | [`verify_claims.py`](scripts/verify_claims.py) |
-| D12 <!-- depth:D12 --> | CI workflow | The offline suite, red team, benchmark dry run, claim and hazard checks on every push; no secrets, no model calls; not yet run on GitHub | [`validate.yml`](.github/workflows/validate.yml) |
+| D12 <!-- depth:D12 --> | CI workflow | The offline suite, red team, benchmark dry run, claim and hazard checks on every push; no secrets, no model calls; runs on GitHub Actions on every push | [`validate.yml`](.github/workflows/validate.yml) |
 | D13 <!-- depth:D13 --> | Hazard log | 12 hazards with severity × likelihood, controls and test evidence; 2 open (HZ-09, HZ-11), 10 mitigated (HZ-03 and HZ-04 after the DX-05 and PI-04 fixes); every citation machine-checked | [`HAZARD_LOG.md`](submission/HAZARD_LOG.md), [`check_hazard_log.py`](scripts/check_hazard_log.py) |
 | D14 <!-- depth:D14 --> | Privacy data flow and threat model | Three kinds of call send patient content to one third party, the AMD Token Factory endpoint; only fictional or role-played data is sent; finding PF1 (old content left in the SQLite file after Restart) is mitigated | [`PRIVACY_THREAT_MODEL.md`](submission/PRIVACY_THREAT_MODEL.md) |
 | D15 <!-- depth:D15 --> | Fail-closed verifier, kept off | v1: QA false acceptance 9/131 = 6.87%, above the 5% target; v2: 0 of 4,048 candidate thresholds valid; `KINDRED_VERIFIER_MODE=off`, and gate mode is refused without a validated operating point | [v1](release/evidence_en/KAGGLE_RESULT.md), [v2](release/evidence_en/KAGGLE_VERIFIER_V2_RESULTS.md), [`Dockerfile.release`](Dockerfile.release), [`serve.py`](deploy/serve.py) |
@@ -78,8 +84,8 @@ consultations; none is a clinical validation.
   ([English rendition](release/evidence_en/ASR_SMOKE.md)); every transcript line is checked by a person.
 - Shared links are capabilities, not accounts; the identity selector is not authentication
   ([persistence notes](handoff_day1/ui/PERSISTENCE.md)).
-- Single instance, SQLite on a persistent disk; the CI workflow has not run on GitHub yet; the team has not built
-  the Docker image locally ([DEPLOY.md](DEPLOY.md)).
+- Single instance, SQLite on a persistent disk; the team has not built the Docker image locally
+  ([DEPLOY.md](DEPLOY.md)).
 - The service terms of the hackathon endpoint forbid sensitive health data; a real deployment needs a dedicated
   endpoint under a data-processing agreement.
 
